@@ -252,8 +252,7 @@ export default class Header extends React.PureComponent {
               style={{
                 fontSize: '15px',
                 padding: '15px',
-                color: '#fff',
-                background: '#00D67C',
+                color: '#000',
                 borderRadius: '25px',
                 fontWeight: '600',
               }}
@@ -264,7 +263,7 @@ export default class Header extends React.PureComponent {
         </div>
 
         <div className="bg-tabs">
-          <input id="tab1" type="radio" name="tabs" onChange={this.asdf} value={'ads'} />
+          <input id="tab1" type="radio" name="tabs" onChange={this.asdf} value="ads" />
           <label htmlFor="tab1">LABORATORY</label>
 
           <input id="tab2" type="radio" name="tabs" onChange={this.asdf} />

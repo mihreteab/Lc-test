@@ -19,6 +19,7 @@
     "ES6"
   ],
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "classlist-polyfill": "^1.2.0",
     "classnames": "^2.2.6",
     "ease-component": "^1.0.0",
@@ -110,7 +111,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "enzyme-to-json": "^3.3.5",
-    "eslint": "^5.15.1",
+    "eslint": "^5.14.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-cypress": "^0.28.0",
     "eslint-config-prettier": "^4.0.0",
@@ -205,12 +206,13 @@
     "serve": "serve --listen 3000 build",
     "deploy": "node tools deploy",
     "publish": "node tools publish",
-    "bundlesize": "bundlesize"
+    "bundlesize": "bundlesize",
+    "precommit": "node tools upstream && lint-staged && flow"
   },
   "husky": {
     "hooks": {
       "post-merge": "node tools update",
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run precommit"
     }
   },
   "browserslist": [
@@ -226,15 +228,5 @@
       "path": "./build/scripts/modernizr.*.js",
       "maxSize": "25 kB"
     }
-  ],
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.css": [
-      "stylelint --fix",
-      "git add"
-    ]
-  }
+  ]
 }

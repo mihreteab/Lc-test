@@ -48,7 +48,7 @@ const StyledContainer = styled(Container)`
   padding-top: ${spacer(2)};
 `;
 
-const Button = styled.button`
+const Logout = styled.button`
   align-items: center;
   color: #333;
   display: flex;
@@ -83,13 +83,11 @@ export default class Header extends React.PureComponent {
     return (
       <HeaderWrapper>
         <StyledContainer>
-          {/* <HeaderLogo />
-          <Button>
-            <span>Sign In</span>
-          </Button>
-          <Button>
-            <span>Sign Up</span>
-          </Button> */}
+          <HeaderLogo />
+          <Logout onClick={this.handleClickLogout}>
+            <span>logout</span>
+            <Icon name="sign-out" color="#333" width={16} />
+          </Logout>
         </StyledContainer>
       </HeaderWrapper>
     );

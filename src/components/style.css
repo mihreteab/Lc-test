@@ -1,4 +1,4 @@
-/* section {
+section {
   display: none;
   padding: 20px 0 0;
   border-top: 1px solid #0084f8;
@@ -64,4 +64,4 @@ input:checked + label {
   label {
     padding: 15px;
   }
-} */
+}

@@ -189,7 +189,8 @@ export class GitHub extends React.Component {
               Redux
             </Button>
           </ButtonGroup>
-        </Flex> */}
+        </Flex>
+        {output} */}
       </div>
     );
   }

@@ -33,14 +33,8 @@ export const app = {
         OfflinePlugin.applyUpdate();
       },
       onUpdated: () => {
-        store.dispatch(
-          showAlert(<Reload />, {
-            id: 'sw-update',
-            icon: 'bolt',
-            timeout: 0
-          })
-        );
-      }
+        store.dispatch(showAlert(<Reload />, { id: 'sw-update', icon: 'bolt', timeout: 0 }));
+      },
     });
   },
   render(Component) {
@@ -50,17 +44,14 @@ export const app = {
     if (root) {
       ReactDOM.render(
         <Provider store={store}>
-          <PersistGate
-            loading={<Loader size={100} block />}
-            persistor={persistor}
-          >
+          <PersistGate loading={<Loader size={100} block />} persistor={persistor}>
             <Component />
           </PersistGate>
         </Provider>,
-        root
+        root,
       );
     }
-  }
+  },
 };
 
 app.run();

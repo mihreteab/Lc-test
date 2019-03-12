@@ -7,13 +7,11 @@ export const Logo = styled.div`
   align-items: flex-start;
   display: inline-flex;
   font-size: 0;
-  transform: scale(1.8);
-  margin-left: 15px;
 
   svg {
     height: auto;
     max-height: 100%;
-    width: 6.8rem;
+    width: 4.8rem;
   }
 `;
 

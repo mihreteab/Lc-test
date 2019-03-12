@@ -95,7 +95,7 @@ export class App extends React.Component {
                 <Route component={NotFound} />
               </Switch>
             </Main>
-            {/* <Footer /> */}
+            <Footer />
             <SystemAlerts />
             <GlobalStyles />
           </AppWrapper>

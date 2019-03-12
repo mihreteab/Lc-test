@@ -23,7 +23,7 @@ export const { hideAlert, showAlert, switchMenu } = createActions({
       message,
       position: options.position || 'bottom-right',
       variant: options.variant || 'dark',
-      timeout: typeof options.timeout === 'number' ? options.timeout : timeout
+      timeout: typeof options.timeout === 'number' ? options.timeout : timeout,
     };
-  }
+  },
 });

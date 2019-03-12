@@ -1,1 +1,9 @@
-/node_modules
+.tmp
+.sass-cache
+.publish
+coverage/
+build/
+dist/
+node_modules/
+reports/
+webpack.stats.json
