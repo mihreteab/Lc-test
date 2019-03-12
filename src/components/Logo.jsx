@@ -7,6 +7,8 @@ export const Logo = styled.div`
   align-items: flex-start;
   display: inline-flex;
   font-size: 0;
+  transform: scale(3);
+  margin-left: 50px;
 
   svg {
     height: auto;

@@ -14,6 +14,8 @@ import './style.css';
 
 const { responsive, spacer } = utils;
 
+const NavMenu = ['Technology', 'LC Net Lab', 'LC Net Explorer', 'Developer', 'Pricing', 'Contact'];
+
 const HeaderWrapper = styled.header`
   height: 40px;
   left: 0;
@@ -49,8 +51,39 @@ const Button = styled.button`
   span {
     display: inline-block;
     margin-right: 0.4rem;
-    text-transform: uppercase;
+    text-transform: uppercase; 
   }
+`;
+
+const NameWrapper = styled.div`
+  display: flex;
+  margin: 25px;
+  justify-content: space-between;
+`;
+
+const NameContainer = styled.div`
+  margin: 7px;
+  display: flex;
+`;
+
+const ToggleWrapper = styled.div`
+  border: 1px solid #c9d6df;
+  box-sizing: border-box;
+  border-radius: 25px;
+`;
+
+const Title = styled.p`
+  font-style: normal;
+  line-height: 20px;
+  font-size: 18px;
+  color: #52616b;
+`;
+
+const ToggleButton = styled.button`
+  font-size: 15px;
+  padding: 15px;
+  border-radius: 25px;
+  font-weight: bolder;
 `;
 
 export default class Header extends React.PureComponent {
@@ -75,16 +108,7 @@ export default class Header extends React.PureComponent {
             </Button>
           </div>
         </HeaderContainer>
-        <Navbar
-          expand="lg"
-          style={{
-            backgroundColor: '#FFF !important',
-            boxShadow: '0 2px 2px 0 rgba(0,0,0,0.2)',
-            height: '50px',
-            padding: '35px 20px',
-          }}
-        >
-          <Navbar.Brand href="#home" />
+        <Navbar expand="lg" className={'navBar'}>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
@@ -92,178 +116,62 @@ export default class Header extends React.PureComponent {
                 href="#link"
                 style={{
                   padding: '8px 20px',
-                  color: '#000000',
-                  marginRight: '15px',
                   boxShadow: '0px 1px 2px rgba(8, 35, 48, 0.24), 0px 2px 6px rgba(8, 35, 48, 0.16)',
-                  borderRadius: '6px',
                 }}
+                className={'nav-link'}
               >
                 About
               </Nav.Link>
-              <Nav.Link
-                href="#link"
-                style={{
-                  color: '#000000',
-                  marginRight: '15px',
-                  borderRadius: '6px',
-                }}
-              >
-                Technology
-              </Nav.Link>
-              <Nav.Link
-                href="#link"
-                style={{
-                  color: '#000000',
-                  marginRight: '15px',
-                  borderRadius: '6px',
-                }}
-              >
-                LC Net Lab
-              </Nav.Link>
-              <Nav.Link
-                href="#link"
-                style={{
-                  color: '#000000',
-                  marginRight: '15px',
-                  borderRadius: '6px',
-                }}
-              >
-                LC Net Explorer
-              </Nav.Link>
-              <Nav.Link
-                href="#link"
-                style={{
-                  color: '#000000',
-                  marginRight: '15px',
-                  borderRadius: '6px',
-                }}
-              >
-                Developer
-              </Nav.Link>
-              <Nav.Link
-                href="#link"
-                style={{
-                  color: '#000000',
-                  marginRight: '15px',
-                  borderRadius: '6px',
-                }}
-              >
-                Pricing
-              </Nav.Link>
-              <Nav.Link
-                href="#link"
-                style={{
-                  color: '#000000',
-                  marginRight: '15px',
-                  borderRadius: '6px',
-                }}
-              >
-                Contact
-              </Nav.Link>
+              {NavMenu.map(value => {
+                return (
+                  <Nav.Link key={value} className={'nav-link'}>
+                    {value}
+                  </Nav.Link>
+                );
+              })}
             </Nav>
 
             <Nav className="ml-auto">
-              <Nav.Link
-                href="#link"
-                style={{
-                  marginRight: '10px',
-                  color: '#000000',
-                  border: '1px solid',
-                  borderRadius: '6px',
-                }}
-              >
+              <Nav.Link href="#link" className={'navButton'}>
                 Sign In
               </Nav.Link>
 
-              <Nav.Link
-                href="#link"
-                style={{
-                  color: '#000000',
-                  marginRight: '10px',
-                  border: '1px solid',
-                  borderRadius: '6px',
-                }}
-              >
+              <Nav.Link href="#link" className={'navButton'}>
                 Sign Up
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
 
-        {/* --------------------Toggle Component--------------------------- */}
+        <NameWrapper>
+          <NameContainer>
+            <Title>
+              <strong style={{ color: 'black', fontSize: '22px' }}>LC NET</strong> | Network
+              laboratory
+            </Title>
+          </NameContainer>
 
-        <div
-          className="d-flex"
-          style={{
-            margin: '25px',
-            justifyContent: 'space-between',
-            // marginLeft: '30px',
-          }}
-        >
-          <div
-            className="d-flex"
-            style={{
-              margin: '7px',
-            }}
-          >
-            <p
+          <ToggleWrapper>
+            <ToggleButton
               style={{
-                fontStyle: 'normal',
-                fontWeight: 'bold',
-                lineHeight: '22px',
-                fontSize: '18px',
-              }}
-            >
-              LC NET |
-            </p>
-            <span
-              style={{
-                color: 'black',
-                fontWeight: '600',
-                fontStyle: 'normal',
-                fontWeight: 'normal',
-                lineHeight: '22px',
-              }}
-            >
-              Network laboratory
-            </span>
-          </div>
-
-          <div
-            style={{
-              border: '1px solid #C9D6DF',
-              boxSizing: 'border-box',
-              borderRadius: '25px',
-            }}
-          >
-            <button
-              style={{
-                fontSize: '15px',
-                padding: '15px',
                 color: '#fff',
-                background: '#00D67C',
-                borderRadius: '25px',
-                fontWeight: '600',
+                background: '#00d67c',
               }}
             >
               TEST
-            </button>
-            <button
+            </ToggleButton>
+            <ToggleButton
               style={{
-                fontSize: '15px',
-                padding: '15px',
                 color: '#000',
-                borderRadius: '25px',
-                fontWeight: '600',
               }}
             >
               PUBLIC
-            </button>
-          </div>
-        </div>
+            </ToggleButton>
+          </ToggleWrapper>
+        </NameWrapper>
 
         <div className="bg-tabs">
-          <input id="tab1" type="radio" name="tabs" onChange={this.asdf} value="ads" />
+          <input id="tab1" type="radio" name="tabs" onChange={this.asdf} value="ads" checked />
           <label htmlFor="tab1">LABORATORY</label>
 
           <input id="tab2" type="radio" name="tabs" onChange={this.asdf} />

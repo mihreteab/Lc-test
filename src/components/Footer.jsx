@@ -9,7 +9,7 @@ const FooterWrapper = styled.footer`
 
 const Footer = () => (
   <FooterWrapper>
-    <Container py={3}>
+    {/* <Container py={3}>
       <Flex justifyContent="space-between">
         <iframe
           title="GitHub Stars"
@@ -28,7 +28,7 @@ const Footer = () => (
           height="20px"
         />
       </Flex>
-    </Container>
+    </Container> */}
   </FooterWrapper>
 );
 
