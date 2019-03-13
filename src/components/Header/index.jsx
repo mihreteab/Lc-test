@@ -1,20 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import rgba from 'polished/lib/color/rgba';
 
-import { FaFacebookF } from 'react-icons/fa';
-import { FaTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
 import { Container, utils } from 'styled-minimal';
 import Logo from 'components/Logo';
 
-import { Navbar, Nav, Tab } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import './style.css';
+
+import Laboratory from '../Laboratory';
+import AccountCreator from '../AccountCreator';
 
 const { responsive, spacer } = utils;
 
 const NavMenu = ['Technology', 'LC Net Lab', 'LC Net Explorer', 'Developer', 'Pricing', 'Contact'];
+const NavTabs = [
+  'LABORATORY',
+  'ACCOUNT CREATOR',
+  'ENDPOINT EXPLORER',
+  'TRANSACTION BUILDER',
+  'TRANSACTION SIGNER',
+  'XRD VIEWER',
+];
 
 const HeaderWrapper = styled.header`
   height: 40px;
@@ -86,12 +95,34 @@ const ToggleButton = styled.button`
   font-weight: bolder;
 `;
 
+const Tabs = styled.div`
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  border: 1px solid transparent;
+  background-color: #0084f8;
+  margin-bottom: 0px !important;
+  font-size: 14px;
+  margin-left: 5%;
+  padding-bottom: 15px;
+  padding-top: 15px;
+`;
+
 export default class Header extends React.PureComponent {
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
+  state = {
+    selectedLabel: 'ACCOUNT CREATOR',
+  };
+
+  onSelectLabel = e => {
+    const value = e.target.textContent;
+    this.setState({ selectedLabel: value });
   };
 
   render() {
+    const { selectedLabel } = this.state;
+
     return (
       <HeaderWrapper>
         <HeaderContainer>
@@ -108,7 +139,7 @@ export default class Header extends React.PureComponent {
             </Button>
           </div>
         </HeaderContainer>
-        <Navbar expand="lg" className={'navBar'}>
+        <Navbar expand="lg" className="navBar">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
@@ -118,13 +149,13 @@ export default class Header extends React.PureComponent {
                   padding: '8px 20px',
                   boxShadow: '0px 1px 2px rgba(8, 35, 48, 0.24), 0px 2px 6px rgba(8, 35, 48, 0.16)',
                 }}
-                className={'nav-link'}
+                className="nav-link"
               >
                 About
               </Nav.Link>
               {NavMenu.map(value => {
                 return (
-                  <Nav.Link key={value} className={'nav-link'}>
+                  <Nav.Link key={value} className="nav-link">
                     {value}
                   </Nav.Link>
                 );
@@ -132,11 +163,11 @@ export default class Header extends React.PureComponent {
             </Nav>
 
             <Nav className="ml-auto">
-              <Nav.Link href="#link" className={'navButton'}>
+              <Nav.Link href="#link" className="navButton">
                 Sign In
               </Nav.Link>
 
-              <Nav.Link href="#link" className={'navButton'}>
+              <Nav.Link href="#link" className="navButton">
                 Sign Up
               </Nav.Link>
             </Nav>
@@ -170,103 +201,35 @@ export default class Header extends React.PureComponent {
           </ToggleWrapper>
         </NameWrapper>
 
-        <div className="bg-tabs">
-          <input id="tab1" type="radio" name="tabs" onChange={this.asdf} value="ads" checked />
-          <label htmlFor="tab1">LABORATORY</label>
-
-          <input id="tab2" type="radio" name="tabs" onChange={this.asdf} />
-          <label htmlFor="tab2">ACCOUNT CREATOR</label>
-
-          <input id="tab3" type="radio" name="tabs" onChange={this.asdf} />
-          <label htmlFor="tab3">ENDPINT EXPLORER</label>
-
-          <input id="tab4" type="radio" name="tabs" onChange={this.asdf} />
-          <label htmlFor="tab4">TRANSACTION BUILDER</label>
-
-          <input id="tab5" type="radio" name="tabs" onChange={this.asdf} />
-          <label htmlFor="tab5">TRANSACTION SIGNER</label>
-
-          <input id="tab6" type="radio" name="tabs" onChange={this.asdf} />
-          <label htmlFor="tab6">XRD VIEWER</label>
-
-          <section id="content1">
-            <p>
-              Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye
-              leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback
-              venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami
-              prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder.
-              Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta
-              turkey.
-            </p>
-            <p>
-              Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.
-            </p>
-          </section>
-          <section id="content2">
-            <p>
-              Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.
-            </p>
-            <p>
-              Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye
-              leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback
-              venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami
-              prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder.
-              Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta
-              turkey.
-            </p>
-          </section>
-          <section id="content3">
-            <p>
-              Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye
-              leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback
-              venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami
-              prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder.
-              Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta
-              turkey.
-            </p>
-            <p>
-              Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.
-            </p>
-          </section>
-          <section id="content4">
-            <p>
-              Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.
-            </p>
-            <p>
-              Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye
-              leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback
-              venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami
-              prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder.
-              Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta
-              turkey.
-            </p>
-          </section>
-          <section id="content5">
-            <p>
-              Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.
-            </p>
-            <p>
-              Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye
-              leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback
-              venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami
-              prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder.
-              Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta
-              turkey.
-            </p>
-          </section>
-          <section id="content6">
-            <p>
-              Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin.
-            </p>
-            <p>
-              Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye
-              leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback
-              venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami
-              prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder.
-              Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta
-              turkey.
-            </p>
-          </section>
+        <div>
+          <div className="bg-tabs">
+            {NavTabs.map(key => {
+              return (
+                <Tabs
+                  className={selectedLabel === key ? 'selectedLabel' : ''}
+                  key={key}
+                  onClick={this.onSelectLabel}
+                >
+                  {key}
+                </Tabs>
+              );
+            })}
+          </div>
+          {selectedLabel === 'LABORATORY' ? (
+            <Laboratory />
+          ) : selectedLabel === 'ACCOUNT CREATOR' ? (
+            <AccountCreator />
+          ) : selectedLabel === 'ENDPOINT EXPLORER' ? (
+            <h1>ENDPOINT EXPLORER</h1>
+          ) : selectedLabel === 'TRANSACTION BUILDER' ? (
+            <h1>TRANSACTION BUILDER</h1>
+          ) : selectedLabel === 'TRANSACTION SIGNER' ? (
+            <h1>TRANSACTION SIGNER</h1>
+          ) : selectedLabel === 'XRD VIEWER' ? (
+            <h1>XRD VIEWER</h1>
+          ) : (
+            <h1>No Content</h1>
+          )}
         </div>
       </HeaderWrapper>
     );

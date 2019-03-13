@@ -18,10 +18,9 @@ import Home from 'routes/Home';
 import Private from 'routes/Private';
 import NotFound from 'routes/NotFound';
 
-import Header from 'components/Header/index.jsx';
+import Header from 'components/Header';
 import SystemAlerts from 'containers/SystemAlerts';
 
-import Footer from 'components/Footer';
 import GlobalStyles from 'components/GlobalStyles';
 import RoutePublic from 'components/RoutePublic';
 import RoutePrivate from 'components/RoutePrivate';
@@ -59,7 +58,12 @@ export class App extends React.Component {
 
     /* istanbul ignore else */
     if (changedTo('user.isAuthenticated', true)) {
-      dispatch(showAlert('Hello! And welcome!', { variant: 'success', icon: 'bell' }));
+      dispatch(
+        showAlert('Hello! And welcome!', {
+          variant: 'success',
+          icon: 'bell',
+        }),
+      );
     }
   }
 
@@ -95,7 +99,6 @@ export class App extends React.Component {
                 <Route component={NotFound} />
               </Switch>
             </Main>
-            <Footer />
             <SystemAlerts />
             <GlobalStyles />
           </AppWrapper>
