@@ -15,7 +15,7 @@ import './style.css';
 
 import Laboratory from '../Laboratory';
 import AccountCreator from '../AccountCreator';
-import EndpointExplorer from '../EndpointExplorer';
+// import EndpointExplorer from '../EndpointExplorer';
 import NameWrapper from './NameWrapper';
 import NameContainer from './NameContainer';
 import ToggleWrapper from './ToggleWrapper';
@@ -28,7 +28,14 @@ import NavLink from './NavLink';
 import ActiveNavLink from './ActiveNavLink';
 import TitleStrongText from './TitleStrongText';
 
-const NavMenu = ['Technology', 'LC Net Lab', 'LC Net Explorer', 'Developer', 'Pricing', 'Contact'];
+const NavMenu = [
+  'Technology',
+  'LC Net Lab',
+  'LC Net Explorer',
+  'Developer',
+  'Pricing',
+  'Contact',
+];
 
 const NavTabs = [
   'LABORATORY',
@@ -87,13 +94,11 @@ export default class Header extends React.PureComponent {
                 <ActiveNavLink>About</ActiveNavLink>
               </li>
 
-              {NavMenu.map(value => {
-                return (
-                  <li className="nav-item" key={value}>
-                    <NavLink key={value}>{value}</NavLink>
-                  </li>
-                );
-              })}
+              {NavMenu.map(value => (
+                <li className="nav-item" key={value}>
+                  <NavLink key={value}>{value}</NavLink>
+                </li>
+              ))}
             </ul>
 
             <ul className="navbar-nav ml-auto">
@@ -128,24 +133,22 @@ export default class Header extends React.PureComponent {
 
         <div>
           <div className="bg-tabs">
-            {NavTabs.map(key => {
-              return (
-                <Tabs
-                  className={selectedLabel === key ? 'selectedLabel' : ''}
-                  key={key}
-                  onClick={this.onSelectLabel}
-                >
-                  {key}
-                </Tabs>
-              );
-            })}
+            {NavTabs.map(key => (
+              <Tabs
+                className={selectedLabel === key ? 'selectedLabel' : ''}
+                key={key}
+                onClick={this.onSelectLabel}
+              >
+                {key}
+              </Tabs>
+            ))}
           </div>
           {selectedLabel === 'LABORATORY' ? (
             <Laboratory />
           ) : selectedLabel === 'ACCOUNT CREATOR' ? (
             <AccountCreator />
           ) : selectedLabel === 'ENDPOINT EXPLORER' ? (
-            <EndpointExplorer />
+            <h1>ENDPOINT EXPLORER</h1>
           ) : selectedLabel === 'TRANSACTION BUILDER' ? (
             <h1>TRANSACTION BUILDER</h1>
           ) : selectedLabel === 'TRANSACTION SIGNER' ? (

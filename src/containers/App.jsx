@@ -18,13 +18,14 @@ import Home from 'routes/Home';
 import Private from 'routes/Private';
 import NotFound from 'routes/NotFound';
 
-import Header from 'components/Header';
+// import Header from 'components/Header';
 import SystemAlerts from 'containers/SystemAlerts';
 
 import GlobalStyles from 'components/GlobalStyles';
 import RoutePublic from 'components/RoutePublic';
 import RoutePrivate from 'components/RoutePrivate';
 
+import Menu from '../components/Menu';
 import Laboratory from '../components/Laboratory';
 import AccountCreator from '../components/AccountCreator';
 
@@ -69,8 +70,8 @@ export class App extends React.Component {
   }
 
   render() {
-    const { dispatch, user } = this.props;
-
+    // const { dispatch, user } = this.props;
+    const { user } = this.props;
     return (
       <Router history={history}>
         <ThemeProvider theme={theme}>
@@ -83,8 +84,10 @@ export class App extends React.Component {
               titleTemplate={`%s | ${config.name}`}
               titleAttributes={{ itemprop: 'name', lang: 'pt-br' }}
             />
-            {user.isAuthenticated && <Header dispatch={dispatch} user={user} />}
+            {/* {user.isAuthenticated &&
+            <Header dispatch={dispatch} user={user} />} */}
             <Main isAuthenticated={user.isAuthenticated}>
+              <Menu />
               <Switch>
                 <RoutePublic
                   isAuthenticated={user.isAuthenticated}
@@ -94,11 +97,20 @@ export class App extends React.Component {
                 />
                 <RoutePrivate
                   isAuthenticated={user.isAuthenticated}
+                  path="/laboratory"
+                  component={Laboratory}
+                />
+                <RoutePrivate
+                  isAuthenticated={user.isAuthenticated}
+                  path="/account-creator"
+                  component={AccountCreator}
+                />
+
+                <RoutePrivate
+                  isAuthenticated={user.isAuthenticated}
                   path="/private"
                   component={Private}
                 />
-                <Route path="/private/laboratory" component={Laboratory} />
-                <Route path="/private/account-creator" component={AccountCreator} />
                 <Route component={NotFound} />
               </Switch>
             </Main>
