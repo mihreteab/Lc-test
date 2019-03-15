@@ -1,6 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
@@ -11,11 +12,6 @@ import HeaderWrapper from './HeaderWrapper';
 import HeaderContainer from './HeaderContainer';
 import Button from './Button';
 
-import './style.css';
-
-import Laboratory from '../Laboratory';
-import AccountCreator from '../AccountCreator';
-// import EndpointExplorer from '../EndpointExplorer';
 import NameWrapper from './NameWrapper';
 import NameContainer from './NameContainer';
 import ToggleWrapper from './ToggleWrapper';
@@ -27,6 +23,7 @@ import NavLink from './NavLink';
 // import NavbarToggler from './NavbarToggler';
 import ActiveNavLink from './ActiveNavLink';
 import TitleStrongText from './TitleStrongText';
+import NavWrapper from './NavWrapper';
 
 const NavMenu = [
   'Technology',
@@ -49,6 +46,7 @@ const NavTabs = [
 export default class Header extends React.PureComponent {
   state = {
     selectedLabel: 'ENDPOINT EXPLORER',
+    active: true,
   };
 
   onSelectLabel = e => {
@@ -57,7 +55,7 @@ export default class Header extends React.PureComponent {
   };
 
   render() {
-    const { selectedLabel } = this.state;
+    const { selectedLabel, active } = this.state;
 
     return (
       <HeaderWrapper>
@@ -120,7 +118,7 @@ export default class Header extends React.PureComponent {
           </NameContainer>
 
           <ToggleWrapper>
-            <ToggleButton active="activeToggle">TEST</ToggleButton>
+            <ToggleButton active={active}>TEST</ToggleButton>
             <ToggleButton
               style={{
                 color: '#000',
@@ -132,32 +130,26 @@ export default class Header extends React.PureComponent {
         </NameWrapper>
 
         <div>
-          <div className="bg-tabs">
-            {NavTabs.map(key => (
-              <Tabs
-                className={selectedLabel === key ? 'selectedLabel' : ''}
-                key={key}
-                onClick={this.onSelectLabel}
-              >
-                {key}
-              </Tabs>
-            ))}
-          </div>
-          {selectedLabel === 'LABORATORY' ? (
-            <Laboratory />
-          ) : selectedLabel === 'ACCOUNT CREATOR' ? (
-            <AccountCreator />
-          ) : selectedLabel === 'ENDPOINT EXPLORER' ? (
-            <h1>ENDPOINT EXPLORER</h1>
-          ) : selectedLabel === 'TRANSACTION BUILDER' ? (
-            <h1>TRANSACTION BUILDER</h1>
-          ) : selectedLabel === 'TRANSACTION SIGNER' ? (
-            <h1>TRANSACTION SIGNER</h1>
-          ) : selectedLabel === 'XRD VIEWER' ? (
-            <h1>XRD VIEWER</h1>
-          ) : (
-            <h1>No Content</h1>
-          )}
+          <NavWrapper>
+            {NavTabs.map(key => {
+              const link = key
+                .toLowerCase()
+                .split(' ')
+                .join('-');
+
+              return (
+                <Link to={link} key={key} className="submenu menu activeClass">
+                  <Tabs
+                    isSelect={selectedLabel === key ? true : false}
+                    key={key}
+                    onClick={this.onSelectLabel}
+                  >
+                    {key}
+                  </Tabs>
+                </Link>
+              );
+            })}
+          </NavWrapper>
         </div>
       </HeaderWrapper>
     );

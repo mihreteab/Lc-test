@@ -25,9 +25,12 @@ import GlobalStyles from 'components/GlobalStyles';
 import RoutePublic from 'components/RoutePublic';
 import RoutePrivate from 'components/RoutePrivate';
 
-import Menu from '../components/Menu';
+import EndpointExplorer from '../components/EndpointExplorer';
 import Laboratory from '../components/Laboratory';
 import AccountCreator from '../components/AccountCreator';
+import Header from '../components/Header';
+
+const { responsive } = utils;
 
 const AppWrapper = styled.div`
   display: flex;
@@ -38,14 +41,14 @@ const AppWrapper = styled.div`
   transition: opacity 0.5s;
 `;
 
-const MainPrivate = ({ isAuthenticated }) =>
-  isAuthenticated &&
-  css`
-    padding: ${utils.px(headerHeight)} 0 0;
-  `;
+const MainPrivate = ({ isAuthenticated }) => isAuthenticated && css``;
 
 const Main = styled.main`
   ${MainPrivate};
+`;
+
+const Wrapper = styled.div`
+  margin-top: 280px;
 `;
 
 export class App extends React.Component {
@@ -84,35 +87,41 @@ export class App extends React.Component {
               titleTemplate={`%s | ${config.name}`}
               titleAttributes={{ itemprop: 'name', lang: 'pt-br' }}
             />
-            {/* {user.isAuthenticated &&
-            <Header dispatch={dispatch} user={user} />} */}
+            {/* {user.isAuthenticated && <Header dispatch={dispatch} user={user} />} */}
             <Main isAuthenticated={user.isAuthenticated}>
-              <Menu />
-              <Switch>
-                <RoutePublic
-                  isAuthenticated={user.isAuthenticated}
-                  path="/"
-                  exact
-                  component={Home}
-                />
-                <RoutePrivate
-                  isAuthenticated={user.isAuthenticated}
-                  path="/laboratory"
-                  component={Laboratory}
-                />
-                <RoutePrivate
-                  isAuthenticated={user.isAuthenticated}
-                  path="/account-creator"
-                  component={AccountCreator}
-                />
+              <Header />
+              <Wrapper>
+                <Switch>
+                  <RoutePublic
+                    isAuthenticated={user.isAuthenticated}
+                    path="/"
+                    exact
+                    component={Home}
+                  />
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/laboratory"
+                    component={Laboratory}
+                  />
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/account-creator"
+                    component={AccountCreator}
+                  />
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/endpoint-explorer"
+                    component={EndpointExplorer}
+                  />
 
-                <RoutePrivate
-                  isAuthenticated={user.isAuthenticated}
-                  path="/private"
-                  component={Private}
-                />
-                <Route component={NotFound} />
-              </Switch>
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/private"
+                    component={Private}
+                  />
+                  <Route component={NotFound} />
+                </Switch>
+              </Wrapper>
             </Main>
             <SystemAlerts />
             <GlobalStyles />

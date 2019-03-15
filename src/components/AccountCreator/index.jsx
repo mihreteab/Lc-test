@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 
 import Wrapper from './Wrapper';
 import Button from './Button';
-import InputContainer from './InputContainer';
+import InputContainer from '../shared/InputContainer';
 
 export default class AccountCreator extends PureComponent {
   state = {};

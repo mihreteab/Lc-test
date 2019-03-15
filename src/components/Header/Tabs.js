@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Tabs = styled.div`
   cursor: pointer;
@@ -13,6 +13,12 @@ const Tabs = styled.div`
   margin-left: 5%;
   padding-bottom: 15px;
   padding-top: 15px;
+
+  ${props =>
+    props.isSelect &&
+    css`
+      border-bottom: 3px solid #00d67c;
+    `};
 `;
 
 export default Tabs;
