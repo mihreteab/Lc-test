@@ -33,7 +33,13 @@ export const app = {
         OfflinePlugin.applyUpdate();
       },
       onUpdated: () => {
-        store.dispatch(showAlert(<Reload />, { id: 'sw-update', icon: 'bolt', timeout: 0 }));
+        store.dispatch(
+          showAlert(<Reload />, {
+            id: 'sw-update',
+            icon: 'bolt',
+            timeout: 0,
+          }),
+        );
       },
     });
   },

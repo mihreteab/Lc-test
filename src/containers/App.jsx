@@ -25,6 +25,9 @@ import GlobalStyles from 'components/GlobalStyles';
 import RoutePublic from 'components/RoutePublic';
 import RoutePrivate from 'components/RoutePrivate';
 
+import Laboratory from '../components/Laboratory';
+import AccountCreator from '../components/AccountCreator';
+
 const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,8 +44,6 @@ const MainPrivate = ({ isAuthenticated }) =>
   `;
 
 const Main = styled.main`
-  min-height: 100vh;
-
   ${MainPrivate};
 `;
 
@@ -96,6 +97,8 @@ export class App extends React.Component {
                   path="/private"
                   component={Private}
                 />
+                <Route path="/private/laboratory" component={Laboratory} />
+                <Route path="/private/account-creator" component={AccountCreator} />
                 <Route component={NotFound} />
               </Switch>
             </Main>
