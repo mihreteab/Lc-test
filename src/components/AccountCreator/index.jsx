@@ -1,34 +1,8 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  margin: 20px;
-`;
-
-const ContentWrapper = styled.div`
-  margin: 20px;
-`;
-
-const Button = styled.button`
-  background: #0084f8;
-  border-radius: 4px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-`;
-
-const InputContainer = styled.input`
-  padding: 10px;
-  font-size: 16px;
-  color: #c9d6df;
-  paddingleft: 10px;
-  border: none;
-  background: #f0f5f9;
-  width: 690px;
-`;
+import Wrapper from './Wrapper';
+import Button from './Button';
+import InputContainer from './InputContainer';
 
 export default class AccountCreator extends PureComponent {
   state = {};
@@ -36,7 +10,7 @@ export default class AccountCreator extends PureComponent {
   render() {
     return (
       <Wrapper>
-        <ContentWrapper>
+        <Wrapper>
           <p
             style={{
               fontWeight: 'bold',
@@ -55,9 +29,9 @@ export default class AccountCreator extends PureComponent {
             node key.{' '}
           </p>
           <Button>Generate keypair</Button>
-        </ContentWrapper>
+        </Wrapper>
 
-        <ContentWrapper>
+        <Wrapper>
           <p
             style={{
               fontWeight: 'bold',
@@ -95,7 +69,7 @@ export default class AccountCreator extends PureComponent {
               Get Test Network Lumens
             </Button>
           </div>
-        </ContentWrapper>
+        </Wrapper>
       </Wrapper>
     );
   }
