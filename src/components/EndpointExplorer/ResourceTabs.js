@@ -7,7 +7,6 @@ const ResourceTabs = styled.div`
   border: 1px solid transparent;
   background-color: #f0f5f9;
   font-size: 14px;
-  margin-left: 5%;
   padding-bottom: 8px;
   padding-top: 8px;
   padding-left: 15px;
@@ -17,6 +16,22 @@ const ResourceTabs = styled.div`
     css`
       color: #fff;
       background: #0884f8;
+    `};
+
+  ${props =>
+    props.options &&
+    css`
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #c9d6df;
+      width: 200px;
+    `};
+
+  ${props =>
+    props.activeOption &&
+    css`
+      background: #0084f8;
+      color: #fff;
     `};
 `;
 

@@ -8,6 +8,7 @@ const InputContainerLarge = styled.input`
   border: none;
   background: #f0f5f9;
   width: 690px;
+  height: 50px;
 `;
 
 export default InputContainerLarge;

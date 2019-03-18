@@ -6,6 +6,11 @@ import ResourceTabs from './ResourceTabs';
 
 import Accounts from './Accounts/index';
 import Assets from './Assets/index';
+import Effects from './Effects/index';
+import Ledger from './Ledger/index';
+import Offers from './Offers/index';
+import Operations from './Operations/index';
+import OrderBook from './OrderBook';
 
 const Resources = [
   'Accounts',
@@ -24,8 +29,7 @@ const Resources = [
 
 export default class EndpointExplorer extends PureComponent {
   state = {
-    selectedResource: 'Assets',
-    active: true,
+    selectedResource: 'Order Book',
   };
 
   onResourceChange = e => {
@@ -63,15 +67,15 @@ export default class EndpointExplorer extends PureComponent {
             ) : selectedResource === 'Assets' ? (
               <Assets />
             ) : selectedResource === 'Effects' ? (
-              <h1>Effects</h1>
+              <Effects />
             ) : selectedResource === 'Ledger' ? (
-              <h1>Ledger</h1>
+              <Ledger />
             ) : selectedResource === 'Offers' ? (
-              <h1>Offers</h1>
+              <Offers />
             ) : selectedResource === 'Operations' ? (
-              <h1>Operations</h1>
+              <Operations />
             ) : selectedResource === 'Order Book' ? (
-              <h1>Order Book</h1>
+              <OrderBook />
             ) : selectedResource === 'Paths' ? (
               <h1>Paths</h1>
             ) : selectedResource === 'Payments' ? (
@@ -80,10 +84,8 @@ export default class EndpointExplorer extends PureComponent {
               <h1>Trade Aggregations</h1>
             ) : selectedResource === 'Trades' ? (
               <h1>Trades</h1>
-            ) : selectedResource === 'Transactions' ? (
-              <h1>Transactions</h1>
             ) : (
-              <h1>Not Found</h1>
+              <h1>Transactions</h1>
             )}
           </div>
         </div>
