@@ -11,6 +11,11 @@ import Ledger from './Ledger/index';
 import Offers from './Offers/index';
 import Operations from './Operations/index';
 import OrderBook from './OrderBook';
+import Paths from './Paths';
+import Payments from './Payments';
+import TradeAggregations from './TradeAggregations';
+import Trades from './Trades';
+import Transactions from './Transactions';
 
 const Resources = [
   'Accounts',
@@ -77,15 +82,15 @@ export default class EndpointExplorer extends PureComponent {
             ) : selectedResource === 'Order Book' ? (
               <OrderBook />
             ) : selectedResource === 'Paths' ? (
-              <h1>Paths</h1>
+              <Paths />
             ) : selectedResource === 'Payments' ? (
-              <h1>Payments</h1>
+              <Payments />
             ) : selectedResource === 'Trade Aggregations' ? (
-              <h1>Trade Aggregations</h1>
+              <TradeAggregations />
             ) : selectedResource === 'Trades' ? (
-              <h1>Trades</h1>
+              <Trades />
             ) : (
-              <h1>Transactions</h1>
+              <Transactions />
             )}
           </div>
         </div>

@@ -4,9 +4,9 @@ import Wrapper from '../../shared/Wrapper';
 import Title from '../../shared/Title';
 import ResourceTabs from '../ResourceTabs';
 
-import Details from './FindPaymentPaths';
+import Trade from './Trade';
 
-export default class Paths extends PureComponent {
+export default class TradeAggregations extends PureComponent {
   state = {};
 
   render() {
@@ -19,10 +19,10 @@ export default class Paths extends PureComponent {
             onClick={this.onOptionChange}
             options="true"
           >
-            Find Payment Paths
+            Trade Aggregations
           </ResourceTabs>
         </Title>
-        <Details />
+        <Trade />
       </Wrapper>
     );
   }
