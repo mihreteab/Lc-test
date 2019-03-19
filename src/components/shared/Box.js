@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const Box = styled.div.attrs({
-  class: 'container',
+  className: 'container',
 })`
   margin-left: 15px;
   padding: 20px;
