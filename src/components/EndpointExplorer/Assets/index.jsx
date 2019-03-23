@@ -5,7 +5,7 @@ import Title from '../../shared/Title';
 import InputContainer from '../../shared/InputContainer';
 import Box from '../../shared/Box';
 import InputContainerLarge from '../../shared/InputContainerLarge';
-import Span from '../Span';
+import Span from '../../shared/Span';
 
 export default class Assets extends PureComponent {
   render() {

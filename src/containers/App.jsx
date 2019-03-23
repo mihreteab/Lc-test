@@ -29,8 +29,7 @@ import EndpointExplorer from '../components/EndpointExplorer';
 import Laboratory from '../components/Laboratory';
 import AccountCreator from '../components/AccountCreator';
 import Header from '../components/Header';
-
-const { responsive } = utils;
+import TransactionBuilder from '../components/TransactionBuilder';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -75,6 +74,7 @@ export class App extends React.Component {
   render() {
     // const { dispatch, user } = this.props;
     const { user } = this.props;
+    user.isAuthenticated = true;
     return (
       <Router history={history}>
         <ThemeProvider theme={theme}>
@@ -112,6 +112,12 @@ export class App extends React.Component {
                     isAuthenticated={user.isAuthenticated}
                     path="/endpoint-explorer"
                     component={EndpointExplorer}
+                  />
+
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/transaction-builder"
+                    component={TransactionBuilder}
                   />
 
                   <RoutePrivate

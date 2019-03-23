@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 
 import Box from '../../shared/Box';
 import InputContainerLarge from '../../shared/InputContainerLarge';
-import Span from '../Span';
+import Span from '../../shared/Span';
 
 const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
 
