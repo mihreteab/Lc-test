@@ -9,7 +9,10 @@
     />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <meta property="og:title" content="React-Redux-Saga Boilerplate" />
-    <meta property="og:url" content="https://redux-saga.react-boilerplate.com/" />
+    <meta
+      property="og:url"
+      content="https://redux-saga.react-boilerplate.com/"
+    />
     <meta
       property="og:description"
       content="Provides: react ^16.x, react-router ^4.x, redux ^3.x, redux-saga ^0.16"
@@ -23,7 +26,10 @@
     <meta name="apple-mobile-web-app-title" content="React-Redux-Saga" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#333333" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/media/meta-icons/favicon.ico" />
+    <link
+      rel="shortcut icon"
+      href="%PUBLIC_URL%/media/meta-icons/favicon.ico"
+    />
     <link
       rel="icon"
       type="image/png"
@@ -52,14 +58,24 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="react" style="min-height: 100vh;">
+    <div
+      id="react"
+      style="min-height: 100vh; font-family: Open Sans, sans-serif;"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>
           <filter id="gooey">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="10"
+              result="blur"
+            ></feGaussianBlur>
             <feColorMatrix
               in="blur"
               mode="matrix"
@@ -80,7 +96,6 @@
         html,
         body {
           font-size: 16px;
-          font-family: 'Open Sans', sans-serif;
           height: 100%;
           width: 100%;
         }
@@ -318,6 +333,27 @@
         }
       </style>
     </div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <% if (htmlWebpackPlugin.options.window) { %>
     <script>
       <% for (var varName in htmlWebpackPlugin.options.window) { %>

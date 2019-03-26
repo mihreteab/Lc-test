@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ReactComponent as Icon } from 'assets/media/brand/icon.svg';
+import { ReactComponent as Icon } from 'assets/media/brand/new-icon.svg';
 
 export const Logo = styled.div`
   align-items: flex-start;

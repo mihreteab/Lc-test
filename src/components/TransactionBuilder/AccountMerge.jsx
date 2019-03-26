@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
+
 import InputContainerLarge from '../shared/InputContainerLarge';
 
-export default class CreateAccount extends PureComponent {
+export default class AccountMerge extends PureComponent {
   state = {};
 
   render() {
@@ -11,14 +12,9 @@ export default class CreateAccount extends PureComponent {
           <div className="col-md-4 col-sm-12">
             <h2 className="m-3 font-weight-bold">DESTINATION</h2>
           </div>
-          <InputContainerLarge className="col-md-8 col-sm-12" value="" />
-        </div>
-
-        <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">STARTING BALANCE</h2>
+          <div className="col-md-8 col-sm-12">
+            <InputContainerLarge value="" />
           </div>
-          <InputContainerLarge className="col-md-8 col-sm-12" value="" />
         </div>
 
         <div className="row mt-5">
@@ -26,7 +22,9 @@ export default class CreateAccount extends PureComponent {
             <h2 className="m-3 font-weight-bold">SOURCE ACCOUNT</h2>
             <span className="ml-2">(Optional)</span>
           </div>
-          <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+          <div className="col-md-8 col-sm-12">
+            <InputContainerLarge value="" />
+          </div>
         </div>
       </div>
     );

@@ -4,9 +4,61 @@ import Box from '../shared/Box';
 import Wrapper from '../shared/Wrapper';
 import InputContainerLarge from '../shared/InputContainerLarge';
 import Span from '../shared/Span';
+import ManageData from './ManageData';
+import BumpSequence from './BumpSequence';
+import SetOption from './SetOption';
 import CreateAccount from './CreateAccount';
+import SelectBox from './Select';
+import OperationCountSpan from './OperationCountSpan';
+import TextSpan from './TextSpan';
 
 const Memo = ['None', 'Text', 'ID', 'Hash', 'Return'];
+
+const Items = [
+  {
+    title: 'Create Account',
+    subTitle:
+      'Creates and funds a new account with the specified starting balance.',
+  },
+  {
+    title: 'Payment',
+    subTitle: 'Sends an amount in a specific asset to a destination account.',
+  },
+  {
+    title: 'Path Payment',
+    subTitle:
+      'Sends an amount in a specific asset to a destination account through a path of offers. This allows the asset sent (e.g., 450 XLM) to be different from the asset received (e.g, 6 BTC).',
+  },
+  { title: 'Manage Offer', subTitle: 'Creates, updates, or deletes an offer.' },
+  {
+    title: 'Create Passive Offer',
+    subTitle:
+      'Creates an offer that does not take another offer of equal price when created.',
+  },
+  {
+    title: 'Set Option',
+    subTitle: 'Sets various configuration options for an account. ',
+  },
+  {
+    title: 'Change Trust',
+    subTitle: 'Creates, updates, or deletes a trustline.',
+  },
+  {
+    title: 'Allow Trust',
+    subTitle: 'Updates the authorized flag of an existing trustline.',
+  },
+  {
+    title: 'Account Merge',
+    subTitle:
+      'Transfers the native balance (the amount of XLM an account holds) to another account and removes the source account from the ledger.',
+  },
+  { title: 'Inflation', subTitle: 'Runs the weekly inflation' },
+  {
+    title: 'Manage Data',
+    subTitle: 'Sets, modifies, or deletes a Data Entry (name/value pair).',
+  },
+  { title: 'Bump Sequence', subTitle: 'Bumps sequence number.' },
+];
 
 export default class TransactionBuilder extends PureComponent {
   state = {
@@ -32,11 +84,10 @@ export default class TransactionBuilder extends PureComponent {
                 className="mb-2"
                 value="Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
               />
-              <span>
-                <br />
+              <TextSpan>
                 If you don't have an account yet, you can create and fund a test
                 net account with the account creator.
-              </span>
+              </TextSpan>
             </div>
           </div>
 
@@ -51,11 +102,10 @@ export default class TransactionBuilder extends PureComponent {
                 className="mb-2"
                 value="Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
               />
-              <span>
-                <br />
+              <TextSpan>
                 The transaction sequence number is usually one higher than
                 current account sequence number.
-              </span>
+              </TextSpan>
             </div>
           </div>
 
@@ -69,12 +119,11 @@ export default class TransactionBuilder extends PureComponent {
                 className="mb-2"
                 value="Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
               />
-              <span>
-                <br />
+              <TextSpan>
                 The network base fee is currently set to 100 stroops (0.00001
                 lumens). Transaction fee is equal to base fee times number of
                 operations in this transaction.
-              </span>
+              </TextSpan>
             </div>
           </div>
 
@@ -82,7 +131,7 @@ export default class TransactionBuilder extends PureComponent {
             <div className="mr-5">
               <div className="row">
                 <h2 className="col-md-3 font-weight-bold">ORDER</h2>
-                <div className="p-3 col-md-9">
+                <div className="pl-5 col-md-9">
                   {Memo.map(key => {
                     return (
                       <Span
@@ -115,20 +164,17 @@ export default class TransactionBuilder extends PureComponent {
                 value="Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
               />
 
-              <span>
-                <br />
+              <TextSpan>
                 Enter unix timestamp values of time bounds when this transaction
                 will be valid.
-              </span>
+              </TextSpan>
 
-              <span>
-                <br />
+              <TextSpan>
                 For regular transactions, it is highly recommended to set
                 max_time to get a final result of a transaction in a defined
                 time.
-              </span>
+              </TextSpan>
 
-              <br />
               <button
                 className="mt-2 mb-5"
                 type="button"
@@ -147,52 +193,44 @@ export default class TransactionBuilder extends PureComponent {
 
         <div className="row m-5">
           <div className="col-md-1">
-            <p
-              style={{
-                padding: '10px 20px',
-                fontSize: '50px',
-                border: '2px solid #C9D6DF',
-                borderRadius: '4px',
-              }}
-            >
-              {operationCount}
-            </p>
+            <OperationCountSpan>{operationCount}</OperationCountSpan>
           </div>
+
           <div
-            className="col-md-2"
+            className="col-md-3"
             style={{
-              margin: '30px 0px',
+              margin: '30px',
             }}
           >
-            <h3>OPERATION TYPE</h3>
+            <h3 className="font-weight-bold">OPERATION TYPE</h3>
           </div>
-          <div className="col-md-8">
-            <div className="dropdown">
-              <button
-                className="btn btn-primary dropdown-toggle"
-                type="button"
-                data-toggle="dropdown"
-              >
-                Dropdown Example
-                <span className="caret" />
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <a href="#">HTML</a>
-                </li>
-                <li>
-                  <a href="#">CSS</a>
-                </li>
-                <li>
-                  <a href="#">JavaScript</a>
-                </li>
-              </ul>
-            </div>
+
+          <div className="col-md-6">
+            <SelectBox items={Items} />
           </div>
         </div>
 
-        <div>
+        <div
+          className="col-md-9 ml-auto mr-auto"
+          style={{
+            margin: '30px',
+          }}
+        >
           <CreateAccount />
+        </div>
+
+        <div className="col-md-9 pl-5">
+          <button
+            type="button"
+            style={{
+              background: '#0084F8',
+              borderRadius: '4px',
+              padding: '15px',
+              color: '#fff',
+            }}
+          >
+            {'+  Add Operations'}
+          </button>
         </div>
       </Wrapper>
     );

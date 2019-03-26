@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import TextContainer from './TextContainer';
+import TextContainer from '../shared/TextContainer';
 import Title from '../shared/Title';
 import ResourceTabs from './ResourceTabs';
 
@@ -34,7 +34,7 @@ const Resources = [
 
 export default class EndpointExplorer extends PureComponent {
   state = {
-    selectedResource: 'Order Book',
+    selectedResource: 'Accounts',
   };
 
   onResourceChange = e => {

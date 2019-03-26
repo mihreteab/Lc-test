@@ -45,7 +45,7 @@ const NavTabs = [
 
 export default class Header extends React.PureComponent {
   state = {
-    selectedLabel: 'ENDPOINT EXPLORER',
+    selectedLabel: 'LABORATORY',
     active: true,
   };
 

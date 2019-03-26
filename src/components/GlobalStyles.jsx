@@ -49,6 +49,23 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1;
     padding: 0;
   }
+
+  span {
+    font-size: 1.5rem;
+  }
+
+  a {
+    font-size: 1.2rem;
+    margin-left: 1rem;
+  }
+
+  button {
+    font-size: 1.3rem !important;
+  }
+
+  p {
+    font-size: 1.6rem !important;
+  }
 `;
 
 export default () => <GlobalStyle />;

@@ -30,6 +30,7 @@ import Laboratory from '../components/Laboratory';
 import AccountCreator from '../components/AccountCreator';
 import Header from '../components/Header';
 import TransactionBuilder from '../components/TransactionBuilder';
+import TransactionSigner from '../components/TransactionSigner';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -118,6 +119,12 @@ export class App extends React.Component {
                     isAuthenticated={user.isAuthenticated}
                     path="/transaction-builder"
                     component={TransactionBuilder}
+                  />
+
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/transaction-signer"
+                    component={TransactionSigner}
                   />
 
                   <RoutePrivate
