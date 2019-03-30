@@ -30,7 +30,7 @@ export default class PathPayment extends PureComponent {
   render() {
     const { selectedSpan, count } = this.state;
     return (
-      <div>
+      <div className="pt-3">
         <div className="row mt-5">
           <div className="col-md-4 col-sm-12">
             <h2 className="m-3 font-weight-bold">DESTINATION</h2>
