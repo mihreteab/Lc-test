@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Button = styled.button`
   background: #0084f8;
@@ -9,6 +9,14 @@ const Button = styled.button`
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+
+  ${props =>
+    props.testNetwork &&
+    css`
+      background: #c9d6df;
+      margin-top: 15px;
+      width: 250px;
+    `}
 `;
 
 export default Button;

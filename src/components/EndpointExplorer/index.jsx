@@ -45,15 +45,15 @@ export default class EndpointExplorer extends PureComponent {
     const { selectedResource } = this.state;
     return (
       <div>
-        <TextContainer>
+        <TextContainer className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           This tool can be used to run queries against the REST API endpoints on
           the Horizon server. Horizon is the client facing library for the
           Stellar ecosystem.
         </TextContainer>
 
-        <div>
-          <div className="d-flex">
-            <Title>
+        <div className="container-fluid">
+          <div className="row col-lg-12 col-md-12">
+            <Title className="col-lg-2 col-md-4 col-sm-12 col-xs-12">
               <p>1. SELECT A RESOURCE</p>
               {Resources.map(resource => {
                 return (

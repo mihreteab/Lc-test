@@ -26,7 +26,6 @@ export default class Details extends PureComponent {
 
   onSellSpan = e => {
     const value = e.target.innerText;
-    console.log(value);
     if (value === 'Alphanumeric 4') {
       this.setState({ isSellVisible: true, selectedSellSpan: value });
     } else this.setState({ isSellVisible: false, selectedSellSpan: value });
@@ -41,17 +40,20 @@ export default class Details extends PureComponent {
     } = this.state;
 
     return (
-      <Box>
-        <div className="mt-5">
-          <div className="row">
-            <h2 className="col-md-4 font-weight-bold">SELLING ASSET</h2>
-            <div className="d-flex col-md-8 pl-1">
+      <div>
+        <Box>
+          <div className="row mt-5">
+            <div className="col-lg-4 col-md-4 col-sm-12 px-0">
+              <h2 className="font-weight-bold">SELLING ASSET</h2>
+            </div>
+            <div className="mt-2">
               {sellAssets.map(asset => {
                 return (
                   <Span
                     key={asset}
                     select={asset === selectedSellSpan ? true : false}
                     onClick={this.onSellSpan}
+                    className="col-lg-2 col-md-2 col-sm-12"
                   >
                     {asset}
                   </Span>
@@ -59,9 +61,8 @@ export default class Details extends PureComponent {
               })}
             </div>
           </div>
-        </div>
 
-        {isSellVisible === true ? (
+          {/* {isSellVisible === true ? (
           <div className="mr-4">
             <div className="row">
               <div className="col-md-4 col-sm-12" />
@@ -81,11 +82,10 @@ export default class Details extends PureComponent {
           </div>
         ) : (
           <div />
-        )}
+        )} */}
 
-        <div className="mt-5">
-          <div className="row">
-            <h2 className="col-md-4 font-weight-bold">BUYING ASSET</h2>
+          <div className="row mt-5">
+            <h2 className="col-md-4 font-weight-bold px-0">BUYING ASSET</h2>
             <div className="d-flex col-md-8 pl-1">
               {buyAssets.map(asset => {
                 return (
@@ -100,9 +100,8 @@ export default class Details extends PureComponent {
               })}
             </div>
           </div>
-        </div>
 
-        {isBuyVisible === true ? (
+          {/* {isBuyVisible === true ? (
           <div className="mr-4">
             <div className="row">
               <div className="col-md-4 col-sm-12" />
@@ -122,15 +121,20 @@ export default class Details extends PureComponent {
           </div>
         ) : (
           <div />
-        )}
+        )} */}
 
-        <p className="m-2 mt-5">Server-Sent Events (streaming) mode</p>
-        <p className="m-2 mt-5">
-          {
-            'https://horizon-testnet.stellar.org/order_book?selling_asset_type=native'
-          }
-        </p>
-      </Box>
+          <div className="row mt-5">
+            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              Server-Sent Events (streaming) mode
+            </p>
+            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              {
+                'https://horizon-testnet.stellar.org/order_book?selling_asset_type=native'
+              }
+            </p>
+          </div>
+        </Box>
+      </div>
     );
   }
 }

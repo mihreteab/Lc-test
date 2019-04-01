@@ -11,17 +11,11 @@ const SpanText = styled.span`
 
 export default class Laboratory extends PureComponent {
   state = {};
-  
+
   render() {
     return (
       <Wrapper>
-        <h2
-          style={{
-            fontWeight: 'bold',
-          }}
-        >
-          LC NET LABORATORY
-        </h2>
+        <h2 className="font-weight-bold">LC NET LABORATORY</h2>
         <p
           style={{
             color: '#52616B',
@@ -36,7 +30,7 @@ export default class Laboratory extends PureComponent {
             make requests to any of the <br /> Horizon endpoints
           </SpanText>
           . <br /> <br /> For Stellar docs, take a look at the
-          <SpanText>LC Net developers</SpanText> site.
+          <SpanText> LC Net developers</SpanText> site.
         </p>
       </Wrapper>
     );

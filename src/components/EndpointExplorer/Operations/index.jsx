@@ -8,6 +8,7 @@ import SingleOperations from './SingleOperations';
 import OperationsForAccount from './OperationsForAccount';
 import OperationsForLedger from './OperationsForLedger';
 import OperationsForTransactions from './OperationsForTransactions';
+import AllOperations from './AllOperations';
 
 const options = [
   'All Operations',
@@ -29,7 +30,7 @@ export default class Operations extends PureComponent {
   render() {
     const { selectedOption } = this.state;
     return (
-      <Wrapper>
+      <Wrapper className="col-lg-9 col-md-7 col-sm-12 col-xs-12">
         <Title>
           <p>SELECT A ENDPOINT</p>
           {options.map(option => {
@@ -46,7 +47,7 @@ export default class Operations extends PureComponent {
           })}
         </Title>
         {selectedOption === 'All Operations' ? (
-          <h1>All Operations</h1>
+          <AllOperations />
         ) : selectedOption === 'Single Operations' ? (
           <SingleOperations />
         ) : selectedOption === 'Operations for Account' ? (

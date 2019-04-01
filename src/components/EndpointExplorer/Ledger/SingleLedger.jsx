@@ -12,16 +12,23 @@ export default class SingleLedger extends PureComponent {
         <Title>SINGLE LEDGER</Title>
         <Box padding="40px">
           <div className="row">
-            <div className="col-md-4 col-sm-12">
-              <div>
-                <h2 className="font-weight-bold">LEDGER SEQUENCE</h2>
-              </div>
+            <div className="col-lg-4 col-md-4 col-sm-12">
+              <h2 className="font-weight-bold">LEDGER SEQUENCE</h2>
             </div>
-            <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+            <InputContainerLarge
+              className="col-lg-8 col-md-8 col-sm-12"
+              value=""
+            />
           </div>
 
-          <p className="m-2 mt-5">Server-Sent Events (streaming) mode</p>
-          <p className="m-2 mt-5">https://horizon-testnet.stellar.org/assets</p>
+          <div className="row mt-5">
+            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              Server-Sent Events (streaming) mode
+            </p>
+            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              {'https://horizon-testnet.stellar.org/ledgers/{ledgers}'}
+            </p>
+          </div>
         </Box>
       </div>
     );

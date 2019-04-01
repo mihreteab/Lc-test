@@ -99,7 +99,10 @@ export default class Header extends PureComponent {
             <span className="navbar-toggler-icon" />
           </button>
 
-          <div className="navbar-collapse" id="headerNavbar">
+          <div
+            className="col-md-12 col-sm-12 col-xs-12 navbar-collapse"
+            id="headerNavbar"
+          >
             <ul
               style={{
                 display: 'flex',

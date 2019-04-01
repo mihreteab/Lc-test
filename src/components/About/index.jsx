@@ -1,34 +1,34 @@
-import React, { Fragment, Component } from "react";
-import Link from "react-router-dom/Link";
+import React, { Fragment, Component } from 'react';
+import Link from 'react-router-dom/Link';
 
-import EndpointExplorer from "../EndpointExplorer";
-import AccountCreator from "../AccountCreator";
-import TransactionBuilder from "../TransactionBuilder";
-import TransactionSigner from "../TransactionSigner";
-import Laboratorys from "../Laboratory";
+import EndpointExplorer from '../EndpointExplorer';
+import AccountCreator from '../AccountCreator';
+import TransactionBuilder from '../TransactionBuilder';
+import TransactionSigner from '../TransactionSigner';
+import Laboratorys from '../Laboratory';
 
-import NameWrapper from "./NameWrapper";
-import NameContainer from "./NameContainer";
-import Title from "./Title";
-import TitleStrongText from "./TitleStrongText";
-import ToggleButton from "./ToggleButton";
-import ToggleWrapper from "./ToggleWrapper";
-import NavWrapper from "./NavWrapper";
-import Tabs from "./Tabs";
+import NameWrapper from './NameWrapper';
+import NameContainer from './NameContainer';
+import Title from './Title';
+import TitleStrongText from './TitleStrongText';
+import ToggleButton from './ToggleButton';
+import ToggleWrapper from './ToggleWrapper';
+import NavWrapper from './NavWrapper';
+import Tabs from './Tabs';
 
 const NavTabs = [
-  "LABORATORY",
-  "ACCOUNT CREATOR",
-  "ENDPOINT EXPLORER",
-  "TRANSACTION BUILDER",
-  "TRANSACTION SIGNER",
-  "XRD VIEWER"
+  'LABORATORY',
+  'ACCOUNT CREATOR',
+  'ENDPOINT EXPLORER',
+  'TRANSACTION BUILDER',
+  'TRANSACTION SIGNER',
+  'XRD VIEWER',
 ];
 
 export default class Laboratory extends Component {
   state = {
-    selectedLabel: "LABORATORY",
-    active: true
+    selectedLabel: 'LABORATORY',
+    active: true,
   };
 
   onSelectLabel = e => {
@@ -51,7 +51,7 @@ export default class Laboratory extends Component {
             <ToggleButton active={active}>TEST</ToggleButton>
             <ToggleButton
               style={{
-                color: "#000"
+                color: '#000',
               }}
             >
               PUBLIC
@@ -64,8 +64,8 @@ export default class Laboratory extends Component {
             {NavTabs.map(key => {
               const link = key
                 .toLowerCase()
-                .split(" ")
-                .join("-");
+                .split(' ')
+                .join('-');
 
               return (
                 <Tabs
@@ -78,12 +78,12 @@ export default class Laboratory extends Component {
               );
             })}
           </NavWrapper>
-          {selectedLabel === "LABORATORY" && <Laboratorys />}
-          {selectedLabel === "ACCOUNT CREATOR" && <AccountCreator />}
-          {selectedLabel === "ENDPOINT EXPLORER" && <EndpointExplorer />}
-          {selectedLabel === "TRANSACTION BUILDER" && <TransactionBuilder />}
-          {selectedLabel === "TRANSACTION SIGNER" && <TransactionSigner />}
-          {selectedLabel === "XRD VIEWER" && <></>}
+          {selectedLabel === 'LABORATORY' && <Laboratorys />}
+          {selectedLabel === 'ACCOUNT CREATOR' && <AccountCreator />}
+          {selectedLabel === 'ENDPOINT EXPLORER' && <EndpointExplorer />}
+          {selectedLabel === 'TRANSACTION BUILDER' && <TransactionBuilder />}
+          {selectedLabel === 'TRANSACTION SIGNER' && <TransactionSigner />}
+          {selectedLabel === 'XRD VIEWER' && <></>}
         </div>
       </Fragment>
     );

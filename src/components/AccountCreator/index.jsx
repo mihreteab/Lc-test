@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import Wrapper from './Wrapper';
 import Button from './Button';
 import InputContainer from '../shared/InputContainer';
+import Title from './Title';
 
 export default class AccountCreator extends PureComponent {
   state = {};
@@ -11,63 +12,37 @@ export default class AccountCreator extends PureComponent {
     return (
       <Wrapper>
         <Wrapper>
-          <p
-            style={{
-              fontWeight: 'bold',
-              fontSize: '18px',
-            }}
-          >
-            1. KEYPAIR GENERATOR
-          </p>
+          <Title>1. KEYPAIR GENERATOR</Title>
           <p
             style={{
               color: '#52616B',
             }}
           >
-            These keypairs can be used on the LC Net network where one is required. For example, it
-            can be used as an account master key, account signer, and/or <br /> as a stellar-core
-            node key.{' '}
+            These keypairs can be used on the LC Net network where one is
+            required. For example, it can be used as an account master key,
+            account signer, and/or <br /> as a stellar-core node key.{' '}
           </p>
           <Button>Generate keypair</Button>
         </Wrapper>
 
         <Wrapper>
-          <p
-            style={{
-              fontWeight: 'bold',
-              fontSize: '18px',
-            }}
-          >
-            2. FRIEND BOT: FUND A TEST NETWORK ACCOUNT
-          </p>
+          <Title>2. FRIEND BOT: FUND A TEST NETWORK ACCOUNT</Title>
           <p
             style={{
               color: '#52616B',
             }}
           >
-            These keypairs can be used on the LC Net network where one is required. For example, it
-            can be used as an account master key, account signer, and/or
+            These keypairs can be used on the LC Net network where one is
+            required. For example, it can be used as an account master key,
+            account signer, and/or
             <br /> as a stellar-core node key.{' '}
           </p>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
+          <div className="d-flex flex-column">
             <InputContainer
               value="Example:
               GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
             />
-            <Button
-              style={{
-                background: '#C9D6DF',
-                marginTop: '15px',
-                width: '250px',
-              }}
-            >
-              Get Test Network Lumens
-            </Button>
+            <Button testNetwork={true}>Get Test Network Lumens</Button>
           </div>
         </Wrapper>
       </Wrapper>

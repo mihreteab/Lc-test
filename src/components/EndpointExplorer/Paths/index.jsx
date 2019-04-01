@@ -4,14 +4,14 @@ import Wrapper from '../../shared/Wrapper';
 import Title from '../../shared/Title';
 import ResourceTabs from '../ResourceTabs';
 
-import Details from './FindPaymentPaths';
+import FindPaymentPaths from './FindPaymentPaths';
 
 export default class Paths extends PureComponent {
   state = {};
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper className="col-lg-9 col-md-7 col-sm-12 col-xs-12">
         <Title>
           <p>SELECT A ENDPOINT</p>
           <ResourceTabs
@@ -22,7 +22,7 @@ export default class Paths extends PureComponent {
             Find Payment Paths
           </ResourceTabs>
         </Title>
-        <Details />
+        <FindPaymentPaths />
       </Wrapper>
     );
   }
