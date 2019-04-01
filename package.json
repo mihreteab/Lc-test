@@ -24,6 +24,7 @@
     "classnames": "^2.2.6",
     "ease-component": "^1.0.0",
     "events-polyfill": "^2.1.0",
+    "express": "^4.16.4",
     "fbjs": "^1.0.0",
     "history": "^4.7.2",
     "immutability-helper": "^3.0.0",
