@@ -24,12 +24,8 @@ import GlobalStyles from 'components/GlobalStyles';
 import RoutePublic from 'components/RoutePublic';
 import RoutePrivate from 'components/RoutePrivate';
 
-import EndpointExplorer from '../components/EndpointExplorer';
-import Laboratory from '../components/Laboratory';
-import AccountCreator from '../components/AccountCreator';
+import About from '../components/About';
 import Header from '../components/Header';
-import TransactionBuilder from '../components/TransactionBuilder';
-import TransactionSigner from '../components/TransactionSigner';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -46,9 +42,7 @@ const Main = styled.main`
   ${MainPrivate};
 `;
 
-const Wrapper = styled.div`
-  margin-top: 280px;
-`;
+const Wrapper = styled.div``;
 
 export class App extends React.Component {
   static propTypes = {
@@ -100,30 +94,8 @@ export class App extends React.Component {
                   />
                   <RoutePrivate
                     isAuthenticated={user.isAuthenticated}
-                    path="/laboratory"
-                    component={Laboratory}
-                  />
-                  <RoutePrivate
-                    isAuthenticated={user.isAuthenticated}
-                    path="/account-creator"
-                    component={AccountCreator}
-                  />
-                  <RoutePrivate
-                    isAuthenticated={user.isAuthenticated}
-                    path="/endpoint-explorer"
-                    component={EndpointExplorer}
-                  />
-
-                  <RoutePrivate
-                    isAuthenticated={user.isAuthenticated}
-                    path="/transaction-builder"
-                    component={TransactionBuilder}
-                  />
-
-                  <RoutePrivate
-                    isAuthenticated={user.isAuthenticated}
-                    path="/transaction-signer"
-                    component={TransactionSigner}
+                    path="/about"
+                    component={About}
                   />
 
                   <Route component={NotFound} />

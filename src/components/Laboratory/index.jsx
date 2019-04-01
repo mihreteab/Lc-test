@@ -11,7 +11,7 @@ const SpanText = styled.span`
 
 export default class Laboratory extends PureComponent {
   state = {};
-
+  
   render() {
     return (
       <Wrapper>
@@ -27,15 +27,15 @@ export default class Laboratory extends PureComponent {
             color: '#52616B',
           }}
         >
-          The Stellar Laboratory is a set of tools that enables people to try out and learn <br />{' '}
-          about the LC Net network. The laboratory can{' '}
+          The Stellar Laboratory is a set of tools that enables people to try
+          out and learn <br /> about the LC Net network. The laboratory can{' '}
           <SpanText>build transactions, sign them,</SpanText>
-          <br /> and <SpanText>submit them to the network</SpanText>. It can also{' '}
+          <br /> and <SpanText>submit them to the network</SpanText>. It can
+          also
           <SpanText>
-            {' '}
             make requests to any of the <br /> Horizon endpoints
           </SpanText>
-          . <br /> <br /> For Stellar docs, take a look at the{' '}
+          . <br /> <br /> For Stellar docs, take a look at the
           <SpanText>LC Net developers</SpanText> site.
         </p>
       </Wrapper>
