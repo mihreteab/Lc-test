@@ -24,7 +24,7 @@ import GlobalStyles from 'components/GlobalStyles';
 import RoutePublic from 'components/RoutePublic';
 import RoutePrivate from 'components/RoutePrivate';
 
-import About from '../components/About';
+import LCNetLabs from '../components/LCNetLabs';
 import Header from '../components/Header';
 
 const AppWrapper = styled.div`
@@ -92,10 +92,11 @@ export class App extends React.Component {
                     exact
                     component={Home}
                   />
+
                   <RoutePrivate
                     isAuthenticated={user.isAuthenticated}
-                    path="/about"
-                    component={About}
+                    path="/laboratory"
+                    component={LCNetLabs}
                   />
 
                   <Route component={NotFound} />

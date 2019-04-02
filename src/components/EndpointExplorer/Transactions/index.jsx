@@ -20,7 +20,7 @@ const options = [
 
 export default class Transactions extends PureComponent {
   state = {
-    selectedOption: 'Single Transaction',
+    selectedOption: 'All Transactions',
   };
 
   onOptionChange = e => {
@@ -30,7 +30,7 @@ export default class Transactions extends PureComponent {
   render() {
     const { selectedOption } = this.state;
     return (
-      <Wrapper>
+      <Wrapper className="col-lg-9 col-md-7 col-sm-12 col-xs-12">
         <Title>
           <p>SELECT A ENDPOINT</p>
           {options.map(option => {

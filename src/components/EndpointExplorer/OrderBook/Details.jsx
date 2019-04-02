@@ -63,17 +63,17 @@ export default class Details extends PureComponent {
           {isSellVisible === true ? (
             <div>
               <div className="row">
-                <div className="col-lg-4 col-md-4 col-sm-12" />
+                <div className="col-lg-4 col-md-12 col-sm-12" />
                 <InputContainerLarge
-                  className="col-lg-8 col-md-8 col-sm-12 mt-4"
+                  className="col-lg-8 col-md-12 col-sm-12 mt-4"
                   value="Asset Code"
                 />
               </div>
 
               <div className="row mt-4">
-                <div className="col-md-4 col-sm-12" />
+                <div className="col-lg-4 col-md-12 col-sm-12" />
                 <InputContainerLarge
-                  className="col-md-8 col-sm-12"
+                  className="col-lg-8 col-md-12 col-sm-12"
                   value="Issuer Account ID"
                 />
               </div>
@@ -104,17 +104,17 @@ export default class Details extends PureComponent {
           {isBuyVisible === true ? (
             <div>
               <div className="row">
-                <div className="col-md-4 col-sm-12" />
+                <div className="col-lg-4 col-md-12 col-sm-12" />
                 <InputContainerLarge
-                  className="col-md-8 col-sm-12 mt-4"
+                  className="col-lg-8 col-md-12 col-sm-12 mt-4"
                   value="Asset Code"
                 />
               </div>
 
               <div className="row mt-4">
-                <div className="col-md-4 col-sm-12" />
+                <div className="col-lg-4 col-md-12 col-sm-12" />
                 <InputContainerLarge
-                  className="col-md-8 col-sm-12"
+                  className="col-lg-8 col-md-12 col-sm-12"
                   value="Issuer Account ID"
                 />
               </div>

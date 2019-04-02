@@ -25,7 +25,7 @@ const NavTabs = [
   'XRD VIEWER',
 ];
 
-export default class Laboratory extends Component {
+export default class LCNetLabs extends Component {
   state = {
     selectedLabel: 'LABORATORY',
     active: true,
@@ -59,7 +59,7 @@ export default class Laboratory extends Component {
           </ToggleWrapper>
         </NameWrapper>
 
-        <div>
+        <div className="">
           <NavWrapper>
             {NavTabs.map(key => {
               const link = key
@@ -78,13 +78,13 @@ export default class Laboratory extends Component {
               );
             })}
           </NavWrapper>
-          {selectedLabel === 'LABORATORY' && <Laboratorys />}
-          {selectedLabel === 'ACCOUNT CREATOR' && <AccountCreator />}
-          {selectedLabel === 'ENDPOINT EXPLORER' && <EndpointExplorer />}
-          {selectedLabel === 'TRANSACTION BUILDER' && <TransactionBuilder />}
-          {selectedLabel === 'TRANSACTION SIGNER' && <TransactionSigner />}
-          {selectedLabel === 'XRD VIEWER' && <></>}
         </div>
+        {selectedLabel === 'LABORATORY' && <Laboratorys />}
+        {selectedLabel === 'ACCOUNT CREATOR' && <AccountCreator />}
+        {selectedLabel === 'ENDPOINT EXPLORER' && <EndpointExplorer />}
+        {selectedLabel === 'TRANSACTION BUILDER' && <TransactionBuilder />}
+        {selectedLabel === 'TRANSACTION SIGNER' && <TransactionSigner />}
+        {selectedLabel === 'XRD VIEWER' && <></>}
       </Fragment>
     );
   }

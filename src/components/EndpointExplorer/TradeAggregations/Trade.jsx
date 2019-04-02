@@ -7,21 +7,31 @@ import Span from '../../shared/Span';
 const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
 
 export default class Trade extends PureComponent {
-  state = {};
+  state = {
+    selectedSpan: 'Native',
+  };
+
+  onClickSpan = e => {
+    const value = e.target.textContent;
+    this.setState({ selectedSpan: value });
+  };
 
   render() {
+    const { selectedSpan } = this.state;
     return (
-      <Box>
+      <Box padding="40px">
         <div className="mt-5">
           <div className="row">
-            <h2 className="col-md-4 font-weight-bold">BASE ASSET</h2>
-            <div className="d-flex col-md-8 pl-1">
+            <h2 className="col-lg-4 col-md-4 font-weight-bold px-0">
+              BASE ASSET
+            </h2>
+            <div className="row mt-2 ml-1">
               {Assets.map(asset => {
                 return (
                   <Span
                     key={asset}
-                    // select={asset === selectedSellSpan ? true : false}
-                    // onClick={this.onSellSpan}
+                    select={asset === selectedSpan ? true : false}
+                    onClick={this.onClickSpan}
                   >
                     {asset}
                   </Span>
@@ -33,14 +43,16 @@ export default class Trade extends PureComponent {
 
         <div className="mt-5">
           <div className="row">
-            <h2 className="col-md-4 font-weight-bold">COUNTER ASSET</h2>
-            <div className="d-flex col-md-8 pl-1">
+            <h2 className="col-lg-4 col-md-4 font-weight-bold px-0">
+              COUNTER ASSET
+            </h2>
+            <div className="row mt-2 ml-1">
               {Assets.map(asset => {
                 return (
                   <Span
                     key={asset}
-                    // select={asset === selectedBuySpan ? true : false}
-                    // onClick={this.onBuySpan}
+                    select={asset === selectedSpan ? true : false}
+                    onClick={this.onClickSpan}
                   >
                     {asset}
                   </Span>
@@ -51,58 +63,61 @@ export default class Trade extends PureComponent {
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <div>
-              <h2 className="font-weight-bold">START TIME</h2>
-            </div>
+          <div className="col-lg-4 col-md-4 col-sm-12 px-0">
+            <h2 className="font-weight-bold">START TIME</h2>
           </div>
-          <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+          <InputContainerLarge
+            className="col-lg-8 col-md-8 col-sm-12"
+            value=""
+          />
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <div>
-              <h2 className="font-weight-bold">END TIME</h2>
-            </div>
+          <div className="col-lg-4 col-md-4 col-sm-12 px-0">
+            <h2 className="font-weight-bold">END TIME</h2>
           </div>
-          <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+          <InputContainerLarge
+            className="col-lg-8 col-md-8 col-sm-12"
+            value=""
+          />
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <div>
-              <h2 className="font-weight-bold">RESOLUTION</h2>
-            </div>
+          <div className="col-lg-4 col-md-4 col-sm-12 px-0">
+            <h2 className="font-weight-bold">RESOLUTION</h2>
           </div>
-          <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+          <InputContainerLarge
+            className="col-lg-8 col-md-8 col-sm-12"
+            value=""
+          />
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <div>
-              <h2 className="font-weight-bold">LIMIT</h2>
-              <span>(Optional)</span>
-            </div>
+          <div className="col-lg-4 col-md-4 col-sm-12 px-0">
+            <h2 className="font-weight-bold">LIMIT</h2>
+            <span>(Optional)</span>
           </div>
-          <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+          <InputContainerLarge
+            className="col-lg-8 col-md-8 col-sm-12"
+            value=""
+          />
         </div>
 
-        <div className="mt-5">
-          <div className="mr-5">
-            <div className="row">
-              <div className="col-md-4 col-sm-12">
-                <h2 className="font-weight-bold">ORDER</h2>
-                <span>(Optional)</span>
-              </div>
-              <div className="p-3 col-md-8">
-                <Span select="true">asc</Span>
-                <Span>desc</Span>
-              </div>
-            </div>
+        <div className="row mt-5">
+          <div className="col-lg-4 col-md-4 col-sm-12 px-0">
+            <h2 className="font-weight-bold">ORDER</h2>
+          </div>
+          <div className="col-lg-8 col-md-8 col-sm-12 mt-2 px-0">
+            <Span>asc</Span>
+            <Span>desc</Span>
           </div>
         </div>
 
-        <p className="m-2 mt-5">Server-Sent Events (streaming) mode</p>
+        <div className="row mt-5">
+          <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+            Server-Sent Events (streaming) mode
+          </p>
+        </div>
       </Box>
     );
   }

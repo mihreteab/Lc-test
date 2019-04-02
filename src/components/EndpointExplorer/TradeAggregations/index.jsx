@@ -11,7 +11,7 @@ export default class TradeAggregations extends PureComponent {
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper className="col-lg-9 col-md-7 col-sm-12 col-xs-12">
         <Title>
           <p>SELECT A ENDPOINT</p>
           <ResourceTabs

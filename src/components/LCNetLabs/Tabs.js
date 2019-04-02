@@ -10,7 +10,7 @@ const Tabs = styled.div`
   background-color: #0084f8;
   margin-bottom: 0px !important;
   font-size: 14px;
-  margin-left: 5%;
+  margin-left: 2%;
   padding-bottom: 15px;
   padding-top: 15px;
 
