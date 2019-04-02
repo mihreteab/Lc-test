@@ -51,7 +51,7 @@ export default class FindPaymentPaths extends PureComponent {
             <h2 className="col-lg-4 col-md-4 font-weight-bold px-0">
               SELLING ASSET
             </h2>
-            <div className="d-flex col-md-8 pl-1">
+            <div className="row mt-2 ml-1">
               {Assets.map(asset => {
                 return (
                   <Span
@@ -68,7 +68,7 @@ export default class FindPaymentPaths extends PureComponent {
         </div>
 
         {isVisible === true ? (
-          <div className="mr-4">
+          <div>
             <div className="row">
               <div className="col-lg-4 col-md-4 col-sm-12" />
               <InputContainerLarge

@@ -17,8 +17,6 @@ export default class Details extends PureComponent {
 
   onBuySpan = e => {
     const value = e.target.innerText;
-    // console.log(value);
-    // debugger;
     if (value === 'Alphanumeric 4') {
       this.setState({ isBuyVisible: true, selectedBuySpan: value });
     } else this.setState({ isBuyVisible: false, selectedBuySpan: value });
@@ -41,19 +39,19 @@ export default class Details extends PureComponent {
 
     return (
       <div>
-        <Box>
+        <Box padding="30px">
           <div className="row mt-5">
-            <div className="col-lg-4 col-md-4 col-sm-12 px-0">
+            <div className="col-lg-4 col-md-4 col-sm-12 pt-2 px-1">
               <h2 className="font-weight-bold">SELLING ASSET</h2>
             </div>
-            <div className="mt-2">
+
+            <div className="row mt-2 ml-2">
               {sellAssets.map(asset => {
                 return (
                   <Span
                     key={asset}
                     select={asset === selectedSellSpan ? true : false}
                     onClick={this.onSellSpan}
-                    className="col-lg-2 col-md-2 col-sm-12"
                   >
                     {asset}
                   </Span>
@@ -62,31 +60,33 @@ export default class Details extends PureComponent {
             </div>
           </div>
 
-          {/* {isSellVisible === true ? (
-          <div className="mr-4">
-            <div className="row">
-              <div className="col-md-4 col-sm-12" />
-              <InputContainerLarge
-                className="col-md-8 col-sm-12 mt-4"
-                value="Asset Code"
-              />
-            </div>
+          {isSellVisible === true ? (
+            <div>
+              <div className="row">
+                <div className="col-lg-4 col-md-4 col-sm-12" />
+                <InputContainerLarge
+                  className="col-lg-8 col-md-8 col-sm-12 mt-4"
+                  value="Asset Code"
+                />
+              </div>
 
-            <div className="row mt-4">
-              <div className="col-md-4 col-sm-12" />
-              <InputContainerLarge
-                className="col-md-8 col-sm-12"
-                value="Issuer Account ID"
-              />
+              <div className="row mt-4">
+                <div className="col-md-4 col-sm-12" />
+                <InputContainerLarge
+                  className="col-md-8 col-sm-12"
+                  value="Issuer Account ID"
+                />
+              </div>
             </div>
-          </div>
-        ) : (
-          <div />
-        )} */}
+          ) : (
+            <div />
+          )}
 
           <div className="row mt-5">
-            <h2 className="col-md-4 font-weight-bold px-0">BUYING ASSET</h2>
-            <div className="d-flex col-md-8 pl-1">
+            <div className="col-lg-4 col-md-4 col-sm-12 pt-2 px-1">
+              <h2 className="font-weight-bold">BUYING ASSET</h2>
+            </div>
+            <div className="row mt-2 ml-2">
               {buyAssets.map(asset => {
                 return (
                   <Span
@@ -101,27 +101,27 @@ export default class Details extends PureComponent {
             </div>
           </div>
 
-          {/* {isBuyVisible === true ? (
-          <div className="mr-4">
-            <div className="row">
-              <div className="col-md-4 col-sm-12" />
-              <InputContainerLarge
-                className="col-md-8 col-sm-12 mt-4"
-                value="Asset Code"
-              />
-            </div>
+          {isBuyVisible === true ? (
+            <div>
+              <div className="row">
+                <div className="col-md-4 col-sm-12" />
+                <InputContainerLarge
+                  className="col-md-8 col-sm-12 mt-4"
+                  value="Asset Code"
+                />
+              </div>
 
-            <div className="row mt-4">
-              <div className="col-md-4 col-sm-12" />
-              <InputContainerLarge
-                className="col-md-8 col-sm-12"
-                value="Issuer Account ID"
-              />
+              <div className="row mt-4">
+                <div className="col-md-4 col-sm-12" />
+                <InputContainerLarge
+                  className="col-md-8 col-sm-12"
+                  value="Issuer Account ID"
+                />
+              </div>
             </div>
-          </div>
-        ) : (
-          <div />
-        )} */}
+          ) : (
+            <div />
+          )}
 
           <div className="row mt-5">
             <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12">

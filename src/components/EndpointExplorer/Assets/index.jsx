@@ -65,17 +65,17 @@ export default class Assets extends PureComponent {
             <div className="col-lg-4 col-md-4 col-sm-12 px-0">
               <h2 className="font-weight-bold">ORDER</h2>
             </div>
-            <div className="col-md-8 mt-2">
+            <div className="col-lg-8 col-md-8 col-sm-12 mt-2 px-0">
               <Span>asc</Span>
               <Span>desc</Span>
             </div>
           </div>
 
           <div className="row mt-5">
-            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
               Server-Sent Events (streaming) mode
             </p>
-            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
               https://horizon-testnet.stellar.org/assets
             </p>
           </div>

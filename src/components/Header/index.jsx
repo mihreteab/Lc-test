@@ -114,7 +114,7 @@ export default class Header extends PureComponent {
             >
               {NavMenu.map(value => (
                 <Navlinks
-                  key={value}
+                  key={value.to}
                   to={`${value.to}`}
                   className="active"
                   activeStyle={{

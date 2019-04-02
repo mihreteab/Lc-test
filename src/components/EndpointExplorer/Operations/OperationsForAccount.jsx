@@ -43,10 +43,10 @@ export default class OperationsForAccount extends PureComponent {
           </div>
 
           <div className="row mt-5">
-            <div className="col-lg-4 col-md-4 col-sm-12 px-0">
+            <div className="col-lg-4 col-md-4 col-sm-12">
               <h2 className="font-weight-bold">ORDER</h2>
             </div>
-            <div className="col-lg-8 col-md-8 col-sm-12 mt-2">
+            <div className="col-lg-8 col-md-8 col-sm-12 mt-2 px-0">
               <Span>asc</Span>
               <Span>desc</Span>
             </div>

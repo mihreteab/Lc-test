@@ -12,22 +12,24 @@ export default class AllPayments extends PureComponent {
         <Title>ALL PAYMENTS</Title>
         <Box padding="40px">
           <div className="row">
-            <div className="col-md-4 col-sm-12">
-              <div>
-                <h2 className="font-weight-bold">CURSOR</h2>
-                <span>(Optional)</span>
-              </div>
+            <div className="col-lg-4 col-md-4 col-sm-12 px-0">
+              <h2 className="font-weight-bold">CURSOR</h2>
+              <span>(Optional)</span>
             </div>
-            <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+            <InputContainerLarge
+              className="col-lg-8 col-md-8 col-sm-12"
+              value=""
+            />
           </div>
 
           <div className="row mt-5">
-            <div className="col-md-4 col-sm-12">
-              <div>
-                <h2 className="font-weight-bold">LIMIT</h2>
-              </div>
+            <div className="col-lg-4 col-md-4 col-sm-12 px-0">
+              <h2 className="font-weight-bold">LIMIT</h2>
             </div>
-            <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+            <InputContainerLarge
+              className="col-lg-8 col-md-8 col-sm-12"
+              value=""
+            />
           </div>
 
           <div className="mt-5">
