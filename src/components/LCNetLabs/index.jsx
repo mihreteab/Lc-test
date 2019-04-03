@@ -1,11 +1,11 @@
 import React, { Fragment, Component } from 'react';
 import Link from 'react-router-dom/Link';
 
-import EndpointExplorer from '../EndpointExplorer';
-import AccountCreator from '../AccountCreator';
-import TransactionBuilder from '../TransactionBuilder';
-import TransactionSigner from '../TransactionSigner';
-import Laboratorys from '../Laboratory';
+import EndpointExplorer from './EndpointExplorer/index';
+import AccountCreator from './AccountCreator/index';
+import TransactionBuilder from './TransactionBuilder/index';
+import TransactionSigner from './TransactionSigner/index';
+import Laboratorys from './Laboratory/index';
 
 import NameWrapper from './NameWrapper';
 import NameContainer from './NameContainer';
@@ -25,10 +25,13 @@ const NavTabs = [
   'XRD VIEWER',
 ];
 
+const networks = ['TEST', 'PUBLIC'];
+
 export default class LCNetLabs extends Component {
   state = {
     selectedLabel: 'LABORATORY',
     active: true,
+    selectedNetwork: 'TEST',
   };
 
   onSelectLabel = e => {
@@ -36,37 +39,39 @@ export default class LCNetLabs extends Component {
     this.setState({ selectedLabel: value });
   };
 
+  onClickToggle = e => {
+    this.setState({ selectedNetwork: e.target.textContent });
+  };
+
   render() {
-    const { active, selectedLabel } = this.state;
+    const { selectedLabel, selectedNetwork } = this.state;
     return (
       <Fragment>
-        <NameWrapper>
-          <NameContainer>
-            <Title>
-              <TitleStrongText>LC NET</TitleStrongText> | Network laboratory
-            </Title>
-          </NameContainer>
+        <div className="mx-5">
+          <NameWrapper>
+            <NameContainer>
+              <Title>
+                <TitleStrongText>LC NET</TitleStrongText> | Network laboratory
+              </Title>
+            </NameContainer>
 
-          <ToggleWrapper>
-            <ToggleButton active={active}>TEST</ToggleButton>
-            <ToggleButton
-              style={{
-                color: '#000',
-              }}
-            >
-              PUBLIC
-            </ToggleButton>
-          </ToggleWrapper>
-        </NameWrapper>
+            <ToggleWrapper>
+              {networks.map(network => (
+                <ToggleButton
+                  key={network}
+                  active={selectedNetwork === network ? true : false}
+                  onClick={this.onClickToggle}
+                >
+                  {network}
+                </ToggleButton>
+              ))}
+            </ToggleWrapper>
+          </NameWrapper>
+        </div>
 
         <div className="">
           <NavWrapper>
             {NavTabs.map(key => {
-              const link = key
-                .toLowerCase()
-                .split(' ')
-                .join('-');
-
               return (
                 <Tabs
                   isSelect={selectedLabel === key ? true : false}

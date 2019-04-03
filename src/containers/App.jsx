@@ -26,6 +26,12 @@ import RoutePrivate from 'components/RoutePrivate';
 
 import LCNetLabs from '../components/LCNetLabs';
 import Header from '../components/Header';
+import About from '../components/About';
+import Technology from '../components/Technology';
+import LCNetExplorer from '../components/LCNetExplorer';
+import Developer from '../components/Developer';
+import Pricing from '../components/Pricing';
+import Contact from '../components/Contact';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -92,11 +98,45 @@ export class App extends React.Component {
                     exact
                     component={Home}
                   />
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/about"
+                    component={About}
+                  />
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/technology"
+                    component={Technology}
+                  />
 
                   <RoutePrivate
                     isAuthenticated={user.isAuthenticated}
-                    path="/laboratory"
+                    path="/lc-net-lab"
                     component={LCNetLabs}
+                  />
+
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/lc-net-explorer"
+                    component={LCNetExplorer}
+                  />
+
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/developer"
+                    component={Developer}
+                  />
+
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/pricing"
+                    component={Pricing}
+                  />
+
+                  <RoutePrivate
+                    isAuthenticated={user.isAuthenticated}
+                    path="/contact"
+                    component={Contact}
                   />
 
                   <Route component={NotFound} />

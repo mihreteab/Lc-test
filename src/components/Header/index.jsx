@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-import { Link, NavLink as Navlinks } from 'react-router-dom';
+import { NavLink as Navlinks } from 'react-router-dom';
 
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
@@ -26,11 +26,11 @@ const NavMenu = [
     value: 'Technology',
   },
   {
-    to: '/laboratory',
+    to: '/lc-net-lab',
     value: 'LC Net Lab',
   },
   {
-    to: '/explorer',
+    to: '/lc-net-explorer',
     value: 'LC Net Explorer',
   },
   {
@@ -60,6 +60,7 @@ export default class Header extends PureComponent {
   state = {
     selectedLabel: 'LABORATORY',
     active: true,
+    activeLink: 'about',
   };
 
   onSelectLabel = e => {
@@ -68,8 +69,6 @@ export default class Header extends PureComponent {
   };
 
   render() {
-    const { selectedLabel, active } = this.state;
-
     return (
       <HeaderWrapper>
         <HeaderContainer>
@@ -99,52 +98,41 @@ export default class Header extends PureComponent {
             <span className="navbar-toggler-icon" />
           </button>
 
-          <div
-            className="col-md-12 col-sm-12 col-xs-12 navbar-collapse"
-            id="headerNavbar"
-          >
-            <ul
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginBottom: '1px',
-              }}
-              className="navbar-nav mr-auto"
-            >
+          <div className="collapse navbar-collapse" id="headerNavbar">
+            <ul className="navbar-nav d-flex justify-content-center align-items-center">
+              {NavMenu.map(value => (
+                <NavLink key={value.to} to={value.to}>
+                  {value.value}
+                </NavLink>
+              ))}
+            </ul>
+            {/* <ul className="navbar-nav mr-auto d-flex justify-content-center align-items-center">
               {NavMenu.map(value => (
                 <Navlinks
                   key={value.to}
                   to={`${value.to}`}
-                  className="active"
                   activeStyle={{
                     padding: '8px 20px',
                     boxShadow:
                       '0px 1px 2px rgba(8, 35, 48, 0.24), 0px 2px 6px rgba(8, 35, 48, 0.16)',
                     borderRadius: '3px',
                   }}
+                  style={{
+                    color: '#000000',
+                    marginRight: '15px',
+                    borderRadius: '6px',
+                    padding: '10px',
+                    fontSize: '16px',
+                  }}
                 >
                   {value.value}
                 </Navlinks>
-              ))}
-            </ul>
+              ))} 
+            </ul> */}
 
-            <ul
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-              className="navbar-nav ml-auto"
-            >
-              <SigninWrapper>
-                <li className="nav-item">
-                  <NavLink border="border border-dark">Sign In</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink border="border border-dark">Sign Up</NavLink>
-                </li>
-              </SigninWrapper>
+            <ul className="navbar-nav ml-auto d-flex justify-content-center align-items-center">
+              <NavLink border={true}>Sign In</NavLink>
+              <NavLink border={true}>Sign Up</NavLink>
             </ul>
           </div>
         </Navbar>

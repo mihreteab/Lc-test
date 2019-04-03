@@ -23,7 +23,7 @@ RoutePublic.propTypes = {
 };
 
 RoutePublic.defaultProps = {
-  to: '/laboratory',
+  to: '/about',
 };
 
 export default RoutePublic;
