@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 
 import InputContainerLarge from '../../shared/InputContainerLarge';
 import Span from '../../shared/Span';
+import FormTitle from '../../shared/FormTitle';
+import FormSubTitle from '../../shared/FormSubTitle';
 
 const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
 
@@ -20,17 +22,30 @@ export default class Payment extends PureComponent {
     return (
       <div>
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">DESTINATION</h2>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>DESTINATION</FormTitle>
           </div>
-          <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+          <InputContainerLarge
+            className="col-lg-9 col-md-9 col-sm-12"
+            value=""
+          />
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">BASE ASSET</h2>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>BASE ASSET</FormTitle>
           </div>
-          <div className="d-flex col-md-8 pl-1">
+          <div className="d-flex col-lg-9 col-md-9 col-sm-12 pl-1">
             {Assets.map(asset => {
               return (
                 <Span
@@ -46,18 +61,34 @@ export default class Payment extends PureComponent {
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">AMOUNT</h2>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>AMOUNT</FormTitle>
           </div>
-          <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+          <InputContainerLarge
+            className="col-lg-9 col-md-9 col-sm-12"
+            value=""
+          />
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">SOURCE ACCOUNT</h2>
-            <span>(Optional)</span>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>SOURCE ACCOUNT</FormTitle>
+            <FormSubTitle>(Optional)</FormSubTitle>
           </div>
-          <InputContainerLarge className="col-md-8 col-sm-12" value="" />
+          <InputContainerLarge
+            className="col-lg-9 col-md-9 col-sm-12"
+            value=""
+          />
         </div>
       </div>
     );

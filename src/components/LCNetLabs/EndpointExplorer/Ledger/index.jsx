@@ -20,9 +20,15 @@ export default class Ledger extends PureComponent {
   render() {
     const { selectedOption } = this.state;
     return (
-      <Wrapper className="col-lg-9 col-md-7 col-sm-12 col-xs-12">
+      <Wrapper className="col-lg-8 col-md-7 col-sm-12 col-xs-12">
         <Title>
-          <p>SELECT A ENDPOINT</p>
+          <p
+            style={{
+              fontSize: '18px',
+            }}
+          >
+            SELECT A ENDPOINT
+          </p>
           {options.map(option => {
             return (
               <ResourceTabs

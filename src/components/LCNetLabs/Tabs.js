@@ -9,10 +9,10 @@ const Tabs = styled.div`
   border: 1px solid transparent;
   background-color: #0084f8;
   margin-bottom: 0px !important;
-  font-size: 14px;
-  margin-left: 2%;
-  padding-bottom: 15px;
-  padding-top: 15px;
+  font-size: 12px;
+  margin-left: 6%;
+  padding-bottom: 20px;
+  padding-top: 20px;
 
   ${props =>
     props.isSelect &&

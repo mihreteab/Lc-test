@@ -2,6 +2,11 @@ import React, { PureComponent } from 'react';
 
 import InputContainerLarge from '../../shared/InputContainerLarge';
 import Span from '../../shared/Span';
+import FormTitle from '../../shared/FormTitle';
+import FormSubTitle from '../../shared/FormSubTitle';
+import Info from '../../shared/Info';
+
+import TextSpan from './TextSpan';
 
 const Assets = ['Alphanumeric 4', 'Alphanumeric 12'];
 
@@ -16,20 +21,30 @@ export default class ChangeTrust extends PureComponent {
     return (
       <div>
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">INFLATION DESTINATION</h2>
-            <span className="ml-2">(Optional)</span>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>INFLATION DESTINATION</FormTitle>
+            <FormSubTitle>(Optional)</FormSubTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge value="" />
           </div>
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">SELLING ASSET</h2>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>SELLING ASSET</FormTitle>
           </div>
-          <div className="d-flex col-md-8">
+          <div className="d-flex col-lg-9 col-md-9 col-sm-12">
             {Assets.map(asset => {
               return (
                 <Span
@@ -45,26 +60,36 @@ export default class ChangeTrust extends PureComponent {
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">TRUST LIMIT</h2>
-            <span className="ml-2">(Optional)</span>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>TRUST LIMIT</FormTitle>
+            <FormSubTitle>(Optional)</FormSubTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge value="" />
             <br />
-            <span>
+            <TextSpan>
               Leave empty to default to the max int64. <br /> Set to 0 to remove
               the trust line.
-            </span>
+            </TextSpan>
           </div>
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">SOURCE ACCOUNT</h2>
-            <span className="ml-2">(Optional)</span>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>SOURCE ACCOUNT</FormTitle>
+            <FormSubTitle>(Optional)</FormSubTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge value="" />
           </div>
         </div>

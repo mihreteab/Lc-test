@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 
 import InputContainerLarge from '../../shared/InputContainerLarge';
+import FormTitle from '../../shared/FormTitle';
+import FormSubTitle from '../../shared/FormSubTitle';
 
 export default class AccountMerge extends PureComponent {
   state = {};
@@ -9,20 +11,20 @@ export default class AccountMerge extends PureComponent {
     return (
       <div className="pt-3">
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">DESTINATION</h2>
+          <div className="col-lg-3 col-md-3 col-sm-12">
+            <FormTitle paddingLeft={true}>DESTINATION</FormTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge value="" />
           </div>
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">SOURCE ACCOUNT</h2>
-            <span className="ml-2">(Optional)</span>
+          <div className="col-lg-3 col-md-3 col-sm-12">
+            <FormTitle paddingLeft={true}>SOURCE ACCOUNT</FormTitle>
+            <FormSubTitle className="ml-4">(Optional)</FormSubTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge value="" />
           </div>
         </div>

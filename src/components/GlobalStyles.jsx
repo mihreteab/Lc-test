@@ -64,7 +64,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   p {
-    font-size: 1.6rem !important;
+    font-size: 15px;
   }
 `;
 

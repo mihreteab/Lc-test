@@ -4,6 +4,10 @@ import Box from '../../shared/Box';
 import Wrapper from '../../shared/Wrapper';
 import InputContainerLarge from '../../shared/InputContainerLarge';
 import Span from '../../shared/Span';
+import FormTitle from '../../shared/FormTitle';
+import FormSubTitle from '../../shared/FormSubTitle';
+import Info from '../../shared/Info';
+
 import TextSpan from './TextSpan';
 import Row from './Row';
 import Button from './Button';
@@ -32,7 +36,7 @@ export default class TransactionBuilder extends PureComponent {
         <Box className="mt-5" padding="40px">
           <div className="row mt-5">
             <div className="col-lg-3 col-md-3 col-sm-12">
-              <h2 className="mt-2 font-weight-bold">SOURCE ACCOUNT</h2>
+              <FormTitle>SOURCE ACCOUNT</FormTitle>
             </div>
             <div className="col-lg-9 col-md-9 col-sm-12">
               <InputContainerLarge
@@ -48,9 +52,7 @@ export default class TransactionBuilder extends PureComponent {
 
           <div className="row mt-5">
             <div className="col-lg-3 col-md-3 col-sm-12">
-              <h2 className="mt-2 font-weight-bold">
-                TRANSACTION SEQUENCE NUMBER
-              </h2>
+              <FormTitle>TRANSACTION SEQUENCE NUMBER</FormTitle>
             </div>
             <div className="col-lg-9 col-md-9 col-sm-12">
               <InputContainerLarge
@@ -66,8 +68,8 @@ export default class TransactionBuilder extends PureComponent {
 
           <div className="row mt-5">
             <div className="col-lg-3 col-md-3 col-sm-12">
-              <h2 className="mt-2 font-weight-bold">BASE FEE</h2>
-              <span>(Optional)</span>
+              <FormTitle>BASE FEE</FormTitle>
+              <FormSubTitle>(Optional)</FormSubTitle>
             </div>
             <div className="col-lg-9 col-md-9 col-sm-12">
               <InputContainerLarge
@@ -85,7 +87,7 @@ export default class TransactionBuilder extends PureComponent {
           <div className="mt-5">
             <div className="row">
               <div className="col-lg-3 col-md-3 col-sm-12">
-                <h2 className="mt-2 font-weight-bold">ORDER</h2>
+                <FormTitle>ORDER</FormTitle>
               </div>
               <div className="row mt-2 ml-3">
                 {Memo.map(key => {
@@ -105,8 +107,8 @@ export default class TransactionBuilder extends PureComponent {
 
           <div className="row mt-5">
             <div className="col-lg-3 col-md-3 col-sm-12">
-              <h2 className="mt-2 font-weight-bold">TIME BOUNDS</h2>
-              <span>(Optional)</span>
+              <FormTitle>TIME BOUNDS</FormTitle>
+              <FormSubTitle>(Optional)</FormSubTitle>
             </div>
             <div className="col-lg-9 col-md-9 col-sm-12">
               <InputContainerLarge
@@ -144,9 +146,9 @@ export default class TransactionBuilder extends PureComponent {
         </div>
 
         <div className="col-lg-12 col-md-12 col-sm-12 mt-5">
-          <h3>SOURCE ACCOUNT</h3>
-          <h4>- Source account ID is a required field</h4>
-          <h4>- Sequence number is a required field </h4>
+          <FormTitle>SOURCE ACCOUNT</FormTitle>
+          <FormTitle>- Source account ID is a required field</FormTitle>
+          <FormTitle>- Sequence number is a required field </FormTitle>
         </div>
       </Wrapper>
     );

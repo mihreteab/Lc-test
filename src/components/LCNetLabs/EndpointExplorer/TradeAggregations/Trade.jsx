@@ -3,6 +3,9 @@ import React, { PureComponent } from 'react';
 import Box from '../../../shared/Box';
 import InputContainerLarge from '../../../shared/InputContainerLarge';
 import Span from '../../../shared/Span';
+import FormTitle from '../../../shared/FormTitle';
+import FormSubTitle from '../../../shared/FormSubTitle';
+import Info from '../../../shared/Info';
 
 const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
 
@@ -22,9 +25,9 @@ export default class Trade extends PureComponent {
       <Box padding="40px">
         <div className="mt-5">
           <div className="row">
-            <h2 className="col-lg-4 col-md-4 font-weight-bold px-0">
-              BASE ASSET
-            </h2>
+            <div className="col-lg-3 col-md-3 col-sm-12 px-0">
+              <FormTitle>BASE ASSET</FormTitle>
+            </div>
             <div className="row mt-2 ml-1">
               {Assets.map(asset => {
                 return (
@@ -43,9 +46,9 @@ export default class Trade extends PureComponent {
 
         <div className="mt-5">
           <div className="row">
-            <h2 className="col-lg-4 col-md-4 font-weight-bold px-0">
-              COUNTER ASSET
-            </h2>
+            <div className="col-lg-3 col-md-3 col-sm-12 px-0">
+              <FormTitle>COUNTER ASSET</FormTitle>
+            </div>
             <div className="row mt-2 ml-1">
               {Assets.map(asset => {
                 return (
@@ -63,60 +66,58 @@ export default class Trade extends PureComponent {
         </div>
 
         <div className="row mt-5">
-          <div className="col-lg-4 col-md-4 col-sm-12 px-0">
-            <h2 className="font-weight-bold">START TIME</h2>
+          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
+            <FormTitle>START TIME</FormTitle>
           </div>
           <InputContainerLarge
-            className="col-lg-8 col-md-8 col-sm-12"
+            className="col-lg-9 col-md-9 col-sm-12"
             value=""
           />
         </div>
 
         <div className="row mt-5">
-          <div className="col-lg-4 col-md-4 col-sm-12 px-0">
-            <h2 className="font-weight-bold">END TIME</h2>
+          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
+            <FormTitle>END TIME</FormTitle>
           </div>
           <InputContainerLarge
-            className="col-lg-8 col-md-8 col-sm-12"
+            className="col-lg-9 col-md-9 col-sm-12"
             value=""
           />
         </div>
 
         <div className="row mt-5">
-          <div className="col-lg-4 col-md-4 col-sm-12 px-0">
-            <h2 className="font-weight-bold">RESOLUTION</h2>
+          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
+            <FormTitle>RESOLUTION</FormTitle>
           </div>
           <InputContainerLarge
-            className="col-lg-8 col-md-8 col-sm-12"
+            className="col-lg-9 col-md-9 col-sm-12"
             value=""
           />
         </div>
 
         <div className="row mt-5">
-          <div className="col-lg-4 col-md-4 col-sm-12 px-0">
-            <h2 className="font-weight-bold">LIMIT</h2>
-            <span>(Optional)</span>
+          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
+            <FormTitle>LIMIT</FormTitle>
+            <FormSubTitle>(Optional)</FormSubTitle>
           </div>
           <InputContainerLarge
-            className="col-lg-8 col-md-8 col-sm-12"
+            className="col-lg-9 col-md-9 col-sm-12"
             value=""
           />
         </div>
 
         <div className="row mt-5">
-          <div className="col-lg-4 col-md-4 col-sm-12 px-0">
-            <h2 className="font-weight-bold">ORDER</h2>
+          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
+            <FormTitle>ORDER</FormTitle>
           </div>
-          <div className="col-lg-8 col-md-8 col-sm-12 mt-2 px-0">
+          <div className="col-lg-9 col-md-9 col-sm-12 mt-2 px-0">
             <Span>asc</Span>
             <Span>desc</Span>
           </div>
         </div>
 
         <div className="row mt-5">
-          <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
-            Server-Sent Events (streaming) mode
-          </p>
+          <Info>Server-Sent Events (streaming) mode</Info>
         </div>
       </Box>
     );

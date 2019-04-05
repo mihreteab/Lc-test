@@ -15,10 +15,11 @@ export default class Laboratory extends PureComponent {
   render() {
     return (
       <Wrapper>
-        <h2 className="font-weight-bold">LC NET LABORATORY</h2>
+        <h3 className="font-weight-bold">LC NET LABORATORY</h3>
         <p
           style={{
             color: '#52616B',
+            fontSize: '15px !important',
           }}
         >
           The Stellar Laboratory is a set of tools that enables people to try

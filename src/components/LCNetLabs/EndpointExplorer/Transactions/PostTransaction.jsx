@@ -3,6 +3,9 @@ import React, { PureComponent } from 'react';
 import Title from '../../../shared/Title';
 import Box from '../../../shared/Box';
 import InputContainerLarge from '../../../shared/InputContainerLarge';
+import FormTitle from '../../../shared/FormTitle';
+import FormSubTitle from '../../../shared/FormSubTitle';
+import Info from '../../../shared/Info';
 
 export default class OperationsForTransactions extends PureComponent {
   render() {
@@ -11,24 +14,22 @@ export default class OperationsForTransactions extends PureComponent {
         <Title>POST TRANSACTION</Title>
         <Box padding="40px">
           <div className="row">
-            <div className="col-lg-4 col-md-4 col-sm-12 px-0">
-              <h2 className="font-weight-bold">
+            <div className="col-lg-3 col-md-3 col-sm-12 px-0">
+              <FormTitle>
                 TRANSACTION ENVELOPE <br /> XDR
-              </h2>
+              </FormTitle>
             </div>
             <InputContainerLarge
               wrap="soft"
               rows="14"
               cols="10"
               height="150px"
-              className="col-lg-8 col-md-8 col-sm-12"
+              className="col-lg-9 col-md-9 col-sm-12"
             />
           </div>
 
           <div className="row mt-5">
-            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
-              {'https://horizon-testnet.stellar.org/transactions'}
-            </p>
+            <Info>https://horizon-testnet.stellar.org/transactions</Info>
           </div>
         </Box>
       </div>

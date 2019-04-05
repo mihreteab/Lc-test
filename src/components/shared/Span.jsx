@@ -5,6 +5,7 @@ const Span = styled.span`
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
 
   ${props =>
     props.select &&

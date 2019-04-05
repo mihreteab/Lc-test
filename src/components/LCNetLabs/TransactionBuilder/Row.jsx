@@ -26,6 +26,7 @@ import DivWrapper from './DivWrapper';
 import ItemWrapper from './ItemWrapper';
 import CenterDiv from './CenterDiv';
 import MenuWrapper from './MenuWrapper';
+import FormTitle from '../../shared/FormTitle';
 
 const items = [
   {
@@ -103,14 +104,14 @@ class Row extends Component {
           </CenterDiv>
 
           <CenterDiv className="col-lg-3 col-md-3 col-sm-3" marginRight={true}>
-            <h3 className="font-weight-bold">OPERATION TYPE</h3>
+            <FormTitle>OPERATION TYPE</FormTitle>
           </CenterDiv>
 
           <CenterDiv
             className="col-lg-7 col-md-5 col-sm-7"
             minHeight={true}
             style={{
-              marginLeft: '0.5%',
+              paddingRight: '15%',
             }}
           >
             <SelectBoxWrapper>

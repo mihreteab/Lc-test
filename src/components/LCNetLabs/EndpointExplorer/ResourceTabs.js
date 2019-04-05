@@ -6,10 +6,12 @@ const ResourceTabs = styled.div`
   color: rgb(82, 97, 107);
   border: 1px solid transparent;
   background-color: #f0f5f9;
-  font-size: 14px;
+  font-size: 16px;
   padding-bottom: 8px;
   padding-top: 8px;
   padding-left: 15px;
+  font-weight: normal;
+  width: 100%;
 
   ${props =>
     props.active &&
@@ -32,6 +34,13 @@ const ResourceTabs = styled.div`
     css`
       background: #0084f8;
       color: #fff;
+    `};
+
+
+  ${props =>
+    props.menu &&
+    css`
+      width: 40%;
     `};
 `;
 

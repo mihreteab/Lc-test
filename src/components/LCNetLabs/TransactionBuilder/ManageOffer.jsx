@@ -2,6 +2,9 @@ import React, { PureComponent } from 'react';
 
 import InputContainerLarge from '../../shared/InputContainerLarge';
 import Span from '../../shared/Span';
+import FormTitle from '../../shared/FormTitle';
+import TextSpan from './TextSpan';
+import FormSubTitle from '../../shared/FormSubTitle';
 
 const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
 
@@ -20,19 +23,29 @@ export default class ManageOffer extends PureComponent {
     return (
       <div>
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">DESTINATION</h2>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>DESTINATION</FormTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge value="" />
           </div>
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">SELLING</h2>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>SELLING</FormTitle>
           </div>
-          <div className="d-flex col-md-8">
+          <div className="d-flex col-lg-9 col-md-9 col-sm-12">
             {Assets.map(asset => {
               return (
                 <Span
@@ -48,10 +61,15 @@ export default class ManageOffer extends PureComponent {
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">BUYING</h2>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>BUYING</FormTitle>
           </div>
-          <div className="d-flex col-md-8">
+          <div className="d-flex col-lg-9 col-md-9 col-sm-12">
             {Assets.map(asset => {
               return (
                 <Span
@@ -67,50 +85,70 @@ export default class ManageOffer extends PureComponent {
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>
               AMOUNT YOU ARE <br /> SELLING
-            </h2>
+            </FormTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge value="" />
             <br />
-            <span>An amount of zero will delete the offer.</span>
+            <TextSpan>An amount of zero will delete the offer.</TextSpan>
           </div>
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>
               PRICE OF 1 UNIT OF ASSET <br /> FOR SALE
-            </h2>
-            <span className="ml-2">(Optional)</span>
+            </FormTitle>
+            <FormSubTitle>(Optional)</FormSubTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge value="" />
           </div>
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">OFFER ID</h2>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>OFFER ID</FormTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge value="" />
             <br />
-            <span>
+            <TextSpan>
               If 0, will create a new offer. Existing offer id numbers can be
               found using the Offers for Account endpoint.
-            </span>
+            </TextSpan>
           </div>
         </div>
 
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">CURSOR</h2>
-            <span className="ml-2">(Optional)</span>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>CURSOR</FormTitle>
+            <FormSubTitle>(Optional)</FormSubTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge
               value="
             Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"

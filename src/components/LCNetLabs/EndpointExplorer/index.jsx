@@ -53,8 +53,14 @@ export default class EndpointExplorer extends PureComponent {
 
         <div className="container-fluid">
           <div className="row col-lg-12 col-md-12">
-            <Title className="col-lg-2 col-md-4 col-sm-12 col-xs-12">
-              <p>1. SELECT A RESOURCE</p>
+            <Title className="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+              <p
+                style={{
+                  fontSize: '18px',
+                }}
+              >
+                1. SELECT A RESOURCE
+              </p>
               {Resources.map(resource => {
                 return (
                   <ResourceTabs

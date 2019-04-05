@@ -3,6 +3,9 @@ import React, { PureComponent } from 'react';
 import Box from '../../../shared/Box';
 import InputContainerLarge from '../../../shared/InputContainerLarge';
 import Span from '../../../shared/Span';
+import FormTitle from '../../../shared/FormTitle';
+import FormSubTitle from '../../../shared/FormSubTitle';
+import Info from '../../../shared/Info';
 
 const buyAssets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
 const sellAssets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
@@ -41,8 +44,8 @@ export default class Details extends PureComponent {
       <div>
         <Box padding="30px">
           <div className="row mt-5">
-            <div className="col-lg-4 col-md-4 col-sm-12 pt-2 px-1">
-              <h2 className="font-weight-bold">SELLING ASSET</h2>
+            <div className="col-lg-3 col-md-3 col-sm-12 pt-2 px-1">
+              <FormTitle>SELLING ASSET</FormTitle>
             </div>
 
             <div className="row mt-2 ml-2">
@@ -63,17 +66,17 @@ export default class Details extends PureComponent {
           {isSellVisible === true ? (
             <div>
               <div className="row">
-                <div className="col-lg-4 col-md-12 col-sm-12" />
+                <div className="col-lg-3 col-md-12 col-sm-12" />
                 <InputContainerLarge
-                  className="col-lg-8 col-md-12 col-sm-12 mt-4"
+                  className="col-lg-9 col-md-12 col-sm-12 mt-4"
                   value="Asset Code"
                 />
               </div>
 
               <div className="row mt-4">
-                <div className="col-lg-4 col-md-12 col-sm-12" />
+                <div className="col-lg-3 col-md-12 col-sm-12" />
                 <InputContainerLarge
-                  className="col-lg-8 col-md-12 col-sm-12"
+                  className="col-lg-9 col-md-12 col-sm-12"
                   value="Issuer Account ID"
                 />
               </div>
@@ -83,8 +86,8 @@ export default class Details extends PureComponent {
           )}
 
           <div className="row mt-5">
-            <div className="col-lg-4 col-md-4 col-sm-12 pt-2 px-1">
-              <h2 className="font-weight-bold">BUYING ASSET</h2>
+            <div className="col-lg-3 col-md-3 col-sm-12 pt-2 px-1">
+              <FormTitle>BUYING ASSET</FormTitle>
             </div>
             <div className="row mt-2 ml-2">
               {buyAssets.map(asset => {
@@ -104,17 +107,17 @@ export default class Details extends PureComponent {
           {isBuyVisible === true ? (
             <div>
               <div className="row">
-                <div className="col-lg-4 col-md-12 col-sm-12" />
+                <div className="col-lg-3 col-md-12 col-sm-12" />
                 <InputContainerLarge
-                  className="col-lg-8 col-md-12 col-sm-12 mt-4"
+                  className="col-lg-9 col-md-12 col-sm-12 mt-4"
                   value="Asset Code"
                 />
               </div>
 
               <div className="row mt-4">
-                <div className="col-lg-4 col-md-12 col-sm-12" />
+                <div className="col-lg-3 col-md-12 col-sm-12" />
                 <InputContainerLarge
-                  className="col-lg-8 col-md-12 col-sm-12"
+                  className="col-lg-9 col-md-12 col-sm-12"
                   value="Issuer Account ID"
                 />
               </div>
@@ -124,14 +127,12 @@ export default class Details extends PureComponent {
           )}
 
           <div className="row mt-5">
-            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              Server-Sent Events (streaming) mode
-            </p>
-            <p className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <Info>Server-Sent Events (streaming) mode</Info>
+            <Info>
               {
                 'https://horizon-testnet.stellar.org/order_book?selling_asset_type=native'
               }
-            </p>
+            </Info>
           </div>
         </Box>
       </div>

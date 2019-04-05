@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 
 import InputContainerLarge from '../../shared/InputContainerLarge';
+import FormTitle from '../../shared/FormTitle';
 
 export default class Inflation extends PureComponent {
   state = {};
@@ -9,10 +10,15 @@ export default class Inflation extends PureComponent {
     return (
       <div>
         <div className="row mt-5">
-          <div className="col-md-4 col-sm-12">
-            <h2 className="m-3 font-weight-bold">SOURCE ACCOUNT</h2>
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
+            <FormTitle>SOURCE ACCOUNT</FormTitle>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-9 col-sm-12">
             <InputContainerLarge value="" />
           </div>
         </div>

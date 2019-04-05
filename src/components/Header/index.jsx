@@ -1,8 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-import { NavLink as Navlinks } from 'react-router-dom';
-
+import { IconContext } from 'react-icons';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
 // import { utils } from 'styled-minimal';
@@ -13,8 +12,6 @@ import NavLink from './NavLink';
 import HeaderWrapper from './HeaderWrapper';
 import HeaderContainer from './HeaderContainer';
 import Button from './Button';
-
-import SigninWrapper from './SignInWrapper';
 
 const NavMenu = [
   {
@@ -47,26 +44,8 @@ const NavMenu = [
   },
 ];
 
-const NavTabs = [
-  'LABORATORY',
-  'ACCOUNT CREATOR',
-  'ENDPOINT EXPLORER',
-  'TRANSACTION BUILDER',
-  'TRANSACTION SIGNER',
-  'XRD VIEWER',
-];
-
-export default class Header extends PureComponent {
-  state = {
-    selectedLabel: 'LABORATORY',
-    active: true,
-    activeLink: 'about',
-  };
-
-  onSelectLabel = e => {
-    const value = e.target.textContent;
-    this.setState({ selectedLabel: value });
-  };
+export default class Header extends Component {
+  state = {};
 
   render() {
     return (
@@ -76,13 +55,15 @@ export default class Header extends PureComponent {
             <Logo />
           </div>
           <div className="d-flex">
-            <Button>
-              <FaFacebookF />
-            </Button>
+            <IconContext.Provider value={{ color: '#78909C', size: '2rem' }}>
+              <Button>
+                <FaFacebookF />
+              </Button>
 
-            <Button>
-              <FaTwitter />
-            </Button>
+              <Button>
+                <FaTwitter />
+              </Button>
+            </IconContext.Provider>
           </div>
         </HeaderContainer>
         <Navbar>
@@ -101,38 +82,15 @@ export default class Header extends PureComponent {
           <div className="collapse navbar-collapse" id="headerNavbar">
             <ul className="navbar-nav d-flex justify-content-center align-items-center">
               {NavMenu.map(value => (
-                <NavLink key={value.to} to={value.to}>
+                <NavLink key={value.to} to={`${value.to}`}>
                   {value.value}
                 </NavLink>
               ))}
             </ul>
-            {/* <ul className="navbar-nav mr-auto d-flex justify-content-center align-items-center">
-              {NavMenu.map(value => (
-                <Navlinks
-                  key={value.to}
-                  to={`${value.to}`}
-                  activeStyle={{
-                    padding: '8px 20px',
-                    boxShadow:
-                      '0px 1px 2px rgba(8, 35, 48, 0.24), 0px 2px 6px rgba(8, 35, 48, 0.16)',
-                    borderRadius: '3px',
-                  }}
-                  style={{
-                    color: '#000000',
-                    marginRight: '15px',
-                    borderRadius: '6px',
-                    padding: '10px',
-                    fontSize: '16px',
-                  }}
-                >
-                  {value.value}
-                </Navlinks>
-              ))} 
-            </ul> */}
 
             <ul className="navbar-nav ml-auto d-flex justify-content-center align-items-center">
-              <NavLink border={true}>Sign In</NavLink>
               <NavLink border={true}>Sign Up</NavLink>
+              <NavLink border={true}>Sign In</NavLink>
             </ul>
           </div>
         </Navbar>

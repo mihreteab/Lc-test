@@ -25,7 +25,7 @@ const NavTabs = [
   'XRD VIEWER',
 ];
 
-const networks = ['TEST', 'PUBLIC'];
+const networks = ['TEST', 'LIVE'];
 
 export default class LCNetLabs extends Component {
   state = {
