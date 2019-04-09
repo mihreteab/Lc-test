@@ -7,3 +7,9 @@ dist/
 node_modules/
 reports/
 webpack.stats.json
+.env
+
+# General Mac Ignores
+.DS_Store
+.AppleDouble
+.LSOverride
