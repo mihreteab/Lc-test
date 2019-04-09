@@ -15,11 +15,10 @@
 - redux-persist 5.x
 
 ### Development
-
 - webpack-dev-server 3.x
 - react-hot-loader 4.x
 - redux-devtools (with browser plugin)
-Make sure you have a .env file @root of the project, or ref checkout env.example
+
 `npm start`
 
 ### Building
@@ -48,3 +47,7 @@ Make sure you have a .env file @root of the project, or ref checkout env.example
 - cypress 3.0.x
 
 `npm run test:e2e`
+
+## Note
+
+Make sure you have a .env file @root of the project with proper environment variables. For refrence purposes please checkout the env.example.
