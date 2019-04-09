@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
-const ToggleWrapper = styled.div.attrs({
-  className: 'col-lg-2 col-md-3 col-sm-4 col-xs-2',
-})`
+const ToggleWrapper = styled.div`
+  display: flex;
+  width: 224px;
+  height: 40px;
   border: 1px solid #c9d6df;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
   box-sizing: border-box;
-  border-radius: 25px;
+  border-radius: 20px;
 `;
 
 export default ToggleWrapper;

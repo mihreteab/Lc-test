@@ -12,6 +12,12 @@ export default class ChangeTrust extends PureComponent {
     selectedSpan: 'True',
   };
 
+  onClickSpan = e => {
+    const value = e.target.textContent;
+    const name = e.target.id;
+    this.setState({ [name]: value });
+  };
+
   render() {
     const { selectedSpan } = this.state;
 
@@ -56,17 +62,16 @@ export default class ChangeTrust extends PureComponent {
             <FormTitle>AUTHORIZE</FormTitle>
           </div>
           <div className="d-flex colg-lg-9 col-md-9 col-sm-12">
-            {Options.map(asset => {
-              return (
-                <Span
-                  key={asset}
-                  select={asset === selectedSpan ? true : false}
-                  onClick={this.onClickSpan}
-                >
-                  {asset}
-                </Span>
-              );
-            })}
+            {Options.map(asset => (
+              <Span
+                id="selectedSpan"
+                key={asset}
+                select={asset === selectedSpan}
+                onClick={this.onClickSpan}
+              >
+                {asset}
+              </Span>
+            ))}
           </div>
         </div>
 

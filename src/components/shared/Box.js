@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 const Box = styled.div`
   margin-left: 15px;
+  margin-bottom: 20px;
   padding: 20px;
   border: 1px solid #c9d6df;
   box-sizing: border-box;

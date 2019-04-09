@@ -10,28 +10,46 @@ const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
 
 export default class PathPayment extends PureComponent {
   state = {
-    selectedSpan: 'Native',
-    count: 1,
+    selectedSpan1: 'Native',
+    selectedSpan2: 'Native',
+    dynamicSelectedSpan: [{ selectedSpan: 'Native' }],
   };
 
   onClickSpan = e => {
-    this.setState({ selectedSpan: e.target.innerText });
+    const value = e.target.textContent;
+    const name = e.target.id;
+    this.setState({ [name]: value });
   };
 
-  addNewAsset = e => {
-    const { count } = this.state;
-    console.log('Add New');
-    this.setState({ count: count + 1 });
+  onClickDynamicSpan = (e, index) => {
+    const value = e.target.textContent;
+    const { dynamicSelectedSpan } = this.state;
+    const newDynamicSelectedSpan = dynamicSelectedSpan;
+    newDynamicSelectedSpan[index].selectedSpan = value;
+    this.setState({ dynamicSelectedSpan: newDynamicSelectedSpan });
+    this.forceUpdate();
   };
 
-  onRemoveAsset = e => {
-    const { count } = this.state;
-    console.log('remove New');
-    this.setState({ count: count - 1 });
+  addNewAsset = () => {
+    const { dynamicSelectedSpan } = this.state;
+    const newDynamicSelectedSpan = dynamicSelectedSpan;
+    newDynamicSelectedSpan.push({
+      selectedSpan: 'Native',
+    });
+    this.setState({ dynamicSelectedSpan: newDynamicSelectedSpan });
+    this.forceUpdate();
+  };
+
+  onRemoveAsset = index => {
+    const { dynamicSelectedSpan } = this.state;
+    const newDynamicSelectedSpan = dynamicSelectedSpan;
+    newDynamicSelectedSpan.splice(index, 1);
+    this.setState({ dynamicSelectedSpan: newDynamicSelectedSpan });
+    this.forceUpdate();
   };
 
   render() {
-    const { selectedSpan, count } = this.state;
+    const { selectedSpan1, selectedSpan2, dynamicSelectedSpan } = this.state;
     return (
       <div className="pt-3">
         <div className="row mt-5">
@@ -59,17 +77,16 @@ export default class PathPayment extends PureComponent {
           </div>
           <div className="d-flex flex-column col-lg-9 col-md-9">
             <div className="d-flex">
-              {Assets.map(asset => {
-                return (
-                  <Span
-                    key={asset}
-                    select={asset === selectedSpan ? true : false}
-                    onClick={this.onClickSpan}
-                  >
-                    {asset}
-                  </Span>
-                );
-              })}
+              {Assets.map(asset => (
+                <Span
+                  id="selectedSpan1"
+                  key={asset}
+                  select={asset === selectedSpan1}
+                  onClick={this.onClickSpan}
+                >
+                  {asset}
+                </Span>
+              ))}
             </div>
             <TextSpan>
               The asset to be deduced from the sender's account
@@ -100,59 +117,55 @@ export default class PathPayment extends PureComponent {
 
         {/* MENU ADDED HERE */}
 
-        {[...Array(count)].map((value, index) => {
-          return (
-            <div className="row mt-5" key={index}>
-              <div
-                className="col-lg-3 col-md-3 col-sm-12"
-                style={{
-                  paddingLeft: '5%',
-                }}
-              >
-                <FormTitle>SENDING ASSET</FormTitle>
+        {dynamicSelectedSpan.map((value, index) => (
+          <div className="row mt-5" key={index}>
+            <div
+              className="col-lg-3 col-md-3 col-sm-12"
+              style={{
+                paddingLeft: '5%',
+              }}
+            >
+              <FormTitle>SENDING ASSET</FormTitle>
+            </div>
+            <div className="d-flex col-lg-9 col-md-9 col-sm-12">
+              <div className="d-flex">
+                {Assets.map(asset => (
+                  <Span
+                    key={asset}
+                    select={asset === value.selectedSpan}
+                    onClick={e => this.onClickDynamicSpan(e, index)}
+                  >
+                    {asset}
+                  </Span>
+                ))}
               </div>
-              <div className="d-flex col-lg-9 col-md-9 col-sm-12">
-                <div className="d-flex">
-                  {Assets.map(asset => {
-                    return (
-                      <Span
-                        key={asset}
-                        select={asset === selectedSpan ? true : false}
-                        onClick={this.onClickSpan}
-                      >
-                        {asset}
-                      </Span>
-                    );
-                  })}
-                </div>
 
-                <div className="col-lg-2 col-md-2 mt-3 text-center">
-                  <p
-                    style={{
-                      color: '#636161',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    # {(index + 1).toString()}
-                  </p>
-                </div>
+              <div className="col-lg-2 col-md-2 mt-3 text-center">
+                <p
+                  style={{
+                    color: '#636161',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  # {(index + 1).toString()}
+                </p>
+              </div>
 
-                <div className="col-lg-2 col-md-2 mt-2">
-                  <button
-                    onClick={this.onRemoveAsset}
-                    className="btn btn-primary btn-lg"
-                    style={{
-                      padding: '10px 12px',
-                    }}
-                    type="button"
-                  >
-                    Remove
-                  </button>
-                </div>
+              <div className="col-lg-2 col-md-2 mt-2">
+                <button
+                  onClick={() => this.onRemoveAsset(index)}
+                  className="btn btn-primary btn-lg"
+                  style={{
+                    padding: '10px 12px',
+                  }}
+                  type="button"
+                >
+                  Remove
+                </button>
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
 
         <div className="row mt-5">
           <div className="col-lg-3 col-md-3 col-sm-12" />
@@ -178,17 +191,16 @@ export default class PathPayment extends PureComponent {
           </div>
           <div className="d-flex flex-column col-lg-9 col-md-9">
             <div className="d-flex">
-              {Assets.map(asset => {
-                return (
-                  <Span
-                    key={asset}
-                    select={asset === selectedSpan ? true : false}
-                    onClick={this.onClickSpan}
-                  >
-                    {asset}
-                  </Span>
-                );
-              })}
+              {Assets.map(asset => (
+                <Span
+                  id="selectedSpan2"
+                  key={asset}
+                  select={asset === selectedSpan2}
+                  onClick={this.onClickSpan}
+                >
+                  {asset}
+                </Span>
+              ))}
             </div>
             <TextSpan>
               The asset to be received by the destination account

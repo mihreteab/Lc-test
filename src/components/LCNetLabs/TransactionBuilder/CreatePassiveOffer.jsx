@@ -3,23 +3,26 @@ import React, { PureComponent } from 'react';
 import InputContainerLarge from '../../shared/InputContainerLarge';
 import Span from '../../shared/Span';
 import FormTitle from '../../shared/FormTitle';
-import FormSubTitle from '../../shared/FormSubTitle';
-import Info from '../../shared/Info';
+// import FormSubTitle from '../../shared/FormSubTitle';
+// import Info from '../../shared/Info';
 import TextSpan from './TextSpan';
 
 const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
 
 export default class CreatePassiveOffer extends PureComponent {
   state = {
-    selectedSpan: 'Native',
+    selectedSelling: 'Native',
+    selectedBuying: 'Native',
   };
 
   onClickSpan = e => {
-    this.setState({ selectedSpan: e.target.innerText });
+    const value = e.target.textContent;
+    const name = e.target.id;
+    this.setState({ [name]: value });
   };
 
   render() {
-    const { selectedSpan } = this.state;
+    const { selectedSelling, selectedBuying } = this.state;
 
     return (
       <div>
@@ -38,21 +41,25 @@ export default class CreatePassiveOffer extends PureComponent {
         </div>
 
         <div className="row mt-5">
-          <div className="col-lg-3 col-md-3 col-sm-12">
+          <div
+            className="col-lg-3 col-md-3 col-sm-12"
+            style={{
+              paddingLeft: '5%',
+            }}
+          >
             <FormTitle>SELLING</FormTitle>
           </div>
           <div className="d-flex col-lg-9 col-md-9 col-sm-12">
-            {Assets.map(asset => {
-              return (
-                <Span
-                  key={asset}
-                  select={asset === selectedSpan ? true : false}
-                  onClick={this.onClickSpan}
-                >
-                  {asset}
-                </Span>
-              );
-            })}
+            {Assets.map(asset => (
+              <Span
+                id="selectedSelling"
+                key={asset}
+                select={asset === selectedSelling}
+                onClick={this.onClickSpan}
+              >
+                {asset}
+              </Span>
+            ))}
           </div>
         </div>
 
@@ -66,17 +73,16 @@ export default class CreatePassiveOffer extends PureComponent {
             <FormTitle>BUYING</FormTitle>
           </div>
           <div className="d-flex col-lg-9 col-md-9 col-sm-12">
-            {Assets.map(asset => {
-              return (
-                <Span
-                  key={asset}
-                  select={asset === selectedSpan ? true : false}
-                  onClick={this.onClickSpan}
-                >
-                  {asset}
-                </Span>
-              );
-            })}
+            {Assets.map(asset => (
+              <Span
+                id="selectedBuying"
+                key={asset}
+                select={asset === selectedBuying}
+                onClick={this.onClickSpan}
+              >
+                {asset}
+              </Span>
+            ))}
           </div>
         </div>
 

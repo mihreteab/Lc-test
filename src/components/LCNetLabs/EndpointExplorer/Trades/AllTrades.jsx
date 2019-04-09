@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-
 import Box from '../../../shared/Box';
 import InputContainerLarge from '../../../shared/InputContainerLarge';
 import Span from '../../../shared/Span';
@@ -12,16 +11,18 @@ const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
 
 export default class AllTrades extends PureComponent {
   state = {
-    selectedSpan: 'Native',
+    selectedBaseAsset: 'Native',
+    selectedCounterAsset: 'Native',
   };
 
   onClickSpan = e => {
     const value = e.target.textContent;
-    this.setState({ selectedSpan: value });
+    const name = e.target.id;
+    this.setState({ [name]: value });
   };
 
   render() {
-    const { selectedSpan } = this.state;
+    const { selectedBaseAsset, selectedCounterAsset } = this.state;
     return (
       <div>
         <Title>ALL TRADES</Title>
@@ -32,17 +33,16 @@ export default class AllTrades extends PureComponent {
                 <FormTitle>BASE ASSET</FormTitle>
               </div>
               <div className="row mt-2 ml-1">
-                {Assets.map(asset => {
-                  return (
-                    <Span
-                      key={asset}
-                      select={asset === selectedSpan ? true : false}
-                      onClick={this.onClickSpan}
-                    >
-                      {asset}
-                    </Span>
-                  );
-                })}
+                {Assets.map(asset => (
+                  <Span
+                    id="selectedBaseAsset"
+                    key={asset}
+                    select={asset === selectedBaseAsset}
+                    onClick={this.onClickSpan}
+                  >
+                    {asset}
+                  </Span>
+                ))}
               </div>
             </div>
           </div>
@@ -53,17 +53,16 @@ export default class AllTrades extends PureComponent {
                 <FormTitle>COUNTER ASSET</FormTitle>
               </div>
               <div className="row mt-2 ml-1">
-                {Assets.map(asset => {
-                  return (
-                    <Span
-                      key={asset}
-                      select={asset === selectedSpan ? true : false}
-                      onClick={this.onClickSpan}
-                    >
-                      {asset}
-                    </Span>
-                  );
-                })}
+                {Assets.map(asset => (
+                  <Span
+                    id="selectedCounterAsset"
+                    key={asset}
+                    select={asset === selectedCounterAsset}
+                    onClick={this.onClickSpan}
+                  >
+                    {asset}
+                  </Span>
+                ))}
               </div>
             </div>
           </div>

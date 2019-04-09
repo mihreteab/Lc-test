@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import { Container, utils } from 'styled-minimal';
+import { utils } from 'styled-minimal';
 
 const { spacer } = utils;
 
-const HeaderContainer = styled(Container)`
+const HeaderContainer = styled.div.attrs({
+  className: 'mx-5',
+})`
   align-items: center;
   display: flex;
   flex-wrap: wrap;

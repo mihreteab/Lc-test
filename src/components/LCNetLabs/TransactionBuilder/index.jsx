@@ -6,8 +6,7 @@ import InputContainerLarge from '../../shared/InputContainerLarge';
 import Span from '../../shared/Span';
 import FormTitle from '../../shared/FormTitle';
 import FormSubTitle from '../../shared/FormSubTitle';
-import Info from '../../shared/Info';
-
+// import Info from '../../shared/Info';
 import TextSpan from './TextSpan';
 import Row from './Row';
 import Button from './Button';
@@ -21,10 +20,12 @@ export default class TransactionBuilder extends PureComponent {
   };
 
   onClickSpan = e => {
-    console.log(e);
+    const value = e.target.textContent;
+    const name = e.target.id;
+    this.setState({ [name]: value });
   };
 
-  onAddOperation = e => {
+  onAddOperation = () => {
     const { operationCount } = this.state;
     this.setState({ operationCount: operationCount + 1 });
   };
@@ -90,17 +91,16 @@ export default class TransactionBuilder extends PureComponent {
                 <FormTitle>ORDER</FormTitle>
               </div>
               <div className="row mt-2 ml-3">
-                {Memo.map(key => {
-                  return (
-                    <Span
-                      key={key}
-                      onClick={this.onClickSpan}
-                      select={key === selectedSpan ? true : false}
-                    >
-                      {key}
-                    </Span>
-                  );
-                })}
+                {Memo.map(key => (
+                  <Span
+                    id="selectedSpan"
+                    key={key}
+                    onClick={this.onClickSpan}
+                    select={key === selectedSpan}
+                  >
+                    {key}
+                  </Span>
+                ))}
               </div>
             </div>
           </div>

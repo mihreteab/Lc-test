@@ -10,15 +10,18 @@ const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
 
 export default class ManageOffer extends PureComponent {
   state = {
-    selectedSpan: 'Native',
+    selectedSelling: 'Native',
+    selectedBuying: 'Native',
   };
 
   onClickSpan = e => {
-    this.setState({ selectedSpan: e.target.innerText });
+    const value = e.target.textContent;
+    const name = e.target.id;
+    this.setState({ [name]: value });
   };
 
   render() {
-    const { selectedSpan } = this.state;
+    const { selectedSelling, selectedBuying } = this.state;
 
     return (
       <div>
@@ -46,17 +49,16 @@ export default class ManageOffer extends PureComponent {
             <FormTitle>SELLING</FormTitle>
           </div>
           <div className="d-flex col-lg-9 col-md-9 col-sm-12">
-            {Assets.map(asset => {
-              return (
-                <Span
-                  key={asset}
-                  select={asset === selectedSpan ? true : false}
-                  onClick={this.onClickSpan}
-                >
-                  {asset}
-                </Span>
-              );
-            })}
+            {Assets.map(asset => (
+              <Span
+                id="selectedSelling"
+                key={asset}
+                select={asset === selectedSelling}
+                onClick={this.onClickSpan}
+              >
+                {asset}
+              </Span>
+            ))}
           </div>
         </div>
 
@@ -70,17 +72,16 @@ export default class ManageOffer extends PureComponent {
             <FormTitle>BUYING</FormTitle>
           </div>
           <div className="d-flex col-lg-9 col-md-9 col-sm-12">
-            {Assets.map(asset => {
-              return (
-                <Span
-                  key={asset}
-                  select={asset === selectedSpan ? true : false}
-                  onClick={this.onClickSpan}
-                >
-                  {asset}
-                </Span>
-              );
-            })}
+            {Assets.map(asset => (
+              <Span
+                id="selectedBuying"
+                key={asset}
+                select={asset === selectedBuying}
+                onClick={this.onClickSpan}
+              >
+                {asset}
+              </Span>
+            ))}
           </div>
         </div>
 

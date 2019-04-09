@@ -23,9 +23,10 @@ const Flags = [
 
 export default class SetOption extends PureComponent {
   state = {
-    selectedSpan: 'Authorization required',
     selectedItem: 'Ed25519 Public Key',
     showItems: true,
+    selectedSetFlag: 'Authorization required',
+    selectedClearFlag: 'Authorization required',
   };
 
   dropDown = () => {
@@ -35,11 +36,18 @@ export default class SetOption extends PureComponent {
   };
 
   onClickSpan = e => {
-    this.setState({ selectedSpan: e.target.innerText });
+    const value = e.target.textContent;
+    const name = e.target.id;
+    this.setState({ [name]: value });
   };
 
   render() {
-    const { selectedSpan, selectedItem, showItems } = this.state;
+    const {
+      selectedSetFlag,
+      selectedClearFlag,
+      selectedItem,
+      showItems,
+    } = this.state;
     return (
       <div>
         <div className="row mt-5">
@@ -68,17 +76,16 @@ export default class SetOption extends PureComponent {
           </div>
           <div className="d-flex flex-column col-lg-9 col-md-9 col-sm-12">
             <div className="d-flex">
-              {Flags.map(flag => {
-                return (
-                  <Span
-                    key={flag}
-                    select={flag === selectedSpan ? true : false}
-                    onClick={this.onClickSpan}
-                  >
-                    {flag}
-                  </Span>
-                );
-              })}
+              {Flags.map(flag => (
+                <Span
+                  id="selectedSetFlag"
+                  key={flag}
+                  select={flag === selectedSetFlag}
+                  onClick={this.onClickSpan}
+                >
+                  {flag}
+                </Span>
+              ))}
             </div>
             <span>
               {`Authorization immutable (4) + Authorization revocable (2) +
@@ -102,10 +109,16 @@ export default class SetOption extends PureComponent {
           </div>
           <div className="d-flex flex-column col-lg-9 col-md-9 col-sm-12">
             <div className="d-flex">
-              <Span select={true} onClick={this.onClickSpan}>
-                Authorization required
-              </Span>
-              <Span onClick={this.onClickSpan}>Authorization revocable</Span>
+              {Flags.slice(0, 2).map(flag => (
+                <Span
+                  id="selectedClearFlag"
+                  key={flag}
+                  select={flag === selectedClearFlag}
+                  onClick={this.onClickSpan}
+                >
+                  {flag}
+                </Span>
+              ))}
             </div>
             <span>Authorization required (1) = 1</span>
             <GreyText>

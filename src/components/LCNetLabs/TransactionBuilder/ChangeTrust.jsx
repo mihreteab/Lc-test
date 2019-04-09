@@ -4,7 +4,7 @@ import InputContainerLarge from '../../shared/InputContainerLarge';
 import Span from '../../shared/Span';
 import FormTitle from '../../shared/FormTitle';
 import FormSubTitle from '../../shared/FormSubTitle';
-import Info from '../../shared/Info';
+// import Info from '../../shared/Info';
 
 import TextSpan from './TextSpan';
 
@@ -12,11 +12,17 @@ const Assets = ['Alphanumeric 4', 'Alphanumeric 12'];
 
 export default class ChangeTrust extends PureComponent {
   state = {
-    selectedSpan: 'Alphanumeric 4',
+    selectedSelling: 'Alphanumeric 4',
+  };
+
+  onClickSpan = e => {
+    const value = e.target.textContent;
+    const name = e.target.id;
+    this.setState({ [name]: value });
   };
 
   render() {
-    const { selectedSpan } = this.state;
+    const { selectedSelling } = this.state;
 
     return (
       <div>
@@ -45,17 +51,16 @@ export default class ChangeTrust extends PureComponent {
             <FormTitle>SELLING ASSET</FormTitle>
           </div>
           <div className="d-flex col-lg-9 col-md-9 col-sm-12">
-            {Assets.map(asset => {
-              return (
-                <Span
-                  key={asset}
-                  select={asset === selectedSpan ? true : false}
-                  onClick={this.onClickSpan}
-                >
-                  {asset}
-                </Span>
-              );
-            })}
+            {Assets.map(asset => (
+              <Span
+                id="selectedSelling"
+                key={asset}
+                select={asset === selectedSelling}
+                onClick={this.onClickSpan}
+              >
+                {asset}
+              </Span>
+            ))}
           </div>
         </div>
 
