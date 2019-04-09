@@ -43,7 +43,6 @@ const DisplayKeys = ({ keys }) => (
     </Row>
   </Table>
 );
-i;
 
 DisplayKeys.propTypes = {
   keys: PropTypes.object.isRequired,
