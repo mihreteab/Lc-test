@@ -31,20 +31,18 @@ const Content = styled.div`
   word-break: break-all;
 `;
 
-const DisplayKeys = ({ keys }) => {
-  return (
-    <Table>
-      <Row>
-        <Label>Public Key</Label>
-        <Content>{keys.publicKey}</Content>
-      </Row>
-      <Row>
-        <Label>Secret Key</Label>
-        <Content>{keys.secret}</Content>
-      </Row>
-    </Table>
-  );
-};
+const DisplayKeys = ({ keys }) => (
+  <Table>
+    <Row>
+      <Label>Public Key</Label>
+      <Content>{keys.publicKey}</Content>
+    </Row>
+    <Row>
+      <Label>Secret Key</Label>
+      <Content>{keys.secret}</Content>
+    </Row>
+  </Table>
+);
 i;
 
 DisplayKeys.propTypes = {

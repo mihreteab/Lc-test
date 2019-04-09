@@ -19,7 +19,7 @@
 - webpack-dev-server 3.x
 - react-hot-loader 4.x
 - redux-devtools (with browser plugin)
-
+Make sure you have a .env file @root of the project, or ref checkout env.example
 `npm start`
 
 ### Building

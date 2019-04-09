@@ -1,19 +1,21 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getKeypair } from 'actions/index';
 import Wrapper from './Wrapper';
 import Button from './Button';
 import InputContainerLarge from '../../shared/InputContainerLarge';
 import Title from './Title';
 import DisplayKeys from './DisplayKeys';
-import { getKeypair } from 'actions/index';
 
 export class AccountCreator extends PureComponent {
   state = {};
+
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     account: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
   };
+
   handleKeypair = () => {
     const { dispatch } = this.props;
     dispatch(getKeypair());

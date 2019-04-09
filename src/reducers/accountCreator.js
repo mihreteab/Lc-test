@@ -15,15 +15,14 @@ export const accountState = {
 export default {
   account: handleActions(
     {
-      [ActionTypes.ACCOUNT_GET_KEYPAIR]: (state, action) => {
-        return immutable(state, {
+      [ActionTypes.ACCOUNT_GET_KEYPAIR]: (state, action) =>
+        immutable(state, {
           keypair: {
             data: { $set: {} },
             message: { $set: '' },
             status: { $set: STATUS.RUNNING },
           },
-        });
-      },
+        }),
       [ActionTypes.ACCOUNT_GET_KEYPAIR_SUCCESS]: (state, { payload }) =>
         immutable(state, {
           keypair: {
