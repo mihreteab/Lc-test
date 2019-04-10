@@ -1,17 +1,18 @@
+// @format
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import treeChanges from 'tree-changes';
-import { getKeypair, showAlert } from 'actions/index';
+import { getKeypair, testFriendBot, showAlert } from 'actions/index';
+import { STATUS } from 'constants/index';
 import Wrapper from './Wrapper';
 import Button from './Button';
 import InputContainerLarge from '../../shared/InputContainerLarge';
 import Title from './Title';
 import DisplayKeys from './DisplayKeys';
-import { STATUS } from 'constants/index';
 
 export class AccountCreator extends PureComponent {
-  state = {};
+  state = { friendBotInput: '' };
 
   static propTypes = {
     account: PropTypes.object.isRequired,
@@ -28,13 +29,21 @@ export class AccountCreator extends PureComponent {
       );
     }
   }
+
   handleKeypair = () => {
     const { dispatch } = this.props;
     dispatch(getKeypair());
   };
 
+  handleFriendBot = () => {
+    const { dispatch } = this.props;
+    const { friendBotInput } = this.state;
+    dispatch(testFriendBot(friendBotInput));
+  };
+
   render() {
     const { account } = this.props;
+    const { friendBotInput } = this.state;
     return (
       <Wrapper>
         <Wrapper>
@@ -68,10 +77,23 @@ export class AccountCreator extends PureComponent {
           </p>
           <div className="d-flex flex-column">
             <InputContainerLarge
-              value="Example:
+              value={friendBotInput}
+              onChange={({ target }) =>
+                this.setState({ friendBotInput: target.value })
+              }
+              placeholder="Example:
               GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
             />
-            <Button testNetwork={true}>Get Test Network Lumens</Button>
+            <Button
+              disabled={friendBotInput === ''}
+              onClick={this.handleFriendBot}
+              testNetwork={true}
+            >
+              Get Test Network Lumens
+            </Button>
+            {account.friendBot.status === STATUS.READY ? (
+              <p>{account.friendBot.data}</p>
+            ) : null}
           </div>
         </Wrapper>
       </Wrapper>
@@ -80,8 +102,8 @@ export class AccountCreator extends PureComponent {
 }
 
 /* istanbul ignore next */
-function mapStateToProps(state) {
-  return { account: state.account };
+function mapStateToProps({ account }) {
+  return { account };
 }
 
 export default connect(mapStateToProps)(AccountCreator);

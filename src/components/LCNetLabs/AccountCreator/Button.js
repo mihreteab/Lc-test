@@ -11,12 +11,17 @@ const Button = styled.button`
   font-size: 16px;
 
   ${props =>
-    props.testNetwork &&
-    css`
-      background: #c9d6df;
-      margin-top: 15px;
-      width: 250px;
-    `}
+    props.testNetwork && props.disabled
+      ? css`
+          background: #c9d6df;
+          margin-top: 15px;
+          width: 250px;
+        `
+      : css`
+          background: #0084f8;
+          margin-top: 15px;
+          width: 250px;
+        `}
 `;
 
 export default Button;

@@ -24,6 +24,9 @@ export const ActionTypes = keyMirror({
   ACCOUNT_GET_KEYPAIR: undefined,
   ACCOUNT_GET_KEYPAIR_SUCCESS: undefined,
   ACCOUNT_GET_KEYPAIR_FAILURE: undefined,
+  ACCOUNT_FRIENDBOT_TEST: undefined,
+  ACCOUNT_FRIENDBOT_TEST_SUCCESS: undefined,
+  ACCOUNT_FRIENDBOT_TEST_FAILURE: undefined,
   SHOW_ALERT: undefined,
   HIDE_ALERT: undefined,
 });
