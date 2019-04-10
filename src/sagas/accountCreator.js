@@ -45,7 +45,7 @@ export function* friendBotTest({ payload }) {
   } catch (err) {
     /* istanbul ignore next */
     yield put({
-      type: ActionTypes.ACCOUNT_GET_KEYPAIR_FAILURE,
+      type: ActionTypes.ACCOUNT_FRIENDBOT_TEST_FAILURE,
       payload: err,
     });
   }

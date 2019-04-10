@@ -8,17 +8,24 @@ import { STATUS } from 'constants/index';
 import Wrapper from './Wrapper';
 import Button from './Button';
 import InputContainerLarge from '../../shared/InputContainerLarge';
+import Banner from '../../shared/Banner';
 import Title from './Title';
 import DisplayKeys from './DisplayKeys';
 
 export class AccountCreator extends PureComponent {
   state = { friendBotInput: '' };
-
+  divRef = React.createRef();
   static propTypes = {
     account: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
   };
-
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.account.friendBot.status !== this.props.account.friendBot.status
+    ) {
+      this.divRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
   componentWillReceiveProps(nextProps) {
     const { dispatch } = this.props;
     const { changedTo } = treeChanges(this.props, nextProps);
@@ -91,9 +98,17 @@ export class AccountCreator extends PureComponent {
             >
               Get Test Network Lumens
             </Button>
-            {account.friendBot.status === STATUS.READY ? (
-              <p>{account.friendBot.data}</p>
-            ) : null}
+            <div ref={this.divRef}>
+              {account.friendBot.status === STATUS.RUNNING && (
+                <Banner loading>Loading...</Banner>
+              )}
+              {account.friendBot.status === STATUS.READY && (
+                <Banner>{account.friendBot.data}</Banner>
+              )}
+              {account.friendBot.status === STATUS.ERROR && (
+                <Banner error>{account.friendBot.message}</Banner>
+              )}
+            </div>
           </div>
         </Wrapper>
       </Wrapper>
