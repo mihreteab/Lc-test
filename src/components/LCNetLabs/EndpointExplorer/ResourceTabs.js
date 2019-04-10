@@ -26,7 +26,7 @@ const ResourceTabs = styled.div`
       padding: 10px;
       background: #fff;
       border: 1px solid #c9d6df;
-      width: 200px;
+      width: 224px;
     `};
 
   ${props =>
@@ -34,13 +34,6 @@ const ResourceTabs = styled.div`
     css`
       background: #0084f8;
       color: #fff;
-    `};
-
-
-  ${props =>
-    props.menu &&
-    css`
-      width: 40%;
     `};
 `;
 

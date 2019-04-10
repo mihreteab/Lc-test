@@ -7,6 +7,7 @@ const Info = styled.p.attrs({
   font-size: 12px;
   line-height: 20px;
   color: #52616b;
+  overflow-wrap: break-word;
 `;
 
 export default Info;

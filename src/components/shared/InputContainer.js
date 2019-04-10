@@ -10,6 +10,10 @@ const InputContainer = styled.input`
   width: 250px;
   margin-top: 10px;
   border-radius: 4px;
+
+  @media (max-width: 350px) {
+    width: 150px;
+  }
 `;
 
 export default InputContainer;

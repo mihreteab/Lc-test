@@ -45,7 +45,7 @@ export default class Operations extends PureComponent {
                 activeOption={selectedOption === option ? true : false}
                 onClick={this.onOptionChange}
                 key={option}
-                menu={true}
+                options="true"
               >
                 {option}
               </ResourceTabs>

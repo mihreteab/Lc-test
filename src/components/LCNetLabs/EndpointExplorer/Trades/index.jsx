@@ -38,7 +38,6 @@ export default class Trades extends PureComponent {
                 onClick={this.onOptionChange}
                 key={option}
                 options="true"
-                menu={true}
               >
                 {option}
               </ResourceTabs>
