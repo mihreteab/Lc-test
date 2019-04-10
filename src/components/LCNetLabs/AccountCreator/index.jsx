@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getKeypair } from 'actions/index';
+import treeChanges from 'tree-changes';
+import { getKeypair, showAlert } from 'actions/index';
 import Wrapper from './Wrapper';
 import Button from './Button';
 import InputContainerLarge from '../../shared/InputContainerLarge';
 import Title from './Title';
 import DisplayKeys from './DisplayKeys';
+import { STATUS } from 'constants/index';
 
 export class AccountCreator extends PureComponent {
   state = {};
@@ -16,6 +18,16 @@ export class AccountCreator extends PureComponent {
     dispatch: PropTypes.func.isRequired,
   };
 
+  componentWillReceiveProps(nextProps) {
+    const { dispatch } = this.props;
+    const { changedTo } = treeChanges(this.props, nextProps);
+
+    if (changedTo('account.keypair.status', STATUS.ERROR)) {
+      dispatch(
+        showAlert(nextProps.account.keypair.message, { variant: 'danger' }),
+      );
+    }
+  }
   handleKeypair = () => {
     const { dispatch } = this.props;
     dispatch(getKeypair());
@@ -37,7 +49,7 @@ export class AccountCreator extends PureComponent {
             account signer, and/or <br /> as a stellar-core node key.{' '}
           </p>
           <Button onClick={this.handleKeypair}>Generate keypair</Button>
-          {account.keypair.status === 'ready' && (
+          {account.keypair.status === STATUS.READY && (
             <DisplayKeys keys={account.keypair.data} />
           )}
         </Wrapper>
