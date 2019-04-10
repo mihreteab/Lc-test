@@ -45,12 +45,14 @@ export const app = {
   },
   render(Component) {
     const root = document.getElementById('react');
-
     /* istanbul ignore next */
     if (root) {
       ReactDOM.render(
         <Provider store={store}>
-          <PersistGate loading={<Loader size={100} block />} persistor={persistor}>
+          <PersistGate
+            loading={<Loader size={100} block />}
+            persistor={persistor}
+          >
             <Component />
           </PersistGate>
         </Provider>,

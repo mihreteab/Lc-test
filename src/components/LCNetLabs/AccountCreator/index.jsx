@@ -1,14 +1,28 @@
 import React, { PureComponent } from 'react';
-
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getKeypair } from 'actions/index';
 import Wrapper from './Wrapper';
 import Button from './Button';
 import InputContainerLarge from '../../shared/InputContainerLarge';
 import Title from './Title';
+import DisplayKeys from './DisplayKeys';
 
-export default class AccountCreator extends PureComponent {
+export class AccountCreator extends PureComponent {
   state = {};
 
+  static propTypes = {
+    account: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+  };
+
+  handleKeypair = () => {
+    const { dispatch } = this.props;
+    dispatch(getKeypair());
+  };
+
   render() {
+    const { account } = this.props;
     return (
       <Wrapper>
         <Wrapper>
@@ -22,7 +36,10 @@ export default class AccountCreator extends PureComponent {
             required. For example, it can be used as an account master key,
             account signer, and/or <br /> as a stellar-core node key.{' '}
           </p>
-          <Button>Generate keypair</Button>
+          <Button onClick={this.handleKeypair}>Generate keypair</Button>
+          {account.keypair.status === 'ready' && (
+            <DisplayKeys keys={account.keypair.data} />
+          )}
         </Wrapper>
 
         <Wrapper>
@@ -49,3 +66,10 @@ export default class AccountCreator extends PureComponent {
     );
   }
 }
+
+/* istanbul ignore next */
+function mapStateToProps(state) {
+  return { account: state.account };
+}
+
+export default connect(mapStateToProps)(AccountCreator);

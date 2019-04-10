@@ -21,6 +21,9 @@ export const ActionTypes = keyMirror({
   GITHUB_GET_REPOS: undefined,
   GITHUB_GET_REPOS_SUCCESS: undefined,
   GITHUB_GET_REPOS_FAILURE: undefined,
+  ACCOUNT_GET_KEYPAIR: undefined,
+  ACCOUNT_GET_KEYPAIR_SUCCESS: undefined,
+  ACCOUNT_GET_KEYPAIR_FAILURE: undefined,
   SHOW_ALERT: undefined,
   HIDE_ALERT: undefined,
 });
