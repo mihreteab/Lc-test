@@ -19,7 +19,6 @@ import ChangeTrust from './ChangeTrust';
 import AllowTrust from './AllowTrust';
 import AccountMerge from './AccountMerge';
 import Inflation from './Inflation';
-
 import OperationCountSpan from './OperationCountSpan';
 import TextSpan from './TextSpan';
 import DivWrapper from './DivWrapper';
@@ -99,52 +98,60 @@ class Row extends Component {
     return (
       <div key={key}>
         <DivWrapper>
-          <CenterDiv className="col-lg-1 col-md-3 col-sm-1">
+          <CenterDiv className="col-lg-1 col-md-3 col-sm-12">
             <OperationCountSpan>{(key + 1).toString()}</OperationCountSpan>
           </CenterDiv>
 
-          <CenterDiv className="col-lg-3 col-md-3 col-sm-3" marginRight={true}>
+          <CenterDiv className="col-lg-3 col-md-3 col-sm-12" marginRight={true}>
             <FormTitle>OPERATION TYPE</FormTitle>
           </CenterDiv>
 
-          <CenterDiv
-            className="col-lg-7 col-md-5 col-sm-7"
+          <div
+            className="col-lg-7 col-md-5 col-sm-12"
             minHeight={true}
             style={{
               paddingRight: '15%',
             }}
           >
-            <SelectBoxWrapper>
-              <SelectBoxContainer>
-                <SelectedItem>{selectedItem.title}</SelectedItem>
-                <Arrow onClick={this.dropDown}>
-                  {showItems ? (
-                    <ArrowDir down="true" />
-                  ) : (
-                    <ArrowDir up="true" />
-                  )}
-                </Arrow>
-              </SelectBoxContainer>
+            <div
+              style={{
+                position: 'relative',
+                width: '100%',
+                minHeight: '100px',
+              }}
+            >
+              <SelectBoxWrapper onClick={this.dropDown}>
+                <SelectBoxContainer>
+                  <SelectedItem>{selectedItem.title}</SelectedItem>
+                  <Arrow>
+                    {showItems ? (
+                      <ArrowDir down="true" />
+                    ) : (
+                      <ArrowDir up="true" />
+                    )}
+                  </Arrow>
+                </SelectBoxContainer>
 
-              <ItemWrapper show={showItems}>
-                {items.map(item => (
-                  <Item
-                    key={item.title}
-                    onClick={() => this.selectItem(item)}
-                    selected={selectedItem === item ? 'true' : ''}
-                  >
-                    {item.title}
-                  </Item>
-                ))}
-              </ItemWrapper>
-              <TextSpan className="mt-2" top="65px">
-                {selectedItem.subTitle}
-              </TextSpan>
-              <TextSpan className="mt-2" top="100px">
-                {'See documentation for Create Account'}
-              </TextSpan>
-            </SelectBoxWrapper>
-          </CenterDiv>
+                <ItemWrapper show={showItems}>
+                  {items.map(item => (
+                    <Item
+                      key={item.title}
+                      onClick={() => this.selectItem(item)}
+                      selected={selectedItem === item ? 'true' : ''}
+                    >
+                      {item.title}
+                    </Item>
+                  ))}
+                </ItemWrapper>
+                <TextSpan className="mt-2" top="65px">
+                  {selectedItem.subTitle}
+                </TextSpan>
+                <TextSpan className="mt-2" top="100px">
+                  {'See documentation for Create Account'}
+                </TextSpan>
+              </SelectBoxWrapper>
+            </div>
+          </div>
         </DivWrapper>
 
         <MenuWrapper>
