@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {utils} from 'styled-minimal';
+import { utils } from 'styled-minimal';
 
-const {responsive} = utils;
+const { responsive } = utils;
 
 const SelectBoxContainer = styled.div`
   height: 58px;

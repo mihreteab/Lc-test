@@ -18,7 +18,7 @@ const NavLink = styled(navLink).attrs({
   padding: 18px 20px;
   font-size: 14px;
   text-decoration: none !important;
-
+  white-space: nowrap;
   ${props =>
     props.border &&
     css`
