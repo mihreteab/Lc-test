@@ -14,7 +14,7 @@ const options = [
   { label: 'Effects for Account', component: EffectsForAccounts },
 ];
 
-export default function Assets() {
+export default function Effects() {
   return (
     <SelectGroup title="Select a endpoint" options={options}>
       {({ component: Component, label }) => <Component key={label} />}
