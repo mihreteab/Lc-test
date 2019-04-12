@@ -1,35 +1,13 @@
 import React, { PureComponent } from 'react';
+import { SelectGroup } from '../SelectGroup';
+import SingleLedger from './SingleLedger';
+import OffersForAccount from './OffersForAccount';
 
-import Wrapper from '../../../shared/Wrapper';
-import Title from '../../../shared/Title';
-import ResourceTabs from '../ResourceTabs';
-
-import OffersForAccounts from './OffersForAccount';
-
-export default class Offers extends PureComponent {
-  state = {};
-
-  render() {
-    return (
-      <Wrapper className="col-lg-8 col-md-7 col-sm-12 col-xs-12">
-        <Title>
-          <p
-            style={{
-              fontSize: '18px',
-            }}
-          >
-            SELECT A ENDPOINT
-          </p>
-          <ResourceTabs
-            activeOption={true}
-            onClick={this.onOptionChange}
-            options="true"
-          >
-            Offers for Account
-          </ResourceTabs>
-        </Title>
-        <OffersForAccounts />
-      </Wrapper>
-    );
-  }
+const options = [{ label: 'Offers for account', component: OffersForAccount }];
+export default function AccountOffers() {
+  return (
+    <SelectGroup title="Select a endpoint" options={options}>
+      {({ component: Component, label }) => <Component key={label} />}
+    </SelectGroup>
+  );
 }
