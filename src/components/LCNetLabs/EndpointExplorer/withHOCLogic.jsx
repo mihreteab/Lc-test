@@ -30,7 +30,6 @@ export function withHOCLogic(WrappedComponent, endpointName) {
 				);
 			}
 		}
-		componentWillUnmount() {}
 		componentDidUpdate({ endpointExplorer }) {
 			if (endpointExplorer.status !== this.props.endpointExplorer.status) {
 				this.divRef.current.scrollIntoView({ behavior: 'smooth' });
