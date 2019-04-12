@@ -14,11 +14,14 @@ import DisplayKeys from './DisplayKeys';
 
 export class AccountCreator extends PureComponent {
   state = { friendBotInput: '' };
+
   divRef = React.createRef();
+
   static propTypes = {
     account: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
   };
+
   componentDidUpdate(prevProps) {
     if (
       prevProps.account.friendBot.status !== this.props.account.friendBot.status
@@ -26,6 +29,7 @@ export class AccountCreator extends PureComponent {
       this.divRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
   componentWillReceiveProps(nextProps) {
     const { dispatch } = this.props;
     const { changedTo } = treeChanges(this.props, nextProps);
@@ -117,8 +121,9 @@ export class AccountCreator extends PureComponent {
 }
 
 /* istanbul ignore next */
-function mapStateToProps({ account }) {
-  return { account };
+function mapStateToProps(state) {
+  console.log(state);
+  return { account: state.account };
 }
 
 export default connect(mapStateToProps)(AccountCreator);
