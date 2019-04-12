@@ -1,9 +1,5 @@
 import React, { PureComponent } from 'react';
-
-import Wrapper from '../../../shared/Wrapper';
-import Title from '../../../shared/Title';
-import ResourceTabs from '../ResourceTabs';
-
+import { SelectGroup } from '../SelectGroup';
 import AllEffects from './AllEffects';
 import EffectsForAccounts from './EffectsForAccount';
 import EffectsForLedger from './EffectsForLedger';
@@ -11,59 +7,17 @@ import EffectsForOperations from './EffectsForOperations';
 import EffectsForTransactions from './EffectsForTransaction';
 
 const options = [
-  'All Effects',
-  'Effects for Account',
-  'Effects for Ledger',
-  'Effects for Operations',
-  'Effects for Transaction',
+  { label: 'All Effects', component: AllEffects },
+  { label: 'Effects for Ledger', component: EffectsForLedger },
+  { label: 'Effects for Operations', component: EffectsForOperations },
+  { label: 'Effects for Transaction', component: EffectsForTransactions },
+  { label: 'Effects for Account', component: EffectsForAccounts },
 ];
 
-export default class Effects extends PureComponent {
-  state = {
-    selectedOption: 'All Effects',
-  };
-
-  onOptionChange = e => {
-    this.setState({ selectedOption: e.target.textContent });
-  };
-
-  render() {
-    const { selectedOption } = this.state;
-    return (
-      <Wrapper className="col-lg-8 col-md-7 col-sm-12 col-xs-12">
-        <Title>
-          <p
-            style={{
-              fontSize: '18px',
-            }}
-          >
-            SELECT A ENDPOINT
-          </p>
-          {options.map(option => {
-            return (
-              <ResourceTabs
-                activeOption={selectedOption === option ? true : false}
-                onClick={this.onOptionChange}
-                key={option}
-                options="true"
-              >
-                {option}
-              </ResourceTabs>
-            );
-          })}
-        </Title>
-        {selectedOption === 'All Effects' ? (
-          <AllEffects />
-        ) : selectedOption === 'Effects for Account' ? (
-          <EffectsForAccounts />
-        ) : selectedOption === 'Effects for Ledger' ? (
-          <EffectsForLedger />
-        ) : selectedOption === 'Effects for Operations' ? (
-          <EffectsForOperations />
-        ) : (
-          <EffectsForTransactions />
-        )}
-      </Wrapper>
-    );
-  }
+export default function Assets() {
+  return (
+    <SelectGroup title="Select a endpoint" options={options}>
+      {({ component: Component, label }) => <Component key={label} />}
+    </SelectGroup>
+  );
 }
