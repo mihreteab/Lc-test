@@ -8,10 +8,10 @@ import EffectsForTransactions from './EffectsForTransaction';
 
 const options = [
   { label: 'All Effects', component: AllEffects },
+  { label: 'Effects for Account', component: EffectsForAccounts },
   { label: 'Effects for Ledger', component: EffectsForLedger },
   { label: 'Effects for Operations', component: EffectsForOperations },
   { label: 'Effects for Transaction', component: EffectsForTransactions },
-  { label: 'Effects for Account', component: EffectsForAccounts },
 ];
 
 export default function Effects() {

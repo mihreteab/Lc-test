@@ -25,7 +25,7 @@ export function* exploreEndpoint({ payload }) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.EXPLORE_ENDPOINT_FAILURE,
-      payload: err,
+      payload: err.response,
     });
   }
 }

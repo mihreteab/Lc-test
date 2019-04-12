@@ -18,6 +18,8 @@ export default {
         immutable(state, {
           status: { $set: STATUS.RUNNING },
           endpointName: { $set: payload.endpointName },
+          message: { $set: '' },
+          data: { $set: {} },
         }),
       [ActionTypes.EXPLORE_ENDPOINT_SUCCESS]: (state, { payload }) =>
         immutable(state, {

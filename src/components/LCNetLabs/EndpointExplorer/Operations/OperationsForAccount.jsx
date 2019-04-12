@@ -1,70 +1,48 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withHOCLogic } from '../withHOCLogic';
+import { STATUS } from 'constants/index';
+import UrlMaker from '../UrlMaker';
+import Form, { InputField, OptionSpan, Info, SubmitButton } from '../Form';
 
-import Title from '../../../shared/Title';
-import Box from '../../../shared/Box';
-import InputContainerLarge from '../../../shared/InputContainerLarge';
-import Span from '../../../shared/Span';
-import FormTitle from '../../../shared/FormTitle';
-import FormSubTitle from '../../../shared/FormSubTitle';
-import Info from '../../../shared/Info';
+const endpointName = 'accountOperations';
 
-export default class OperationsForAccount extends PureComponent {
-  render() {
-    return (
-      <div>
-        <Title>OPERATION FOR ACCOUNT</Title>
-        <Box padding="40px">
-          <div className="row">
-            <div className="col-lg-3 col-md-3 col-sm-12">
-              <FormTitle>ACCOUNT ID</FormTitle>
-            </div>
-            <InputContainerLarge
-              className="col-lg-9 col-md-9 col-sm-12"
-              value="Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
-            />
-          </div>
+const options = ['asc', 'desc'];
+const include = ['true', 'false'];
 
-          <div className="row mt-5">
-            <div className="col-lg-3 col-md-3 col-sm-12">
-              <FormTitle>CURSOR</FormTitle>
-              <FormSubTitle>(Optional)</FormSubTitle>
-            </div>
-            <InputContainerLarge
-              className="col-lg-9 col-md-9 col-sm-12"
-              value="Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
-            />
-          </div>
+const AccountOperations = ({ onSubmit }) => (
+  <Form onSubmit={onSubmit}>
+    <InputField title="Account ID" id="accountId" type="text" required />
+    <InputField
+      title="Cursor"
+      subtitle="(optional)"
+      id="cursor"
+      type="text"
+      required
+    />
+    <InputField title="Limit" id="limit" type="number" min="1" required />
+    <OptionSpan title="Order" type="options" id="order" options={options} />
+    <OptionSpan
+      title="Include failed"
+      type="options"
+      id="includeFailed"
+      options={include}
+    />
+    <Info method="get" useField="all">
+      {value => UrlMaker(value, '/accounts', 'accountId', '/operations')}
+    </Info>
+    <SubmitButton type="submit">Submit</SubmitButton>
+  </Form>
+);
+AccountOperations.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
-          <div className="row mt-5">
-            <div className="col-lg-3 col-md-3 col-sm-12">
-              <FormTitle>LIMIT</FormTitle>
-            </div>
-            <InputContainerLarge
-              className="col-lg-9 col-md-9 col-sm-12"
-              value="Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
-            />
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-3 col-md-3 col-sm-12">
-              <FormTitle>ORDER</FormTitle>
-            </div>
-            <div className="col-lg-9 col-md-9 col-sm-12 mt-2 px-0">
-              <Span>asc</Span>
-              <Span>desc</Span>
-            </div>
-          </div>
-
-          <div className="row mt-5 pl-3">
-            <Info>Server-Sent Events (streaming) mode</Info>
-            <Info>
-              {
-                'https://horizon-testnet.stellar.org/accounts/{account_id}/operations'
-              }
-            </Info>
-          </div>
-        </Box>
-      </div>
-    );
-  }
+/* istanbul ignore next */
+function mapStateToProps({ endpointExplorer }) {
+  return { endpointExplorer };
 }
+export default connect(mapStateToProps)(
+  withHOCLogic(AccountOperations, endpointName),
+);

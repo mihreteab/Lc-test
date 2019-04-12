@@ -1,36 +1,38 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withHOCLogic } from '../withHOCLogic';
+import { STATUS } from 'constants/index';
+import Form, { InputField, Info, SubmitButton } from '../Form';
 
-import Title from '../../../shared/Title';
-import Box from '../../../shared/Box';
-import InputContainerLarge from '../../../shared/InputContainerLarge';
-import FormTitle from '../../../shared/FormTitle';
-import FormSubTitle from '../../../shared/FormSubTitle';
-import Info from '../../../shared/Info';
+const endpointName = 'singleTransAction';
 
-export default class SingleTransaction extends PureComponent {
-  render() {
-    return (
-      <div>
-        <Title>SINGLE TRANSACTION</Title>
-        <Box padding="40px">
-          <div className="row">
-            <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-              <FormTitle>TRANSACTION HASH</FormTitle>
-            </div>
-            <InputContainerLarge
-              className="col-lg-9 col-md-9 col-sm-12"
-              value="Example: 1714814"
-            />
-          </div>
+const SingleTransAction = ({ onSubmit }) => (
+  <Form onSubmit={onSubmit}>
+    <InputField
+      title="Transaction Hash"
+      id="hashTransaction"
+      type="text"
+      required
+    />
+    <Info method="get" useField="hashTransaction">
+      {value =>
+        `${process.env.REACT_APP_API_URL}/labs/transactions/${
+          value === '' ? '{hashTransaction}' : value
+        }`
+      }
+    </Info>
+    <SubmitButton type="submit">Submit</SubmitButton>
+  </Form>
+);
+SingleTransAction.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
-          <div className="row mt-5">
-            <Info>Server-Sent Events (streaming) mode</Info>
-            <Info>
-              {'https://horizon-testnet.stellar.org/transaction/{transaction}'}
-            </Info>
-          </div>
-        </Box>
-      </div>
-    );
-  }
+/* istanbul ignore next */
+function mapStateToProps({ endpointExplorer }) {
+  return { endpointExplorer };
 }
+export default connect(mapStateToProps)(
+  withHOCLogic(SingleTransAction, endpointName),
+);

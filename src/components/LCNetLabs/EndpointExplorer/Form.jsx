@@ -78,7 +78,11 @@ export const OptionSpan = ({ options, id, title, subtitle }) => {
     <FormContext.Consumer>
       {({ Fields, onChange }) =>
         Fields.filter(i => i.id === id).map((item, i) => {
-          return jsx(onChange, item, i);
+          return (
+            <React.Fragment>
+              {jsx(onChange, item, i)} <Hr />
+            </React.Fragment>
+          );
         })
       }
     </FormContext.Consumer>

@@ -1,60 +1,47 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withHOCLogic } from '../withHOCLogic';
+import { STATUS } from 'constants/index';
+import UrlMaker from '../UrlMaker';
+import Form, { InputField, OptionSpan, Info, SubmitButton } from '../Form';
 
-import Title from '../../../shared/Title';
-import Box from '../../../shared/Box';
-import InputContainerLarge from '../../../shared/InputContainerLarge';
-import Span from '../../../shared/Span';
-import FormTitle from '../../../shared/FormTitle';
-import FormSubTitle from '../../../shared/FormSubTitle';
-import Info from '../../../shared/Info';
+const endpointName = 'allTransactions';
 
-export default class AllTransactions extends PureComponent {
-  render() {
-    return (
-      <div>
-        <Title>ALL TRANSACTIONS</Title>
-        <Box padding="40px">
-          <div className="row mt-5">
-            <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-              <FormTitle>CURSOR</FormTitle>
-              <FormSubTitle>(Optional)</FormSubTitle>
-            </div>
-            <InputContainerLarge
-              className="col-lg-9 col-md-9 col-sm-12"
-              value="Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
-            />
-          </div>
+const order = ['asc', 'desc'];
+const include = ['true', 'false'];
 
-          <div className="row mt-5">
-            <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-              <FormTitle>LIMIT</FormTitle>
-            </div>
-            <InputContainerLarge
-              className="col-lg-9 col-md-9 col-sm-12"
-              value="Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
-            />
-          </div>
+const AllTransActions = ({ onSubmit }) => (
+  <Form onSubmit={onSubmit}>
+    <InputField
+      title="Cursor"
+      subtitle="(optional)"
+      id="cursor"
+      type="text"
+      required
+    />
+    <InputField title="Limit" id="limit" type="number" min="1" required />
+    <OptionSpan title="Order" type="options" id="order" options={order} />
+    <OptionSpan
+      title="Include failed"
+      type="options"
+      id="includeFailed"
+      options={include}
+    />
+    <Info method="get" useField="all">
+      {value => UrlMaker(value, '/transactions')}
+    </Info>
+    <SubmitButton type="submit">Submit</SubmitButton>
+  </Form>
+);
+AllTransActions.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
-          <div className="row mt-5">
-            <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-              <FormTitle>ORDER</FormTitle>
-            </div>
-            <div className="col-lg-9 col-md-9 col-sm-12 mt-2 px-0">
-              <Span>asc</Span>
-              <Span>desc</Span>
-            </div>
-          </div>
-
-          <div className="row mt-5">
-            <Info>Server-Sent Events (streaming) mode</Info>
-            <Info>
-              {
-                'https://horizon-testnet.stellar.org/accounts/{account_id}/transactions'
-              }
-            </Info>
-          </div>
-        </Box>
-      </div>
-    );
-  }
+/* istanbul ignore next */
+function mapStateToProps({ endpointExplorer }) {
+  return { endpointExplorer };
 }
+export default connect(mapStateToProps)(
+  withHOCLogic(AllTransActions, endpointName),
+);
