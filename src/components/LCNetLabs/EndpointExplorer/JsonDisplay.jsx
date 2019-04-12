@@ -46,5 +46,5 @@ export const JsonDisplay = ({ json }) => (
 );
 
 JsonDisplay.propTypes = {
-  json: PropTypes.object.isRequired,
+  json: PropTypes.string.isRequired,
 };

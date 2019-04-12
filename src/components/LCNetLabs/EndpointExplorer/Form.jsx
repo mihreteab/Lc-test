@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
+import Span from '../../shared/Span';
 import Box from '../../shared/Box';
 import FormTitle from '../../shared/FormTitle';
 import FormSubTitle from '../../shared/FormSubTitle';
@@ -52,22 +52,72 @@ const URL = styled.span`
   font-size: 16px;
   border-bottom: 1px dotted currentColor;
 `;
+export const OptionSpan = ({ options, id, title, subtitle }) => {
+  let jsx = (changeHandler, item, i) => {
+    return (
+      <div className="row" key={i}>
+        <div className="col-lg-3 col-md-4 col-sm-12 px-0">
+          <FormTitle>{title}</FormTitle>
+          {subtitle ? <FormSubTitle>(Optional)</FormSubTitle> : null}
+        </div>
+        {options.map(key => (
+          <Span
+            id={id}
+            value={key}
+            key={key}
+            onClick={e => changeHandler.call(null, e, id)}
+            select={key === item.value}
+          >
+            {key}
+          </Span>
+        ))}
+      </div>
+    );
+  };
+  return (
+    <FormContext.Consumer>
+      {({ Fields, onChange }) =>
+        Fields.filter(i => i.id === id).map((item, i) => {
+          return jsx(onChange, item, i);
+        })
+      }
+    </FormContext.Consumer>
+  );
+};
 
-export const Info = ({ method, children, useField }) => (
-  <FormContext.Consumer>
-    {({ Fields, getUrl }) =>
-      Fields.filter(i => i.id === useField).map((item, index) => {
-        getUrl(children(item.value), method.toUpperCase());
-        return (
-          <InfoBox key={index}>
-            <Method>{method.toUpperCase()}</Method>
-            <URL>{children(item.value)}</URL>
-          </InfoBox>
-        );
-      })
-    }
-  </FormContext.Consumer>
-);
+OptionSpan.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
+
+export const Info = ({ method, children, useField }) => {
+  const jsx = (url, index = 1) => (
+    <InfoBox key={index}>
+      <Method>{method.toUpperCase()}</Method>
+      <URL>{url}</URL>
+    </InfoBox>
+  );
+
+  return (
+    <FormContext.Consumer>
+      {({ Fields, getUrl }) => {
+        if (useField === 'all') {
+          const obj = {};
+          Fields.forEach(field => (obj[field.id] = field.value));
+          let url = children(obj);
+          getUrl(url, method.toUpperCase());
+          return jsx(url);
+        }
+        return Fields.filter(i => i.id === useField).map(({ value }, index) => {
+          let url = children(value);
+          getUrl(url, method.toUpperCase());
+          return jsx(url, index);
+        });
+      }}
+    </FormContext.Consumer>
+  );
+};
 Info.propTypes = {
   children: PropTypes.func.isRequired,
   method: PropTypes.string.isRequired,
@@ -89,7 +139,7 @@ SubmitButton.propTypes = {
   children: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };
-export const InputField = ({ id, title, subtitle, type }) => (
+export const InputField = ({ id, title, subtitle, type, ...props }) => (
   <FormContext.Consumer>
     {({ Fields, onChange }) =>
       Fields.filter(f => f.id === `${id}`).map(i => (
@@ -105,6 +155,7 @@ export const InputField = ({ id, title, subtitle, type }) => (
     Example: GCEXAMPLE5HWNK4AYSTEQ4UWDKHTCKADVS2AHF3UI2ZMO3DPUSM6Q4UG"
               value={i.value}
               type={type}
+              {...props}
               onChange={e => onChange.call(null, e, i.id)}
             />
           </div>
@@ -160,7 +211,7 @@ export default class Form extends PureComponent {
   onChangeHandler = ({ target }, id) => {
     const { Fields } = this.state;
     const newState = Fields.map(i =>
-      i.id === id ? { ...i, value: target.value } : i,
+      i.id === id ? { ...i, value: target.value || target.textContent } : i,
     );
     this.setState({ Fields: newState });
   };

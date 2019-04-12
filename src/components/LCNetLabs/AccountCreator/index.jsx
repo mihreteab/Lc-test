@@ -122,7 +122,6 @@ export class AccountCreator extends PureComponent {
 
 /* istanbul ignore next */
 function mapStateToProps(state) {
-  console.log(state);
   return { account: state.account };
 }
 

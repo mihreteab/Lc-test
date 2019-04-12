@@ -12,7 +12,7 @@ import theme, { headerHeight } from 'modules/theme';
 import { utils } from 'styled-minimal';
 
 import config from 'config';
-import { showAlert } from 'actions/index';
+import { showAlert, login } from 'actions/index';
 
 import Home from 'routes/Home';
 import NotFound from 'routes/NotFound';
@@ -55,7 +55,10 @@ export class App extends React.Component {
     dispatch: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
   };
-
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(login());
+  }
   componentWillReceiveProps(nextProps) {
     const { dispatch } = this.props;
     const { changedTo } = treeChanges(this.props, nextProps);
@@ -72,9 +75,7 @@ export class App extends React.Component {
   }
 
   render() {
-    // const { dispatch, user } = this.props;
     const { user } = this.props;
-    user.isAuthenticated = true;
     return (
       <Router history={history}>
         <ThemeProvider theme={theme}>
