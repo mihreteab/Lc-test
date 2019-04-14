@@ -1,116 +1,72 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withHOCLogic } from '../withHOCLogic';
+import UrlMaker from '../UrlMaker';
+import Form, {
+  ExtendedOptionSpan,
+  Info,
+  InputField,
+  SubmitButton,
+} from '../Form';
 
-import Box from '../../../shared/Box';
-import InputContainerLarge from '../../../shared/InputContainerLarge';
-import Span from '../../../shared/Span';
-import FormTitle from '../../../shared/FormTitle';
-import FormSubTitle from '../../../shared/FormSubTitle';
-import Info from '../../../shared/Info';
+const endpointName = 'FindPaymentByPaths';
 
-const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
+const destinationAssetTypes = [
+  { label: 'Native', value: 'native', type: 'normal' },
+  { label: 'Alphanumeric 4', value: 'credit_alphanum4', type: 'extended' },
+  { label: 'Alphanumeric 12', value: 'credit_alphanum12', type: 'extended' },
+];
 
-export default class FindPaymentPaths extends PureComponent {
-  state = {
-    selectedSpan: 'Native',
-    isVisible: false,
-  };
+const FindPaymentByPaths = ({ onSubmit }) => (
+  <Form onSubmit={onSubmit}>
+    <InputField
+      title="Source Account"
+      id="sourceAccount"
+      type="text"
+      required
+    />
+    <InputField
+      title="Destination Account"
+      id="destinationAccount"
+      type="text"
+      required
+    />
+    <ExtendedOptionSpan
+      title="Destination Asset"
+      type="options"
+      id="destinationAssetType"
+      options={destinationAssetTypes}
+      childOne={{
+        id: 'destinationAssetCode',
+        placeholder: 'Assets Code',
+      }}
+      childTwo={{
+        id: 'destinationAssetIssuer',
+        placeholder: 'Issuer Account ID',
+      }}
+    />
+    <InputField
+      title="Destination Amount"
+      id="destinationAmount"
+      type="number"
+      min="1"
+      required
+    />
+    <Info method="get" useField="all">
+      {value => UrlMaker(value, '/paths')}
+    </Info>
+    <SubmitButton type="submit">Submit</SubmitButton>
+  </Form>
+);
+FindPaymentByPaths.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
-  onClickSpan = e => {
-    const value = e.target.innerText;
-    // console.log(value);
-    // debugger;
-    if (value === 'Alphanumeric 4') {
-      this.setState({ isVisible: true, selectedSpan: value });
-    } else this.setState({ isVisible: false, selectedSpan: value });
-  };
-
-  render() {
-    const { selectedSpan, isVisible } = this.state;
-
-    return (
-      <Box className="pr-5" padding="40px">
-        <div className="row mt-5">
-          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-            <FormTitle>SOURCE ACCOUNT</FormTitle>
-          </div>
-          <InputContainerLarge
-            className="col-lg-9 col-md-9 col-sm-12"
-            value="Example: 3389e9f0f1a65f19736cacf544c2e825313e8447f569233bb8db39aa607c8889"
-          />
-        </div>
-
-        <div className="row mt-5">
-          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-            <FormTitle>DESTINATION ACCOUNT</FormTitle>
-          </div>
-          <InputContainerLarge
-            className="col-lg-9 col-md-9 col-sm-12"
-            value="Example: 3389e9f0f1a65f19736cacf544c2e825313e8447f569233bb8db39aa607c8889"
-          />
-        </div>
-
-        <div className="mt-5">
-          <div className="row">
-            <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-              <FormTitle>SELLING ASSET</FormTitle>
-            </div>
-            <div className="row mt-2 ml-1">
-              {Assets.map(asset => {
-                return (
-                  <Span
-                    key={asset}
-                    select={asset === selectedSpan ? true : false}
-                    onClick={this.onClickSpan}
-                  >
-                    {asset}
-                  </Span>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {isVisible === true ? (
-          <div>
-            <div className="row">
-              <div className="col-lg-3 col-md-12 col-sm-12" />
-              <InputContainerLarge
-                className="col-lg-9 col-md-12 col-sm-12 mt-4"
-                value="Asset Code"
-              />
-            </div>
-
-            <div className="row mt-4">
-              <div className="col-lg-3 col-md-12 col-sm-12" />
-              <InputContainerLarge
-                className="col-lg-9 col-md-12 col-sm-12"
-                value="Issuer Account ID"
-              />
-            </div>
-          </div>
-        ) : (
-          <div />
-        )}
-
-        <div className="row mt-5">
-          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-            <FormTitle>DESTINATION AMOUNT</FormTitle>
-          </div>
-          <InputContainerLarge
-            className="col-lg-9 col-md-9 col-sm-12"
-            value=""
-          />
-        </div>
-
-        <div className="row mt-5">
-          <Info>Server-Sent Events (streaming) mode</Info>
-          <Info>
-            {
-              'https://horizon-testnet.stellar.org/order_book?selling_asset_type=credit_alphanum4&buying_asset_type=credit_alphanum4'
-            }
-          </Info>
-        </div>
-      </Box>
-    );
-  }
+/* istanbul ignore next */
+function mapStateToProps({ endpointExplorer }) {
+  return { endpointExplorer };
 }
+export default connect(mapStateToProps)(
+  withHOCLogic(FindPaymentByPaths, endpointName),
+);

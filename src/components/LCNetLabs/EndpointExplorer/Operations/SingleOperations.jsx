@@ -1,8 +1,7 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withHOCLogic } from '../withHOCLogic';
-import { STATUS } from 'constants/index';
 import Form, { InputField, Info, SubmitButton } from '../Form';
 
 const endpointName = 'singleOperation';

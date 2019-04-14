@@ -1,8 +1,7 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withHOCLogic } from '../withHOCLogic';
-import { STATUS } from 'constants/index';
 import UrlMaker from '../UrlMaker';
 import Form, { InputField, OptionSpan, Info, SubmitButton } from '../Form';
 
@@ -11,7 +10,7 @@ const endpointName = 'ledgerOperations';
 const options = ['asc', 'desc'];
 const include = ['true', 'false'];
 
-const LedgerEffects = ({ onSubmit }) => (
+const LedgerOperations = ({ onSubmit }) => (
   <Form onSubmit={onSubmit}>
     <InputField
       title="Ledger Sequence"
@@ -40,7 +39,7 @@ const LedgerEffects = ({ onSubmit }) => (
     <SubmitButton type="submit">Submit</SubmitButton>
   </Form>
 );
-LedgerEffects.propTypes = {
+LedgerOperations.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
@@ -49,5 +48,5 @@ function mapStateToProps({ endpointExplorer }) {
   return { endpointExplorer };
 }
 export default connect(mapStateToProps)(
-  withHOCLogic(LedgerEffects, endpointName),
+  withHOCLogic(LedgerOperations, endpointName),
 );

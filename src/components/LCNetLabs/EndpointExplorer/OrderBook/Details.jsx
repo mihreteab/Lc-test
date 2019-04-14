@@ -1,141 +1,65 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withHOCLogic } from '../withHOCLogic';
+import UrlMaker from '../UrlMaker';
+import Form, { ExtendedOptionSpan, Info, SubmitButton } from '../Form';
 
-import Box from '../../../shared/Box';
-import InputContainerLarge from '../../../shared/InputContainerLarge';
-import Span from '../../../shared/Span';
-import FormTitle from '../../../shared/FormTitle';
-import FormSubTitle from '../../../shared/FormSubTitle';
-import Info from '../../../shared/Info';
+const endpointName = 'details';
 
-const buyAssets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
-const sellAssets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
+const buyAssets = [
+  { label: 'Native', value: 'native', type: 'normal' },
+  { label: 'Alphanumeric 4', value: 'credit_alphanum4', type: 'extended' },
+  { label: 'Alphanumeric 12', value: 'credit_alphanum12', type: 'extended' },
+];
+const sellAssets = [
+  { label: 'Native', value: 'native', type: 'normal' },
+  { label: 'Alphanumeric 4', value: 'credit_alphanum4', type: 'extended' },
+  { label: 'Alphanumeric 12', value: 'credit_alphanum12', type: 'extended' },
+];
 
-export default class Details extends PureComponent {
-  state = {
-    selectedBuySpan: 'Native',
-    selectedSellSpan: 'Native',
-    isBuyVisible: false,
-    isSellVisible: false,
-  };
+const Details = ({ onSubmit }) => (
+  <Form onSubmit={onSubmit}>
+    <ExtendedOptionSpan
+      title="Selling Asset"
+      type="options"
+      id="sellingAssetType"
+      options={sellAssets}
+      childOne={{
+        id: 'sellingAssetCode',
+        placeholder: 'Assets Code',
+      }}
+      childTwo={{
+        id: 'sellingAssetIssuer',
+        placeholder: 'Issuer Account ID',
+      }}
+    />
+    <ExtendedOptionSpan
+      title="Buying Asset"
+      type="options"
+      id="buyingAssetType"
+      childOne={{
+        id: 'buyingAssetCode',
+        placeholder: 'Assets Code',
+      }}
+      childTwo={{
+        id: 'buyingAssetIssuer',
+        placeholder: 'Issuer Account ID',
+      }}
+      options={buyAssets}
+    />
+    <Info method="get" useField="all">
+      {value => UrlMaker(value, '/orderBook')}
+    </Info>
+    <SubmitButton type="submit">Submit</SubmitButton>
+  </Form>
+);
+Details.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
-  onBuySpan = e => {
-    const value = e.target.innerText;
-    if (value === 'Alphanumeric 4') {
-      this.setState({ isBuyVisible: true, selectedBuySpan: value });
-    } else this.setState({ isBuyVisible: false, selectedBuySpan: value });
-  };
-
-  onSellSpan = e => {
-    const value = e.target.innerText;
-    if (value === 'Alphanumeric 4') {
-      this.setState({ isSellVisible: true, selectedSellSpan: value });
-    } else this.setState({ isSellVisible: false, selectedSellSpan: value });
-  };
-
-  render() {
-    const {
-      selectedBuySpan,
-      selectedSellSpan,
-      isBuyVisible,
-      isSellVisible,
-    } = this.state;
-
-    return (
-      <div>
-        <Box padding="30px">
-          <div className="row mt-5">
-            <div className="col-lg-3 col-md-3 col-sm-12 pt-2 px-1">
-              <FormTitle>SELLING ASSET</FormTitle>
-            </div>
-
-            <div className="row mt-2 ml-2">
-              {sellAssets.map(asset => {
-                return (
-                  <Span
-                    key={asset}
-                    select={asset === selectedSellSpan ? true : false}
-                    onClick={this.onSellSpan}
-                  >
-                    {asset}
-                  </Span>
-                );
-              })}
-            </div>
-          </div>
-
-          {isSellVisible === true ? (
-            <div>
-              <div className="row">
-                <div className="col-lg-3 col-md-12 col-sm-12" />
-                <InputContainerLarge
-                  className="col-lg-9 col-md-12 col-sm-12 mt-4"
-                  value="Asset Code"
-                />
-              </div>
-
-              <div className="row mt-4">
-                <div className="col-lg-3 col-md-12 col-sm-12" />
-                <InputContainerLarge
-                  className="col-lg-9 col-md-12 col-sm-12"
-                  value="Issuer Account ID"
-                />
-              </div>
-            </div>
-          ) : (
-            <div />
-          )}
-
-          <div className="row mt-5">
-            <div className="col-lg-3 col-md-3 col-sm-12 pt-2 px-1">
-              <FormTitle>BUYING ASSET</FormTitle>
-            </div>
-            <div className="row mt-2 ml-2">
-              {buyAssets.map(asset => {
-                return (
-                  <Span
-                    key={asset}
-                    select={asset === selectedBuySpan ? true : false}
-                    onClick={this.onBuySpan}
-                  >
-                    {asset}
-                  </Span>
-                );
-              })}
-            </div>
-          </div>
-
-          {isBuyVisible === true ? (
-            <div>
-              <div className="row">
-                <div className="col-lg-3 col-md-12 col-sm-12" />
-                <InputContainerLarge
-                  className="col-lg-9 col-md-12 col-sm-12 mt-4"
-                  value="Asset Code"
-                />
-              </div>
-
-              <div className="row mt-4">
-                <div className="col-lg-3 col-md-12 col-sm-12" />
-                <InputContainerLarge
-                  className="col-lg-9 col-md-12 col-sm-12"
-                  value="Issuer Account ID"
-                />
-              </div>
-            </div>
-          ) : (
-            <div />
-          )}
-
-          <div className="row mt-5">
-            <Info>Server-Sent Events (streaming) mode</Info>
-            <Info>
-              {
-                'https://horizon-testnet.stellar.org/order_book?selling_asset_type=native'
-              }
-            </Info>
-          </div>
-        </Box>
-      </div>
-    );
-  }
+/* istanbul ignore next */
+function mapStateToProps({ endpointExplorer }) {
+  return { endpointExplorer };
 }
+export default connect(mapStateToProps)(withHOCLogic(Details, endpointName));

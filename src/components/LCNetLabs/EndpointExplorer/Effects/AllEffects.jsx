@@ -1,8 +1,7 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withHOCLogic } from '../withHOCLogic';
-import { STATUS } from 'constants/index';
 import UrlMaker from '../UrlMaker';
 import Form, { InputField, OptionSpan, Info, SubmitButton } from '../Form';
 
@@ -10,7 +9,7 @@ const endpointName = 'allEffects';
 
 const options = ['asc', 'desc'];
 
-const AllAssets = ({ onSubmit }) => (
+const AllEffects = ({ onSubmit }) => (
   <Form onSubmit={onSubmit}>
     <InputField
       title="Cursor"
@@ -27,7 +26,7 @@ const AllAssets = ({ onSubmit }) => (
     <SubmitButton type="submit">Submit</SubmitButton>
   </Form>
 );
-AllAssets.propTypes = {
+AllEffects.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
@@ -35,4 +34,4 @@ AllAssets.propTypes = {
 function mapStateToProps({ endpointExplorer }) {
   return { endpointExplorer };
 }
-export default connect(mapStateToProps)(withHOCLogic(AllAssets, endpointName));
+export default connect(mapStateToProps)(withHOCLogic(AllEffects, endpointName));

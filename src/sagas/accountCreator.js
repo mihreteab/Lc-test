@@ -19,6 +19,7 @@ export function* getKeypair() {
     const response = yield call(
       request,
       `${process.env.REACT_APP_API_URL}/keypair`,
+      { method: 'GET' },
     );
     yield put({
       type: ActionTypes.ACCOUNT_GET_KEYPAIR_SUCCESS,

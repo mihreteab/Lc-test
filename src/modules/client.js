@@ -35,7 +35,6 @@ export function parseError(error: string): string {
  */
 export function request(url: string, options: Object = {}): Promise<*> {
   const config = {
-    method: 'GET',
     ...options,
   };
   const errors = [];
@@ -44,7 +43,10 @@ export function request(url: string, options: Object = {}): Promise<*> {
     errors.push('url');
   }
 
-  if (!config.payload && (config.method !== 'GET' && config.method !== 'DELETE')) {
+  if (
+    !config.payload &&
+    (config.method !== 'GET' && config.method !== 'DELETE')
+  ) {
     errors.push('payload');
   }
 
