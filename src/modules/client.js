@@ -35,6 +35,7 @@ export function parseError(error: string): string {
  */
 export function request(url: string, options: Object = {}): Promise<*> {
   const config = {
+    method: 'GET',
     ...options,
   };
   const errors = [];
