@@ -1,125 +1,91 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withHOCLogic } from '../withHOCLogic';
+import UrlMaker from '../UrlMaker';
+import Form, {
+  ExtendedOptionSpan,
+  Info,
+  InputField,
+  OptionSpan,
+  SubmitButton,
+} from '../Form';
 
-import Box from '../../../shared/Box';
-import InputContainerLarge from '../../../shared/InputContainerLarge';
-import Span from '../../../shared/Span';
-import FormTitle from '../../../shared/FormTitle';
-import FormSubTitle from '../../../shared/FormSubTitle';
-import Info from '../../../shared/Info';
+const endpointName = 'tradeAggregations';
+const order = ['asc', 'desc'];
 
-const Assets = ['Native', 'Alphanumeric 4', 'Alphanumeric 12'];
+const baseAssetTypes = [
+  { label: 'Native', value: 'native', type: 'normal' },
+  { label: 'Alphanumeric 4', value: 'credit_alphanum4', type: 'extended' },
+  { label: 'Alphanumeric 12', value: 'credit_alphanum12', type: 'extended' },
+];
 
-export default class Trade extends PureComponent {
-  state = {
-    selectedBaseAsset: 'Native',
-    selectedCounterAsset: 'Native',
-  };
+const counterAssetTypes = [
+  { label: 'Native', value: 'native', type: 'normal' },
+  { label: 'Alphanumeric 4', value: 'credit_alphanum4', type: 'extended' },
+  { label: 'Alphanumeric 12', value: 'credit_alphanum12', type: 'extended' },
+];
 
-  onClickSpan = e => {
-    const value = e.target.textContent;
-    const name = e.target.id;
-    this.setState({ [name]: value });
-  };
+const TradeAggregations = ({ onSubmit }) => (
+  <Form onSubmit={onSubmit}>
+    <ExtendedOptionSpan
+      title="Base Asset"
+      type="options"
+      id="baseAssetType"
+      options={baseAssetTypes}
+      childOne={{
+        id: 'baseAssetCode',
+        placeholder: 'Assets Code',
+      }}
+      childTwo={{
+        id: 'baseAssetIssuer',
+        placeholder: 'Issuer Account ID',
+      }}
+    />
+    <ExtendedOptionSpan
+      title="Counter Asset"
+      type="options"
+      id="counterAssetType"
+      options={counterAssetTypes}
+      childOne={{
+        id: 'counterAssetCode',
+        placeholder: 'Assets Code',
+      }}
+      childTwo={{
+        id: 'counterAssetIssuer',
+        placeholder: 'Issuer Account ID',
+      }}
+    />
 
-  render() {
-    const { selectedBaseAsset, selectedCounterAsset } = this.state;
-    return (
-      <Box padding="40px">
-        <div className="mt-5">
-          <div className="row">
-            <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-              <FormTitle>BASE ASSET</FormTitle>
-            </div>
-            <div className="row mt-2 ml-1">
-              {Assets.map(asset => (
-                <Span
-                  id="selectedBaseAsset"
-                  key={asset}
-                  select={asset === selectedBaseAsset}
-                  onClick={this.onClickSpan}
-                >
-                  {asset}
-                </Span>
-              ))}
-            </div>
-          </div>
-        </div>
+    <InputField title="Start Time" id="startTime" type="text" required />
+    <InputField title="End Time" id="endTime" type="text" required />
 
-        <div className="mt-5">
-          <div className="row">
-            <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-              <FormTitle>COUNTER ASSET</FormTitle>
-            </div>
-            <div className="row mt-2 ml-1">
-              {Assets.map(asset => (
-                <Span
-                  id="selectedCounterAsset"
-                  key={asset}
-                  select={asset === selectedCounterAsset}
-                  onClick={this.onClickSpan}
-                >
-                  {asset}
-                </Span>
-              ))}
-            </div>
-          </div>
-        </div>
+    <InputField title="Resolution" id="resolution" type="text" required />
+    <InputField
+      title="Limit"
+      subtitle="(Optional)"
+      id="limit"
+      type="number"
+      min="1"
+      required
+    />
 
-        <div className="row mt-5">
-          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-            <FormTitle>START TIME</FormTitle>
-          </div>
-          <InputContainerLarge
-            className="col-lg-9 col-md-9 col-sm-12"
-            value=""
-          />
-        </div>
+    <OptionSpan title="Order" type="options" id="order" options={order} />
 
-        <div className="row mt-5">
-          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-            <FormTitle>END TIME</FormTitle>
-          </div>
-          <InputContainerLarge
-            className="col-lg-9 col-md-9 col-sm-12"
-            value=""
-          />
-        </div>
+    <Info method="get" useField="all">
+      {value => UrlMaker(value, '/tradeAggregations')}
+    </Info>
+    <SubmitButton type="submit">Submit</SubmitButton>
+  </Form>
+);
+TradeAggregations.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
-        <div className="row mt-5">
-          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-            <FormTitle>RESOLUTION</FormTitle>
-          </div>
-          <InputContainerLarge
-            className="col-lg-9 col-md-9 col-sm-12"
-            value=""
-          />
-        </div>
-
-        <div className="row mt-5">
-          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-            <FormTitle>LIMIT</FormTitle>
-            <FormSubTitle>(Optional)</FormSubTitle>
-          </div>
-          <InputContainerLarge
-            className="col-lg-9 col-md-9 col-sm-12"
-            value=""
-          />
-        </div>
-
-        <div className="row mt-5">
-          <div className="col-lg-3 col-md-3 col-sm-12 px-0">
-            <FormTitle>ORDER</FormTitle>
-          </div>
-          <div className="col-lg-9 col-md-9 col-sm-12 mt-2 px-0">
-            <Span>asc</Span>
-            <Span>desc</Span>
-          </div>
-        </div>
-
-        <div className="row mt-5">
-          <Info>Server-Sent Events (streaming) mode</Info>
-        </div>
-      </Box>
-    );
-  }
+/* istanbul ignore next */
+function mapStateToProps({ endpointExplorer }) {
+  return { endpointExplorer };
 }
+export default connect(mapStateToProps)(
+  withHOCLogic(TradeAggregations, endpointName),
+);

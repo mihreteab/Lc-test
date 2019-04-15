@@ -1,35 +1,13 @@
-import React, { PureComponent } from 'react';
-
-import Wrapper from '../../../shared/Wrapper';
-import Title from '../../../shared/Title';
-import ResourceTabs from '../ResourceTabs';
-
+import React from 'react';
+import { SelectGroup } from '../SelectGroup';
 import Details from './Details';
 
-export default class OrderBook extends PureComponent {
-  state = {};
+const options = [{ label: 'Detials', component: Details }];
 
-  render() {
-    return (
-      <Wrapper className="col-lg-8 col-md-7 col-sm-12 col-xs-12">
-        <Title>
-          <p
-            style={{
-              fontSize: '18px',
-            }}
-          >
-            SELECT A ENDPOINT
-          </p>
-          <ResourceTabs
-            activeOption={true}
-            onClick={this.onOptionChange}
-            options="true"
-          >
-            Details
-          </ResourceTabs>
-        </Title>
-        <Details />
-      </Wrapper>
-    );
-  }
+export default function OrderBook() {
+  return (
+    <SelectGroup title="Select a endpoint" options={options}>
+      {({ component: Component, label }) => <Component key={label} />}
+    </SelectGroup>
+  );
 }

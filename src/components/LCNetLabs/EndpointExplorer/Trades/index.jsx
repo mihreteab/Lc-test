@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import { SelectGroup } from '../SelectGroup';
 import TradesForAccount from './TradesForAccount';
@@ -10,7 +10,7 @@ const options = [
   { label: 'Trades for Account', component: TradesForAccount },
   { label: 'Trades for Offer', component: TradesForOffer },
 ];
-export default function Operations() {
+export default function Trades() {
   return (
     <SelectGroup title="Select a endpoint" options={options}>
       {({ component: Component, label }) => <Component key={label} />}

@@ -16,7 +16,10 @@ import { ActionTypes } from 'constants/index';
  */
 export function* exploreEndpoint({ payload }) {
   try {
-    const response = yield call(request, payload.url);
+    const response = yield call(request, payload.url, {
+      ...(payload.method ? { method: payload.method } : { method: 'GET' }),
+      ...(payload.tx ? { payload: { tx: payload.tx } } : null),
+    });
     yield put({
       type: ActionTypes.EXPLORE_ENDPOINT_SUCCESS,
       payload: { [payload.endpointName]: response.data },

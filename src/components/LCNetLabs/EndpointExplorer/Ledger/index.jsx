@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { SelectGroup } from '../SelectGroup';
 import SingleLedger from './SingleLedger';
 import AllLedgers from './AllLedgers';

@@ -18,7 +18,10 @@ export function* getRepos({ payload }) {
   try {
     const response = yield call(
       request,
-      `https://api.github.com/search/repositories?q=${payload.query}&sort=stars`,
+      `https://api.github.com/search/repositories?q=${
+        payload.query
+      }&sort=stars`,
+      { method: 'GET' },
     );
     yield put({
       type: ActionTypes.GITHUB_GET_REPOS_SUCCESS,
