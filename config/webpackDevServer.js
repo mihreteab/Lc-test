@@ -15,7 +15,8 @@ module.exports = function(proxy, allowedHost) {
     clientLogLevel: 'none',
     compress: true,
     contentBase: paths.appAssets,
-    disableHostCheck: !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 'true',
+    disableHostCheck:
+      !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 'true',
     historyApiFallback: {
       disableDotRule: true,
     },

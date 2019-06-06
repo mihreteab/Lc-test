@@ -17,7 +17,9 @@ const props = {
 };
 
 function setup(ownProps = props) {
-  return shallow(<GitHub {...ownProps} />, { attachTo: document.getElementById('react') });
+  return shallow(<GitHub {...ownProps} />, {
+    attachTo: document.getElementById('react'),
+  });
 }
 
 describe('GitHub', () => {

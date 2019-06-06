@@ -9,5 +9,5 @@ export default {
   ...github,
   ...user,
   ...account,
-  ...endpointExplorer
+  ...endpointExplorer,
 };

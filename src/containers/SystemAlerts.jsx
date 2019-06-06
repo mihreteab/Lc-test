@@ -150,16 +150,24 @@ export class SystemAlerts extends React.PureComponent {
     return (
       <SystemAlertsWrapper key="SystemAlerts">
         <TopLeft>
-          <Transition transition="slideDown">{this.renderAlerts('top-left')}</Transition>
+          <Transition transition="slideDown">
+            {this.renderAlerts('top-left')}
+          </Transition>
         </TopLeft>
         <TopRight>
-          <Transition transition="slideDown">{this.renderAlerts('top-right')}</Transition>
+          <Transition transition="slideDown">
+            {this.renderAlerts('top-right')}
+          </Transition>
         </TopRight>
         <BottomLeft>
-          <Transition transition="slideUp">{this.renderAlerts('bottom-left')}</Transition>
+          <Transition transition="slideUp">
+            {this.renderAlerts('bottom-left')}
+          </Transition>
         </BottomLeft>
         <BottomRight>
-          <Transition transition="slideUp">{this.renderAlerts('bottom-right')}</Transition>
+          <Transition transition="slideUp">
+            {this.renderAlerts('bottom-right')}
+          </Transition>
         </BottomRight>
       </SystemAlertsWrapper>
     );

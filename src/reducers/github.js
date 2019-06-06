@@ -17,7 +17,9 @@ export default {
   github: handleActions(
     {
       [ActionTypes.GITHUB_GET_REPOS]: (state, { payload }) => {
-        const data = state.repos.data[payload.query] ? state.repos.data[payload.query] : [];
+        const data = state.repos.data[payload.query]
+          ? state.repos.data[payload.query]
+          : [];
 
         return immutable(state, {
           repos: {

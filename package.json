@@ -19,6 +19,7 @@
     "ES6"
   ],
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "classlist-polyfill": "^1.2.0",
     "classnames": "^2.2.6",
@@ -192,6 +193,7 @@
     "build:serve": "npm run build && npm run serve",
     "analyze": "NODE_ENV=production webpack --config config/webpack.config.js --profile --json > webpack.stats.json",
     "lint": "eslint  --ext .js --ext .jsx src config test tools",
+    "lint:fix": "eslint --fix --ext .js --ext .jsx src config test tools",
     "lint:styles": "stylelint 'src/**/*.{js,jsx}'",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "jest --bail --coverage",
@@ -208,13 +210,11 @@
     "serve": "serve --listen 3000 build",
     "deploy": "node tools deploy",
     "publish": "node tools publish",
-    "bundlesize": "bundlesize",
-    "precommit": "node tools upstream && lint-staged && flow"
+    "bundlesize": "bundlesize"
   },
   "husky": {
     "hooks": {
-      "post-merge": "node tools update",
-      "pre-commit": "npm run precommit"
+      "post-merge": "node tools update"
     }
   },
   "browserslist": "> 0.25%, not dead",

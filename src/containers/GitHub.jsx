@@ -118,7 +118,9 @@ export class GitHub extends React.Component {
     const { changedTo } = treeChanges(this.props, nextProps);
 
     if (changedTo('github.repos.status', STATUS.ERROR)) {
-      dispatch(showAlert(nextProps.github.repos.message, { variant: 'danger' }));
+      dispatch(
+        showAlert(nextProps.github.repos.message, { variant: 'danger' }),
+      );
     }
   }
 

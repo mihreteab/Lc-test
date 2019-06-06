@@ -75,7 +75,8 @@ function build(previousFileSizes) {
       }
       if (
         process.env.CI &&
-        (typeof process.env.CI !== 'string' || process.env.CI.toLowerCase() !== 'false') &&
+        (typeof process.env.CI !== 'string' ||
+          process.env.CI.toLowerCase() !== 'false') &&
         messages.warnings.length
       ) {
         console.log(
@@ -133,7 +134,9 @@ checkBrowsers(paths.appPath, isInteractive)
           )} to learn more about each warning.`,
         );
         console.log(
-          `To ignore, add ${chalk.cyan('// eslint-disable-next-line')} to the line before.\n`,
+          `To ignore, add ${chalk.cyan(
+            '// eslint-disable-next-line',
+          )} to the line before.\n`,
         );
       } else {
         console.log(chalk.green('Compiled successfully.\n'));

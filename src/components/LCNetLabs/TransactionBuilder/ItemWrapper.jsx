@@ -5,14 +5,11 @@ const ItemWrapper = styled.div`
   background: #fff;
   position: relative;
 
-  ${props => {
-    return (
-      props.show &&
-      css`
-        display: none;
-      `
-    );
-  }}
+  ${props =>
+    props.show &&
+    css`
+      display: none;
+    `}
 `;
 
 export default ItemWrapper;

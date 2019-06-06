@@ -128,7 +128,8 @@ module.exports = webpackEnv => {
     bail: isProd,
     context: paths.appSrc,
     mode: webpackEnv,
-    devtool: isProd && shouldUseSourceMap ? 'source-map' : 'cheap-module-source-map',
+    devtool:
+      isProd && shouldUseSourceMap ? 'source-map' : 'cheap-module-source-map',
     entry: {
       'scripts/modernizr': paths.appModernizr,
       'scripts/bundle': [
@@ -139,14 +140,19 @@ module.exports = webpackEnv => {
       ].filter(Boolean),
     },
     output: {
-      chunkFilename: isProd ? 'scripts/js/[name].[git-hash].chunk.js' : '[name].chunk.js',
+      chunkFilename: isProd
+        ? 'scripts/js/[name].[git-hash].chunk.js'
+        : '[name].chunk.js',
       filename: isProd ? '[name].[git-hash].js' : '[name].js',
       path: paths.appBuild,
       pathinfo: isDev,
       publicPath,
       // Point sourcemap entries to original disk location (format as URL on Windows)
       devtoolModuleFilenameTemplate: isProd
-        ? info => path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/')
+        ? info =>
+          path
+            .relative(paths.appSrc, info.absoluteResourcePath)
+            .replace(/\\/g, '/')
         : info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
     },
     resolve: {
@@ -328,7 +334,9 @@ module.exports = webpackEnv => {
       new webpack.DefinePlugin({
         ...env.stringified,
         APP__BRANCH: JSON.stringify(gitInfoPlugin.branch()),
-        APP__BUILD_DATE: JSON.stringify(dateFns.format(new Date(), 'DD/MM/YYYY')),
+        APP__BUILD_DATE: JSON.stringify(
+          dateFns.format(new Date(), 'DD/MM/YYYY'),
+        ),
         APP__GITHASH: JSON.stringify(gitInfoPlugin.hash()),
         APP__VERSION: JSON.stringify(NPMPackage.version),
       }),
