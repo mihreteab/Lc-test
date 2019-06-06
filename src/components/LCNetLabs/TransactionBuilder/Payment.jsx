@@ -46,17 +46,15 @@ export default class Payment extends PureComponent {
             <FormTitle>BASE ASSET</FormTitle>
           </div>
           <div className="d-flex col-lg-9 col-md-9 col-sm-12 pl-1">
-            {Assets.map(asset => {
-              return (
-                <Span
-                  key={asset}
-                  select={asset === selectedSpan ? true : false}
-                  onClick={this.onClickSpan}
-                >
-                  {asset}
-                </Span>
-              );
-            })}
+            {Assets.map(asset => (
+              <Span
+                key={asset}
+                select={asset === selectedSpan}
+                onClick={this.onClickSpan}
+              >
+                {asset}
+              </Span>
+            ))}
           </div>
         </div>
 

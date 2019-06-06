@@ -2,7 +2,9 @@ import { hideAlert, showAlert } from 'actions/app';
 
 describe('App', () => {
   it('showAlert with variant `error` should return an action', () => {
-    expect(showAlert('Alright!', { id: 'test', variant: 'danger' })).toMatchSnapshot();
+    expect(
+      showAlert('Alright!', { id: 'test', variant: 'danger' }),
+    ).toMatchSnapshot();
   });
 
   it('showAlert with variant `success` should return an action', () => {

@@ -31,7 +31,9 @@ const BrowserDetect = {
       return parseFloat(dataString.substring(rv + 3));
     }
 
-    return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+    return parseFloat(
+      dataString.substring(index + this.versionSearchString.length + 1),
+    );
   },
 
   dataBrowser: [

@@ -67,7 +67,12 @@ const Alert = ({ children, handleClickClose, id, icon, ...rest }) => {
 
   if (handleClickClose) {
     output.button = (
-      <AlertButton data-id={id} onClick={handleClickClose} type="button" data-testid="AlertButton">
+      <AlertButton
+        data-id={id}
+        onClick={handleClickClose}
+        type="button"
+        data-testid="AlertButton"
+      >
         <Icon name="times" width={10} />
       </AlertButton>
     );

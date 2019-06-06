@@ -9,12 +9,15 @@ class ToggleButton extends Component {
     this.setLive = this.setLive.bind(this);
     this.setTest = this.setTest.bind(this);
   }
+
   setLive() {
     this.setState({ active: 'LIVE' });
   }
+
   setTest() {
     this.setState({ active: 'TEST' });
   }
+
   render() {
     return (
       <div

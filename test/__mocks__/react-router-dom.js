@@ -46,7 +46,8 @@ export const NavLink = props => {
     match = { path: location.pathname };
   }
 
-  const isActive = typeof getIsActive === 'function' ? getIsActive(match, location) : null;
+  const isActive =
+    typeof getIsActive === 'function' ? getIsActive(match, location) : null;
 
   return (
     <Link

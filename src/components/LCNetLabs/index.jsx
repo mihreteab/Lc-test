@@ -59,7 +59,7 @@ export default class LCNetLabs extends Component {
               {networks.map(network => (
                 <ToggleButton
                   key={network}
-                  active={selectedNetwork === network ? true : false}
+                  active={selectedNetwork === network}
                   onClick={this.onClickToggle}
                 >
                   {network}
@@ -71,17 +71,15 @@ export default class LCNetLabs extends Component {
 
         <div className="">
           <NavWrapper>
-            {NavTabs.map(key => {
-              return (
-                <Tabs
-                  isSelect={selectedLabel === key ? true : false}
-                  key={key}
-                  onClick={this.onSelectLabel}
-                >
-                  {key}
-                </Tabs>
-              );
-            })}
+            {NavTabs.map(key => (
+              <Tabs
+                isSelect={selectedLabel === key}
+                key={key}
+                onClick={this.onSelectLabel}
+              >
+                {key}
+              </Tabs>
+            ))}
           </NavWrapper>
         </div>
         {selectedLabel === 'LABORATORY' && <Laboratorys />}

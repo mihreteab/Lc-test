@@ -55,10 +55,12 @@ export class App extends React.Component {
     dispatch: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
   };
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(login());
   }
+
   componentWillReceiveProps(nextProps) {
     const { dispatch } = this.props;
     const { changedTo } = treeChanges(this.props, nextProps);

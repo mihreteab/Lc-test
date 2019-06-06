@@ -7,18 +7,26 @@ describe('User', () => {
   });
 
   it(`should handle ${ActionTypes.USER_LOGIN}`, () => {
-    expect(reducer.user(undefined, { type: ActionTypes.USER_LOGIN })).toMatchSnapshot();
+    expect(
+      reducer.user(undefined, { type: ActionTypes.USER_LOGIN }),
+    ).toMatchSnapshot();
   });
 
   it(`should handle ${ActionTypes.USER_LOGIN_SUCCESS}`, () => {
-    expect(reducer.user(undefined, { type: ActionTypes.USER_LOGIN_SUCCESS })).toMatchSnapshot();
+    expect(
+      reducer.user(undefined, { type: ActionTypes.USER_LOGIN_SUCCESS }),
+    ).toMatchSnapshot();
   });
 
   it(`should handle ${ActionTypes.USER_LOGOUT}`, () => {
-    expect(reducer.user(undefined, { type: ActionTypes.USER_LOGOUT })).toMatchSnapshot();
+    expect(
+      reducer.user(undefined, { type: ActionTypes.USER_LOGOUT }),
+    ).toMatchSnapshot();
   });
 
   it(`should handle ${ActionTypes.USER_LOGOUT_SUCCESS}`, () => {
-    expect(reducer.user(undefined, { type: ActionTypes.USER_LOGOUT_SUCCESS })).toMatchSnapshot();
+    expect(
+      reducer.user(undefined, { type: ActionTypes.USER_LOGOUT_SUCCESS }),
+    ).toMatchSnapshot();
   });
 });

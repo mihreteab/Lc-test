@@ -6,9 +6,11 @@ const FormSubTitle = styled.span`
   line-height: 20px;
   color: #636161;
 
-  ${props => props.paddingLeft && css`
-    padding-left: 10%
-  ` }
+  ${props =>
+    props.paddingLeft &&
+    css`
+      padding-left: 10%;
+    `}
 `;
 
 export default FormSubTitle;

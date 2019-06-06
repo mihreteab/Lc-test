@@ -77,17 +77,29 @@ function checkUpstream() {
             run('git rev-parse @{u}'),
             run('git merge-base @ @{u}'),
           ])
-            .then(([{ stdout: $local }, { stdout: $remote }, { stdout: $base }]) => {
-              if ($local === $remote) {
-                console.log(chalk.green('✔ Repo is up-to-date!'));
-              } else if ($local === $base) {
-                console.log(chalk.red('⊘ Error'), 'You need to pull, there are new commits.');
-                process.exit(1);
-              }
-            })
+            .then(
+              ([
+                { stdout: $local },
+                { stdout: $remote },
+                { stdout: $base },
+              ]) => {
+                if ($local === $remote) {
+                  console.log(chalk.green('✔ Repo is up-to-date!'));
+                } else if ($local === $base) {
+                  console.log(
+                    chalk.red('⊘ Error'),
+                    'You need to pull, there are new commits.',
+                  );
+                  process.exit(1);
+                }
+              },
+            )
             .catch(err => {
               if (err.message.includes('no upstream configured ')) {
-                console.log(chalk.yellow('⚠ Warning'), 'No upstream. Is this a new branch?');
+                console.log(
+                  chalk.yellow('⚠ Warning'),
+                  'No upstream. Is this a new branch?',
+                );
                 return;
               }
 

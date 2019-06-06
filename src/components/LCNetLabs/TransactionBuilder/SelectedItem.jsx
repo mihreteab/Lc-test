@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { utils } from "styled-minimal";
+import { utils } from 'styled-minimal';
 
-const {responsive} = utils;
+const { responsive } = utils;
 const SelectedItem = styled.div`
   display: inline-block;
   height: 100%;
@@ -9,8 +9,6 @@ const SelectedItem = styled.div`
   font-size: 24px;
   padding: 10px 12px;
   vertical-align: middle;
-
-
 `;
 
 export default SelectedItem;

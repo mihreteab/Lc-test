@@ -61,17 +61,15 @@ export default class EndpointExplorer extends PureComponent {
               >
                 1. SELECT A RESOURCE
               </p>
-              {Resources.map(resource => {
-                return (
-                  <ResourceTabs
-                    active={selectedResource === resource ? true : false}
-                    onClick={this.onResourceChange}
-                    key={resource}
-                  >
-                    {resource}
-                  </ResourceTabs>
-                );
-              })}
+              {Resources.map(resource => (
+                <ResourceTabs
+                  active={selectedResource === resource}
+                  onClick={this.onResourceChange}
+                  key={resource}
+                >
+                  {resource}
+                </ResourceTabs>
+              ))}
             </Title>
             {selectedResource === 'Accounts' ? (
               <Accounts />

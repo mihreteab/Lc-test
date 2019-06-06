@@ -97,7 +97,8 @@ const LoaderPulse = styled.div`
 
   > div {
     animation: ${ripple} 1.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-    border: ${props => px(Math.round(props.size / 16))} solid ${props => props.color};
+    border: ${props => px(Math.round(props.size / 16))} solid
+      ${props => props.color};
     border-radius: 50%;
     opacity: 1;
     position: absolute;
@@ -139,7 +140,14 @@ const Loader = props => {
     html = (
       <LoaderRotate {...props}>
         <LoaderRotateSVG {...props}>
-          <LoaderRotateCircle {...props} cx="50" cy="50" r="20" fill="none" strokeWidth={2} />
+          <LoaderRotateCircle
+            {...props}
+            cx="50"
+            cy="50"
+            r="20"
+            fill="none"
+            strokeWidth={2}
+          />
         </LoaderRotateSVG>
       </LoaderRotate>
     );

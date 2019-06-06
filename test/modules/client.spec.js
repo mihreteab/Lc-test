@@ -11,13 +11,16 @@ describe('client', () => {
     });
 
     it('should fail to a POST without payload', () => {
-      expect(() => request('http://example.com/token', { method: 'POST' })).toThrow(
-        'Error! You must pass `payload`',
-      );
+      expect(() =>
+        request('http://example.com/token', { method: 'POST' }),
+      ).toThrow('Error! You must pass `payload`');
     });
 
     it('should execute a GET successfully', done => {
-      fetch.mockResponseOnce(JSON.stringify({ hello: 'world' }), global.fetchInit);
+      fetch.mockResponseOnce(
+        JSON.stringify({ hello: 'world' }),
+        global.fetchInit,
+      );
 
       request('http://example.com/token').then(data => {
         expect(data).toMatchSnapshot();
@@ -30,17 +33,23 @@ describe('client', () => {
         status: 201,
       });
 
-      request('http://example.com/token', { method: 'POST', payload: { a: 1 } }).then(data => {
+      request('http://example.com/token', {
+        method: 'POST',
+        payload: { a: 1 },
+      }).then(data => {
         expect(data).toMatchSnapshot();
         done();
       });
     });
 
     it('should reject for a  bad request', done => {
-      fetch.mockResponseOnce(JSON.stringify({ error: 'Something went wrong' }), {
-        ...global.fetchInit,
-        status: 400,
-      });
+      fetch.mockResponseOnce(
+        JSON.stringify({ error: 'Something went wrong' }),
+        {
+          ...global.fetchInit,
+          status: 400,
+        },
+      );
 
       request('http://example.com/token').catch(error => {
         expect(error.response).toEqual({ error: 'Something went wrong' });
@@ -50,7 +59,10 @@ describe('client', () => {
     });
 
     it('should reject for a server error with JSON response', done => {
-      fetch.mockRejectOnce(JSON.stringify({ error: 'FAILED' }), global.fetchInit);
+      fetch.mockRejectOnce(
+        JSON.stringify({ error: 'FAILED' }),
+        global.fetchInit,
+      );
 
       request('http://example.com/token').catch(error => {
         expect(error.response).toMatchSnapshot();

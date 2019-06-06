@@ -16,7 +16,10 @@ const IconWrapper = styled(SVG)`
 `;
 
 const Icon = ({ name, ...rest }) => (
-  <IconWrapper src={`${process.env.PUBLIC_URL}/media/icons/${name}.svg`} {...rest} />
+  <IconWrapper
+    src={`${process.env.PUBLIC_URL}/media/icons/${name}.svg`}
+    {...rest}
+  />
 );
 
 Icon.propTypes = {
